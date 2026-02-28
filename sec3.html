@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lookouts | Sección 3: Los Archivos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+</head>
+<style>
+    @font-face {
+        font-family: 'Black Chancery';
+        src: url('recursos/BLKCHCRY.TTF') format('truetype');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #0a0f18;
+        color: #e0e6ed;
+        overflow-x: hidden;
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+    .espacio-simulado {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #1a253a;
+    }
+
+    /* ========================================== */
+    /* ESTILOS DE LA SECCIÓN 3: LOS ARCHIVOS      */
+    /* ========================================== */
+    .archives-section {
+        min-height: 100vh;
+        padding: 100px 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+    }
+
+    .archives-container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-subtitle {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        color: #d4af37;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 4.5rem;
+        font-weight: 400;
+        color: #e0e6ed;
+    }
+
+    .separator {
+        width: 2px;
+        height: 30px;
+        background-color: #d4af37;
+        margin: 15px auto 0;
+    }
+
+    /* Cuadrícula de Tarjetas */
+    .archives-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        /* Perspectiva para que el efecto 3D de las tarjetas funcione */
+        perspective: 1000px;
+    }
+
+    /* Contenedor invisible que recibe el evento del mouse */
+    .archive-card {
+        position: relative;
+        height: 350px;
+        transform-style: preserve-3d;
+    }
+
+    /* La tarjeta visible que se va a inclinar */
+    .card-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 37, 58, 0.4);
+        border: 1px solid rgba(143, 160, 186, 0.2);
+        border-radius: 12px;
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: transform 0.1s ease, border-color 0.4s ease;
+        transform-style: preserve-3d;
+        overflow: hidden;
+    }
+
+    /* Estado invisible inicial para la animación de entrada con GSAP */
+    .archive-card {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .card-inner:hover {
+        border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .roman-numeral {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: #1a253a;
+        /* Oscuro por defecto */
+        transition: color 0.4s ease;
+        /* Para que parezca flotar sobre la tarjeta en 3D */
+        transform: translateZ(40px);
+        margin-bottom: 15px;
+    }
+
+    .card-inner:hover .roman-numeral {
+        color: #d4af37;
+        /* Se ilumina en dorado al hover */
+    }
+
+    .card-inner h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        transform: translateZ(30px);
+    }
+
+    .card-inner p {
+        font-size: 1.1rem;
+        color: #8fa0ba;
+        line-height: 1.5;
+        transform: translateZ(20px);
+    }
+
+    /* Efecto de luz interna que sigue al mouse (opcional pero muy premium) */
+    .card-glow {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+
+    .card-inner:hover .card-glow {
+        opacity: 1;
+    }
+
+    /* ========================================== */
+    /* ESTILOS DE LA SECCIÓN 4: OBRAS DESTACADAS  */
+    /* ========================================== */
+    .exhibition-section {
+        padding: 120px 5vw;
+        background-color: #0a0f18;
+        /* Mantiene la continuidad del fondo */
+        position: relative;
+        z-index: 10;
+    }
+
+    .exhibition-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .showcase-row {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        margin-top: 80px;
+    }
+
+    .showcase-row.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .showcase-image {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .showcase-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    .image-placeholder {
+        width: 100%;
+        height: 400px;
+        background: linear-gradient(45deg, #1a253a, #0f1626);
+        transition: transform 0.6s ease;
+    }
+
+    .showcase-row:hover .image-placeholder {
+        transform: scale(1.05);
+        /* Zoom sutil al pasar el ratón */
+    }
+
+    .showcase-info {
+        flex: 1;
+    }
+
+    .category-tag {
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #d4af37;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .showcase-info h3 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #e0e6ed;
+    }
+
+    .showcase-info p {
+        font-size: 1.2rem;
+        color: #8fa0ba;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .btn-link {
+        font-family: 'Cinzel', serif;
+        color: #d4af37;
+        text-decoration: none;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .btn-link span {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-link:hover {
+        color: #fff;
+    }
+
+    .btn-link:hover span {
+        transform: translateX(5px);
+    }
+
+    /* ========================================== */
+    /* ESTILOS DE LA SECCIÓN 5: FOOTER Y CTA      */
+    /* ========================================== */
+    .footer-section {
+        padding: 120px 5vw 40px;
+        background: linear-gradient(to bottom, #0a0f18 0%, #05080c 100%);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        border-top: 1px solid rgba(143, 160, 186, 0.1);
+    }
+
+    .footer-cta {
+        max-width: 800px;
+        margin: 0 auto 100px;
+    }
+
+    .cta-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 4rem;
+        color: #e0e6ed;
+        margin-bottom: 20px;
+    }
+
+    .cta-desc {
+        font-size: 1.4rem;
+        color: #8fa0ba;
+        margin-bottom: 40px;
+    }
+
+    .btn-primary {
+        background: transparent;
+        color: #d4af37;
+        border: 1px solid #d4af37;
+        padding: 15px 40px;
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary:hover {
+        background: #d4af37;
+        color: #0a0f18;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(143, 160, 186, 0.2);
+        padding-top: 30px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        color: #6a7b96;
+    }
+
+    .footer-links a {
+        color: #6a7b96;
+        text-decoration: none;
+        margin-left: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #d4af37;
+    }
+
+    /* Media query rápida para pantallas pequeñas */
+    @media (max-width: 768px) {
+
+        .showcase-row,
+        .showcase-row.reverse {
+            flex-direction: column;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+</style>
+
+<body>
+
+
+
+    <section class="exhibition-section">
+        <div class="exhibition-container">
+
+            <div class="section-header fade-up">
+                <span class="section-subtitle">Muestras de la Comunidad</span>
+                <h2 class="section-title">Obras Destacadas</h2>
+                <div class="separator"></div>
+            </div>
+
+            <div class="showcase-row fade-up">
+                <div class="showcase-image">
+                    <div class="image-placeholder"></div>
+                </div>
+                <div class="showcase-info">
+                    <span class="category-tag">Ilustración Digital</span>
+                    <h3>Ecos del Abismo</h3>
+                    <p>Una exploración visual de entornos subterráneos donde la luz se convierte en un recurso escaso y
+                        valioso. Un estudio maestro del contraste.</p>
+                    <a href="#" class="btn-link">Ver proyecto <span>→</span></a>
+                </div>
+            </div>
+
+            <div class="showcase-row reverse fade-up">
+                <div class="showcase-info">
+                    <span class="category-tag">Literatura</span>
+                    <h3>El Códice de las Sombras</h3>
+                    <p>Una antología de relatos cortos que entrelazan el misterio y el folclore clásico. La
+                        encuadernación digital evoca los tomos más antiguos de nuestra biblioteca.</p>
+                    <a href="#" class="btn-link">Leer fragmento <span>→</span></a>
+                </div>
+                <div class="showcase-image">
+                    <div class="image-placeholder"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-cta fade-up">
+            <h2 class="cta-title">La Observadora Aguarda</h2>
+            <p class="cta-desc">Tu talento no pertenece a las sombras. Únete a la sociedad y comparte tu visión con el
+                mundo.</p>
+            <button class="btn-primary">Compartir mi Obra</button>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Lookouts. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Manifiesto</a>
+                <a href="#">Archivos</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. INICIALIZAR LENIS (Smooth Scroll)
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // 2. ANIMACIÓN DE ENTRADA CON GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Seleccionamos las tarjetas para animarlas en cascada
+            const cards = document.querySelectorAll('.archive-card');
+
+            gsap.to(cards, {
+                scrollTrigger: {
+                    trigger: '.archives-section',
+                    start: 'top 75%', // Arranca cuando el título entra en pantalla
+                },
+                autoAlpha: 1, // Maneja opacity y visibility automáticamente
+                y: -30, // Sube ligeramente
+                stagger: 0.2, // Retraso de 0.2s entre cada tarjeta
+                duration: 1,
+                ease: 'power3.out'
+            });
+
+            // 3. FÍSICAS DE INCLINACIÓN 3D (TILT EFFECT)
+            cards.forEach(card => {
+                const inner = card.querySelector('.card-inner');
+                const glow = card.querySelector('.card-glow');
+
+                card.addEventListener('mousemove', (e) => {
+                    // Obtenemos las dimensiones y posición de la tarjeta
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // Posición X del mouse dentro de la tarjeta
+                    const y = e.clientY - rect.top;  // Posición Y del mouse dentro de la tarjeta
+
+                    // Calculamos el centro de la tarjeta
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    // Calculamos la rotación (mientras más lejos del centro, mayor inclinación)
+                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 grados
+                    const rotateY = ((x - centerX) / centerX) * 10;
+
+                    // Aplicamos la rotación 3D
+                    inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+                    // Movemos la luz interna para que siga al mouse
+                    if (glow) {
+                        glow.style.left = `${x}px`;
+                        glow.style.top = `${y}px`;
+                    }
+                });
+
+                // Restauramos la tarjeta cuando el mouse sale
+                card.addEventListener('mouseleave', () => {
+                    inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                    inner.style.transition = `transform 0.5s ease, border-color 0.4s ease`; // Suavizamos el retorno
+                });
+
+                // Quitamos la transición al entrar para que la reacción sea instantánea
+                card.addEventListener('mouseenter', () => {
+                    inner.style.transition = `border-color 0.4s ease`;
+                });
+            });
+            // ==========================================
+            // 4. ANIMACIONES CONVENCIONALES (FADE-UP AL SCROLL)
+            // ==========================================
+
+            // Seleccionamos todos los elementos con la clase fade-up
+            const fadeElements = document.querySelectorAll('.fade-up');
+
+            fadeElements.forEach(element => {
+                // Configuramos el estado inicial en GSAP
+                gsap.set(element, { opacity: 0, y: 50 });
+
+                // Animamos cuando entran en el viewport
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%', // Aparece cuando su parte superior toca el 85% de la pantalla
+                        toggleActions: 'play none none reverse' // Se reproduce al bajar, se oculta al subir
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

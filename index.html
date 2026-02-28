@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lookouts | Parallax 3D & Marco Élfico</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'Black Chancery';
+        src: url('recursos/BLKCHCRY.TTF') format('truetype');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #0a0f18;
+        color: #e0e6ed;
+        font-family: 'Black Chancery', serif;
+        overflow-x: hidden;
+    }
+
+    .hero-3d {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --mouseX: 0px;
+        --mouseY: 0px;
+        --scrollY: 0px;
+    }
+
+    .parallax-layer {
+        position: absolute;
+        top: -5%;
+        left: -5%;
+        width: 110%;
+        height: 110%;
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+    }
+
+    /* --- CAPA 1 y 2: Imágenes --- */
+    .bg-layer {
+        background-image: url('recursos/fondo.jpg');
+        z-index: 1;
+        transform: translate(calc(var(--mouseX) * 0.02), calc(var(--mouseY) * 0.02 + var(--scrollY) * 0.2));
+    }
+
+    .owl-layer {
+        background-image: url('recursos/lechuza.png');
+        z-index: 2;
+        transform: translate(calc(var(--mouseX) * 0.05), calc(var(--mouseY) * 0.05 + var(--scrollY) * 0.5));
+    }
+
+    /* --- CAPA 3: Overlay / Degradado oscuro explícito --- */
+    .overlay-veil {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
+        background:
+            /* Viñeta oscura radial para centrar la atención */
+            radial-gradient(circle at center, rgba(10, 15, 24, 0.3) 0%, rgba(10, 15, 24, 0.8) 100%),
+            /* Degradado hacia abajo para fusionarse con la siguiente sección */
+            linear-gradient(to bottom, transparent 0%, transparent 60%, #0a0f18 100%);
+    }
+
+    /* --- CAPA 4: El Marco Élfico (Espejo CSS) --- */
+    .frame-layer {
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(calc(var(--mouseX) * 0.04), calc(var(--mouseY) * 0.04 + var(--scrollY) * 0.4));
+        pointer-events: none;
+    }
+
+    .hero-frame {
+        position: relative;
+        width: 85vw;
+        height: 85vh;
+    }
+
+    .frame-borders {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .corner-img {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-image: url('recursos/corner.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    /* Efecto espejo para acomodar la misma imagen en cada esquina */
+    .corner-tl {
+        top: 17px;
+        left: 8px;
+        rotate: 90deg;
+    }
+
+    /* Original: Superior Izquierda */
+    .corner-tr {
+        top: 8px;
+        right: 17px;
+        rotate: 180deg;
+    }
+
+    /* Espejo Horizontal: Superior Derecha */
+    .corner-bl {
+        bottom: 8px;
+        left: 17px;
+        rotate: 360deg;
+    }
+
+    /* Espejo Vertical: Inferior Izquierda */
+    .corner-br {
+        bottom: 17px;
+        right: 8px;
+        rotate: 270deg;
+    }
+
+    /* Espejo Total: Inferior Derecha */
+
+    /* --- CAPA 5: Contenido --- */
+    .content-layer {
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(calc(var(--mouseX) * 0.08), calc(var(--mouseY) * 0.08 + var(--scrollY) * 0.3));
+        pointer-events: none;
+        /* Para que la linterna pase a través del contenedor del texto */
+    }
+
+    .hero-content {
+        text-align: center;
+        pointer-events: auto;
+        /* Reactivamos clicks solo en el texto/botones */
+    }
+
+    .estd-badge {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        color: #d4af37;
+    }
+
+    .main-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 6rem;
+        font-weight: 400;
+        margin: 10px 0;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .separator {
+        width: 2px;
+        height: 40px;
+        background-color: #d4af37;
+        margin: 20px auto;
+    }
+
+    .subtitle {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        font-style: italic;
+        color: #8fa0ba;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .description {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        color: #b0c4de;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    /* --- CAPA 6: Linterna Interactiva --- */
+    .hero-3d::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle 500px at var(--cursorX, 50%) var(--cursorY, 50%), rgba(212, 175, 55, 0.12) 0%, transparent 60%);
+        pointer-events: none;
+        z-index: 6;
+        /* Por encima de TODO */
+        transition: background 0.1s ease;
+    }
+
+    .next-section {
+        height: 100vh;
+        background: #0a0f18;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+    }
+</style>
+
+
+<body>
+
+    <section class="hero-3d">
+        <div class="parallax-layer bg-layer"></div>
+
+        <div class="parallax-layer owl-layer"></div>
+
+        <div class="overlay-veil"></div>
+
+        <div class="parallax-layer frame-layer">
+            <div class="hero-frame">
+                <div class="frame-borders"></div>
+
+                <div class="corner-img corner-tl"></div>
+                <div class="corner-img corner-tr"></div>
+                <div class="corner-img corner-bl"></div>
+                <div class="corner-img corner-br"></div>
+            </div>
+        </div>
+
+        <div class="parallax-layer content-layer">
+            <div class="hero-content">
+                <span class="estd-badge">ESTD 2025</span>
+                <h1 class="main-title">The Lookouts</h1>
+                <div class="separator"></div>
+                <h2 class="subtitle">Lechuza</h2>
+                <p class="description">La Observadora Sabia</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="next-section">
+        <h2>El Intercambio Literario aguarda...</h2>
+    </section>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hero = document.querySelector('.hero-3d');
+            const frameLayer = document.querySelector('.frame-layer');
+
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX);
+                const yAxis = (window.innerHeight / 2 - e.pageY);
+
+                hero.style.setProperty('--mouseX', `${xAxis}px`);
+                hero.style.setProperty('--mouseY', `${yAxis}px`);
+
+                hero.style.setProperty('--cursorX', `${e.clientX}px`);
+                hero.style.setProperty('--cursorY', `${e.clientY}px`);
+            });
+
+            window.addEventListener('scroll', () => {
+                const scrollValue = window.scrollY;
+                hero.style.setProperty('--scrollY', `${scrollValue}px`);
+            });
+        });
+    </script>
+</body>
+
+</html>

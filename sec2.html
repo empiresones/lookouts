@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lookouts | Sección 2: El Manifiesto</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+</head>
+<style>
+    /* Configuración de tu fuente local (Asegúrate de tener la carpeta recursos) */
+    @font-face {
+        font-family: 'Black Chancery';
+        src: url('recursos/BLKCHCRY.TTF') format('truetype');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #0a0f18;
+        color: #e0e6ed;
+        overflow-x: hidden;
+    }
+
+    .espacio-simulado {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        color: #1a253a;
+    }
+
+    /* ========================================== */
+    /* ESTILOS DE LA SECCIÓN 2: EL MANIFIESTO     */
+    /* ========================================== */
+
+    .manifesto-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10vw;
+        position: relative;
+        z-index: 10;
+    }
+
+    .manifesto-container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .manifesto-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 400;
+        line-height: 1.4;
+        color: #8fa0ba;
+        text-align: center;
+    }
+
+    .manifesto-text .word {
+        opacity: 0.1;
+        transform: translateY(20px);
+        will-change: transform, opacity;
+    }
+
+    .manifesto-text .word:nth-child(1),
+    .manifesto-text .word:nth-child(11),
+    .manifesto-text .word:nth-child(47),
+    .manifesto-text .word:nth-child(56) {
+        color: #d4af37;
+        font-family: 'Black Chancery', serif;
+        font-size: 1.2em;
+    }
+</style>
+
+<body>
+
+    <div class="espacio-simulado">
+        <p>↓ Haz scroll hacia abajo para revelar el manifiesto ↓</p>
+    </div>
+
+    <section class="manifesto-section">
+        <div class="manifesto-container">
+            <h2 class="manifesto-text" id="manifesto">
+                Observamos lo que otros pasan por alto. Hemos forjado un santuario digital dedicado a resguardar y
+                exhibir tu imaginación. Ya sea que estés trazando los versos de una historia inédita, esculpiendo formas
+                que desafían la materia, o dando vida a lienzos que aguardan ser descubiertos, tu arte tiene un lugar
+                aquí. La sociedad aguarda tu obra.
+            </h2>
+        </div>
+    </section>
+    <div class="espacio-simulado">
+        <p>Continúa el viaje...</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // ==========================================
+            // 1. INICIALIZAR LENIS (Smooth Scroll)
+            // ==========================================
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+
+            // ==========================================
+            // 2. ANIMACIÓN DEL MANIFIESTO (GSAP + SplitType)
+            // ==========================================
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Seleccionamos el texto y lo dividimos en palabras
+            const manifesto = new SplitType('#manifesto', { types: 'words' });
+
+            // Animamos cada palabra atada al scroll del usuario
+            gsap.to(manifesto.words, {
+                scrollTrigger: {
+                    trigger: '.manifesto-section',
+                    start: 'top 50%',
+                    end: 'bottom 80%',
+                    scrub: 1,
+                },
+                opacity: 1,
+                y: 0,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+
+        });</script>
+</body>
+
+</html>
