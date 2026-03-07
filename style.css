@@ -73,7 +73,7 @@ body {
 }
 
 #main-logo {
-    max-width: 200px;
+    max-width: 150px;
     filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.05));
     transition: transform 0.3s ease;
 }
@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 5% 60px;
+    padding: 80px 5% 60px;
     gap: 100px;
     opacity: 0;
     visibility: hidden;
@@ -258,6 +258,162 @@ body {
 }
 
 /* ==========================================
+   RESPONSIVIDAD Y AJUSTES MÓVILES
+   ========================================== */
+
+/* Pantallas medianas (Tablets, portátiles pequeñas) */
+@media (max-width: 992px) {
+
+    /* Convertimos el Hero a columna */
+    .carousel-slide {
+        flex-direction: column;
+        padding: 120px 5% 60px;
+        /* Damos espacio arriba para que el header no tape el título */
+        gap: 40px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        text-align: center;
+        font-size: 1.05rem;
+    }
+
+    /* Reducimos la portada del libro para que quepa en la pantalla */
+    .hero-book-cover {
+        max-width: 250px;
+    }
+
+    /* Ajustamos el Diorama de Audiolibros */
+    .audiobooks-premium-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+    }
+}
+
+/* Pantallas pequeñas (Celulares) */
+@media (max-width: 768px) {
+
+    /* Ajustes del Header */
+    #site-header {
+        padding: 15px 20px;
+        justify-content: space-between;
+    }
+
+    #main-logo {
+        max-width: 150px;
+    }
+
+    .social-icons-left {
+        /* Ocultamos los íconos del header en celular por falta de espacio;
+           estarán en el footer de todos modos */
+        display: none;
+    }
+
+    /* Ajustes adicionales al Hero */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-book-cover {
+        max-width: 180px;
+    }
+
+    /* Ajustamos las flechas para que no cubran el contenido */
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .prev-btn {
+        left: 5px;
+    }
+
+    .next-btn {
+        right: 5px;
+    }
+
+    /* Achicamos la tipografía de la cita principal */
+    #main-quote {
+        font-size: 1.8rem;
+        padding: 40px 10px;
+    }
+}
+
+/* ==========================================
+   AJUSTES PARA PANTALLAS BAJAS (LAPTOPS Y LANDSCAPE)
+   ========================================== */
+
+/* Pantallas o ventanas con poca altura (Menos de 850px de alto) */
+@media (max-height: 850px) {
+    .carousel-slide {
+        padding-top: 100px;
+        /* Aseguramos que el header flotante no tape nada */
+        gap: 50px;
+        /* Reducimos la brecha entre el texto y el libro */
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        /* Bajamos el título para que respire */
+        margin-bottom: 15px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        /* Texto ligeramente más pequeño */
+        margin-bottom: 25px;
+    }
+
+    .hero-book-cover {
+        max-width: 260px;
+        /* Evita que el libro empuje los controles hacia abajo */
+    }
+}
+
+/* Teléfonos móviles en modo horizontal estricto (Landscape) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .carousel-slide {
+        flex-direction: row;
+        /* Forzamos que se mantengan lado a lado */
+        gap: 30px;
+        padding-top: 80px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-description {
+        display: none;
+        /* Truco de UI: Ocultamos la descripción para priorizar el título y el botón en espacios críticos */
+    }
+
+    .hero-book-cover {
+        max-width: 160px;
+    }
+
+    /* Reducimos el tamaño de los controles para que no estorben */
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
    CITA (QUOTE)
    ========================================== */
 .quote-container {
@@ -317,24 +473,31 @@ body {
 
 /* --- Contenedor del Marquee --- */
 .marquee-wrapper {
-    width: 100%;
-    position: relative;
-    /* Efecto premium: Difumina los bordes izquierdo y derecho para que las tarjetas "aparezcan" */
+    display: flex;
+    overflow: hidden;
+    gap: 40px;
+    /* Este gap separa el Grupo 1 del Grupo 2 */
+    padding: 20px 0;
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 40px;
+    animation: scrollMarquee 2000s linear infinite;
 }
 
 .marquee-track {
     display: flex;
     gap: 40px;
     width: max-content;
-    /* La animación dura 40s, lineal para que no acelere, e infinita */
     animation: scrollMarquee 40s linear infinite;
     padding: 20px 0;
 }
 
-/* ¡El toque interactivo! Se pausa al poner el cursor */
-.marquee-track:hover {
+.marquee-wrapper:hover .marquee-group {
     animation-play-state: paused;
 }
 
@@ -412,21 +575,23 @@ body {
     position: absolute;
     bottom: 25px;
     right: 20px;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--accent-gold);
-    /* Aro dorado premium */
-    background-color: var(--blue-navy);
+    background-color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.member-card:hover .member-badge {
-    transform: scale(1.15) rotate(5deg);
-    /* Le da vida al logo al hacer hover en la foto */
+.member-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: invert(1) brightness(0);
 }
+
 
 /* ==========================================
    AUDIOLIBROS: DIORAMA INTERACTIVO
@@ -630,57 +795,221 @@ body {
 }
 
 /* ==========================================
-   ACTIVIDADES
+   ACTIVIDADES: EVENT CARDS PREMIUM (CON IMAGEN)
    ========================================== */
 .activities-container {
-    padding: 20px 10% 80px;
-}
-
-#activities-list {
-    list-style: none;
-    text-align: center;
-    font-size: 1.6rem;
-    line-height: 2.2;
-}
-
-#activities-list li {
+    padding: 80px 10% 120px;
+    background-color: var(--bg-light);
     position: relative;
-    display: inline-block;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Fuerza exactamente 2 columnas */
+    gap: 40px;
+    /* Un poco más de espacio para que las 4 tarjetas respiren */
+    margin-top: 50px;
+    max-width: 1000px;
+    /* Centra y evita que las tarjetas se estiren demasiado en monitores anchos */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsividad: Cambia a 1 columna en pantallas móviles o tablets pequeñas */
+@media (max-width: 768px) {
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Diseño de la Tarjeta */
+.activity-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    /* Un radio un poco más suave */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(128, 150, 181, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.activity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(20, 54, 102, 0.12);
+    border-color: var(--accent-gold);
+}
+
+/* Contenedor y efecto de la Imagen */
+.activity-image-wrapper {
+    position: relative;
+    height: 180px;
     width: 100%;
-    transition: color 0.3s ease;
-    color: var(--blue-slate);
+    overflow: hidden;
+    background-color: var(--blue-slate);
+    /* Color de respaldo por si la imagen tarda en cargar */
 }
 
-#activities-list li:hover {
-    color: var(--blue-navy);
+.activity-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
-.activity-date {
+.activity-card:hover .activity-img {
+    transform: scale(1.08);
+}
+
+.activity-date-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(15, 20, 28, 0.9);
+    backdrop-filter: blur(4px);
+    color: var(--bg-light);
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 3px solid var(--accent-gold);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.date-day {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
     color: var(--accent-gold);
+}
+
+.date-month {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
     font-weight: 600;
-    margin-left: 10px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* Detalles del evento */
+.activity-details {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.activity-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--blue-dark);
+    margin-bottom: 12px;
+}
+
+.activity-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--blue-muted);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(128, 150, 181, 0.2);
+    padding-top: 15px;
+}
+
+.activity-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--blue-slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.activity-arrow {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    transition: transform 0.3s ease;
+}
+
+.activity-card:hover .activity-arrow {
+    transform: translateX(5px);
+}
+
+/* --- Botón Ver Más Agenda --- */
+.activities-cta-container {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.btn-outline-blue {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: transparent;
+    color: var(--blue-navy);
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    border: 2px solid var(--blue-navy);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-blue:hover {
+    background-color: var(--blue-navy);
+    color: var(--bg-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(20, 54, 102, 0.15);
 }
 
 /* ==========================================
-   FOOTER
+   FOOTER: CIERRE PREMIUM
    ========================================== */
-#site-footer {
+.footer-container {
     background-color: var(--blue-dark);
     color: var(--bg-light);
-    display: flex;
-    justify-content: space-between;
-    padding: 60px 15%;
     border-bottom: 12px solid var(--accent-gold);
+    /* La franja dorada icónica */
+    padding: 80px 10% 20px;
+    position: relative;
 }
 
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.footer-content {
+    display: grid;
+    /* Divide el espacio: la columna del logo es más ancha que las otras dos */
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
 }
 
-#footer-logo {
-    max-width: 180px;
+/* --- Columna 1: Branding --- */
+.footer-logo {
+    max-width: 220px;
+    margin-bottom: 25px;
+    /* Si tu logo no es blanco, esto fuerza a que lo sea (es un gran truco de CSS) */
+    filter: brightness(0) invert(1);
+}
+
+.footer-tagline {
+    color: var(--blue-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 80%;
 }
 
 .footer-socials {
@@ -688,28 +1017,85 @@ body {
     gap: 15px;
 }
 
-.social-link-footer {
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--bg-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--blue-dark);
+    border-color: var(--accent-gold);
+    transform: translateY(-5px);
+}
+
+/* --- Columnas 2 y 3: Links y Directorio --- */
+.footer-heading {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--bg-light);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-links ul,
+.members-list-simple {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li,
+.members-list-simple li {
+    margin-bottom: 15px;
+}
+
+/* Animación sutil en los enlaces: se desplazan a la derecha al hacer hover */
+.footer-links ul li a {
     color: var(--blue-muted);
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.social-link-footer:hover {
-    color: var(--accent-gold);
-}
-
-.footer-right h4 {
-    font-family: var(--font-body);
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    color: var(--bg-light);
-}
-
-#footer-members-list {
-    list-style: none;
     font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--blue-muted);
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent-gold);
+    padding-left: 8px;
+    /* Micro-interacción premium */
+}
+
+/* Lista de miembros estática */
+.members-list-simple li {
+    color: var(--blue-slate);
+    font-size: 0.95rem;
+}
+
+/* --- Copyright Bar --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 25px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(128, 150, 181, 0.5);
+    /* Un azul muy apagado para que no distraiga */
+}
+
+/* Responsividad básica para tablets y móviles */
+@media (max-width: 900px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-tagline {
+        max-width: 100%;
+    }
 }
