@@ -83,6 +83,115 @@ body {
 }
 
 /* ==========================================
+   MENÚ HAMBURGUESA Y OVERLAY DE NAVEGACIÓN
+   ========================================== */
+
+/* --- El Botón (Las 3 líneas) --- */
+.menu-toggle {
+    position: absolute;
+    right: 50px;
+    /* Lo alinea a la derecha, en espejo a las redes sociales */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 101;
+    /* Por encima de todo, incluido el menú desplegado */
+    padding: 10px;
+}
+
+.hamburger-line {
+    width: 30px;
+    height: 2px;
+    background-color: var(--blue-slate);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 2px;
+}
+
+/* Animación: Transformar a "X" cuando está activo */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- La Capa del Menú (Overlay) --- */
+.fullscreen-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(15, 20, 28, 0.96);
+    /* Un azul profundo casi sólido */
+    backdrop-filter: blur(15px);
+    /* Efecto cristal detrás */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    /* Justo debajo de la barra del header (z-index: 100) */
+
+    /* Estado oculto inicial */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-2%);
+    /* Ligeramente elevado */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Estado visible al darle clic */
+.fullscreen-nav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- Los Enlaces Literarios --- */
+.nav-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--bg-light);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 30px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    opacity: 0.8;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Ajuste móvil para el menú */
+@media (max-width: 768px) {
+    .menu-toggle {
+        right: 20px;
+    }
+
+    .nav-link {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* ==========================================
    HERO: CARRUSEL EDITORIAL
    ========================================== */
 #hero-carousel {

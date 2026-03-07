@@ -11,6 +11,7 @@
 <body>
 
     <header id="site-header" class="header-container glass-effect">
+
         <div class="social-icons-left">
             <a href="#" class="social-link" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24"
                     fill="currentColor">
@@ -41,10 +42,27 @@
                     </path>
                 </svg></a>
         </div>
+
         <div class="logo-center">
             <img src="recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
         </div>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
     </header>
+
+    <nav id="fullscreen-nav" class="fullscreen-nav">
+        <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Inicio</a></li>
+            <li><a href="directorio.html" class="nav-link">Miembros</a></li>
+            <li><a href="catalogo.html" class="nav-link">Audiolibros</a></li>
+            <li><a href="agenda.html" class="nav-link">Agenda</a></li>
+        </ul>
+    </nav>
 
     <section id="hero-carousel" class="hero-container">
         <div class="hero-bg-glow"></div>
@@ -313,7 +331,7 @@
                 <div class="activity-details">
                     <h4 class="activity-name">Concurso de Cuento</h4>
                     <p class="activity-desc">Saca a relucir tu pluma. Presentación de historias cortas originales
-                        calificadas por los miembros del consejo.</p>
+                        calificadas por los miembros.</p>
                     <div class="activity-footer">
                         <span class="activity-status">Abierto</span>
                         <span class="activity-arrow">&rarr;</span>

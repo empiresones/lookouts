@@ -129,5 +129,34 @@ document.addEventListener("DOMContentLoaded", () => {
             scrollObserver.observe(el);
         });
     }
+    // ==========================================
+    // 4. MENÚ HAMBURGUESA Y OVERLAY
+    // ==========================================
+    const menuToggle = document.getElementById('menu-toggle');
+    const fullscreenNav = document.getElementById('fullscreen-nav');
 
+    if (menuToggle && fullscreenNav) {
+        // Abrir y cerrar el menú al hacer clic en la hamburguesa
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            fullscreenNav.classList.toggle('active');
+
+            // Opcional: Evitar que el usuario haga scroll en el fondo cuando el menú está abierto
+            if (fullscreenNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Cerrar el menú automáticamente al hacer clic en uno de los enlaces
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                fullscreenNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });

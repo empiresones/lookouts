@@ -1,0 +1,292 @@
+/* ==========================================
+   CSS MODULAR: CATÁLOGO DE AUDIOLIBROS
+   ========================================== */
+
+/* --- Hero Interno (Reutilizado de Directorio pero con ajustes) --- */
+.page-hero {
+    background-color: var(--blue-dark);
+    padding: 180px 10% 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-eyebrow {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--bg-light);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.page-desc {
+    color: var(--blue-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- Barra de Filtros --- */
+.catalog-filters {
+    background-color: var(--blue-dark);
+    padding: 0 10% 60px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(128, 150, 181, 0.3);
+    color: var(--blue-muted);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background-color: rgba(214, 179, 89, 0.05);
+}
+
+/* --- Grid del Catálogo --- */
+.catalog-section {
+    padding: 80px 10% 120px;
+    background-color: var(--bg-light);
+}
+
+.catalog-grid {
+    display: grid;
+    /* Grid súper adaptable: si hay espacio caben 4, sino 3, 2 o 1 */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* --- Tarjeta de Audiolibro --- */
+.audio-card {
+    text-decoration: none;
+    background-color: var(--blue-slate);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.audio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(20, 54, 102, 0.2);
+}
+
+/* Portada y Overlay de Play */
+.audio-cover-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Formato cuadrado perfecto para audiolibros/podcasts */
+    overflow: hidden;
+    background-color: var(--blue-dark);
+}
+
+.audio-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 20, 28, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.play-overlay svg {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.8);
+}
+
+.audio-card:hover .audio-cover {
+    transform: scale(1.05);
+}
+
+.audio-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.audio-card:hover .play-overlay svg {
+    transform: scale(1.2);
+}
+
+/* Información del libro */
+.audio-info {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.audio-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.tag-scifi {
+    color: #5bc0eb;
+}
+
+.tag-horror {
+    color: #fa7921;
+}
+
+.tag-fantasy {
+    color: #9bc53d;
+}
+
+.audio-title {
+    font-family: var(--font-heading);
+    color: var(--bg-light);
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    /* Evita que los títulos largos rompan el diseño cortándolos con '...' */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.audio-author {
+    color: var(--blue-muted);
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.audio-metadata {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 15px;
+    color: var(--blue-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-item svg {
+    color: var(--accent-gold);
+    opacity: 0.8;
+}
+
+/* El pequeño punto dorado que separa la duración de los capítulos */
+.meta-divider {
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* --- Reproductor UI Falso --- */
+.audio-player-ui {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 15px;
+}
+
+.mini-play-btn {
+    background: var(--accent-gold);
+    border: none;
+    color: var(--blue-dark);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mini-play-btn:hover {
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--accent-gold);
+    border-radius: 2px;
+}
+
+.time-text {
+    font-size: 0.7rem;
+    color: var(--blue-muted);
+    font-variant-numeric: tabular-nums;
+    /* Mantiene los números alineados */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .catalog-filters {
+        padding-bottom: 40px;
+    }
+}

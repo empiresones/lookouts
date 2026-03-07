@@ -1,0 +1,214 @@
+/* ==========================================
+   CSS MODULAR: AGENDA (SPOTLIGHT + LEDGER)
+   ========================================== */
+
+/* --- 1. SECCIÓN SPOTLIGHT (Evento Destacado) --- */
+.event-spotlight {
+    background-image:
+        linear-gradient(to right, var(--blue-dark) 30%,
+            rgba(15, 20, 28, 0.6) 70%),
+        url('https://images.unsplash.com/photo-1680449786212-de3b835dc467?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    color: var(--bg-light);
+    overflow: hidden;
+}
+
+.spotlight-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(0.8);
+    /* Oscurece la imagen para que el texto resalte */
+    z-index: 1;
+}
+
+.spotlight-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
+
+.spotlight-eyebrow {
+    color: var(--accent-gold);
+    /* Color de acento */
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.spotlight-title {
+    font-family: var(--font-heading);
+    /* Playfair Display */
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.spotlight-info {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.info-block .label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--blue-muted);
+    /* Texto secundario */
+    margin-bottom: 5px;
+}
+
+.info-block .value {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.spotlight-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 35px;
+}
+
+/* Botón Sólido Dorado */
+.btn-gold-solid {
+    display: inline-block;
+    padding: 14px 30px;
+    background-color: var(--accent-gold);
+    color: var(--blue-dark);
+    /* Contraste oscuro */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold-solid:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(214, 179, 89, 0.3);
+}
+
+/* --- 2. GRID DE PRÓXIMOS ENCUENTROS --- */
+.upcoming-grid-section {
+    padding: 100px 10%;
+    background-color: var(--bg-light);
+    /* Fondo claro */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title-alt {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--blue-dark);
+}
+
+/* --- 3. SECCIÓN LEDGER (Bitácora Pasada) --- */
+.past-ledger-section {
+    padding: 120px 10%;
+    background-color: var(--blue-dark);
+    /* Contraste oscuro para el pasado */
+}
+
+.ledger-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid rgba(214, 179, 89, 0.2);
+    /* Bordes dorados sutiles */
+    padding: 60px;
+}
+
+.ledger-header {
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgba(214, 179, 89, 0.15);
+    padding-bottom: 25px;
+}
+
+.ledger-title {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 2.2rem;
+}
+
+.ledger-header p {
+    color: var(--blue-muted);
+    font-size: 1rem;
+}
+
+.ledger-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ledger-item {
+    display: grid;
+    grid-template-columns: 130px 1fr 150px;
+    /* Estructura de tabla */
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(128, 150, 181, 0.1);
+    color: var(--blue-muted);
+    transition: color 0.3s ease;
+}
+
+.ledger-item:hover {
+    color: #ffffff;
+}
+
+.ledger-date {
+    font-family: 'Courier New', Courier, monospace;
+    /* Estilo de archivo */
+    font-size: 0.95rem;
+}
+
+.ledger-event {
+    font-weight: 500;
+    color: var(--bg-light);
+}
+
+.ledger-category {
+    text-align: right;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+    .spotlight-title {
+        font-size: 2.8rem;
+    }
+
+    .spotlight-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ledger-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ledger-category {
+        text-align: left;
+    }
+}
