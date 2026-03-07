@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda | The Lookouts</title>
+    <title>Blog | The Lookouts</title>
     <link rel="shortcut icon" href="recursos/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="recursos/favicon.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="agenda.css">
+    <link rel="stylesheet" href="blog.css">
 </head>
 
 <body>
@@ -72,144 +72,82 @@
 
     <main id="main-content" style="min-height: 80vh; padding-top: 120px;">
 
-        <section class="event-spotlight animate-on-scroll">
-            <div class="spotlight-bg"></div>
-            <div class="spotlight-content">
-                <h4 class="spotlight-eyebrow">EVENTO</h4>
-                <h1 class="spotlight-title">Día del Libro 2026</h1>
-                <div class="spotlight-info">
-                    <div class="info-block">
-                        <span class="label">FECHA</span>
-                        <span class="value">23 de Abril</span>
-                    </div>
-                    <div class="info-block">
-                        <span class="label">LUGAR</span>
-                        <span class="value">Porai</span>
-                    </div>
-                </div>
-                <p class="spotlight-desc">La celebración magna donde las historias cobran vida. Un encuentro dedicado a
-                    compartir el arte de la narrativa y la pasión por la palabra escrita en comunidad.</p>
-                <a href="#" class="btn-gold-solid">Reservar mi lugar</a>
-            </div>
+        <section class="blog-header animate-on-scroll">
+            <h4 class="blog-eyebrow">BLOG</h4>
+            <h1 class="blog-main-title">Noticias y Artículos</h1>
+            <hr class="blog-divider">
         </section>
 
-        <section class="upcoming-grid-section">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title-alt">Próximas Actividades</h2>
-            </div>
-            <div class="activities-grid">
-                <div class="activity-card animate-on-scroll">
-                    <div class="activity-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1772121034582-c7d18ae49e5c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Noche de Rol" class="activity-img">
-                        <div class="activity-date-badge">
-                            <span class="date-day">31</span>
-                            <span class="date-month">OCT</span>
-                        </div>
-                    </div>
-                    <div class="activity-details">
-                        <h4 class="activity-name">Noche de Rol y Taberna</h4>
-                        <p class="activity-desc">Sesión de D&D. Prepara tus dados.</p>
-                        <div class="activity-footer">
-                            <span class="activity-status">Planeación</span>
-                            <span class="activity-arrow">&rarr;</span>
-                        </div>
+        <section class="featured-article animate-on-scroll">
+            <a href="entradas blog/plantilla-entrada.html" class="featured-wrapper">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1073&auto=format&fit=crop"
+                        alt="Libros digitales">
+                </div>
+                <div class="featured-text">
+                    <span class="article-tag">Destacado</span>
+                    <h2 class="featured-h2">¿Hacia dónde van los libros digitales en 2026?</h2>
+                    <p class="featured-excerpt">Hablamos sobre cómo las nuevas tecnologías están cambiando la forma en
+                        que leemos y compartimos historias hoy en día.</p>
+                    <div class="article-meta">
+                        <span>Por The Lookouts</span>
+                        <span class="meta-dot"></span>
+                        <span>5 min de lectura</span>
                     </div>
                 </div>
-                <div class="activity-card animate-on-scroll">
-                    <div class="activity-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1630343710506-89f8b9f21d31?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Noche de Rol" class="activity-img">
-                        <div class="activity-date-badge">
-                            <span class="date-day">31</span>
-                            <span class="date-month">OCT</span>
-                        </div>
-                    </div>
-                    <div class="activity-details">
-                        <h4 class="activity-name">Sesión de Narrativa Grupal</h4>
-                        <p class="activity-desc">Una experiencia de construcción de mundo colectiva. Participa en la
-                            creación de una historia efímera dirigida por el consejo.</p>
-                        <div class="activity-footer">
-                            <span class="activity-status">Planeación</span>
-                            <span class="activity-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card animate-on-scroll" style="transition-delay: 0.1s;">
-                    <div class="activity-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop"
-                            alt="Taller de Escritura" class="activity-img">
-                        <div class="activity-date-badge">
-                            <span class="date-day">12</span>
-                            <span class="date-month">JUN</span>
-                        </div>
-                    </div>
-                    <div class="activity-details">
-                        <h4 class="activity-name">Taller de Prosa Editorial</h4>
-                        <p class="activity-desc">Sesión técnica sobre estructura literaria y perfeccionamiento de estilo
-                            para aspirantes a publicación.</p>
-                        <div class="activity-footer">
-                            <span class="activity-status">Abierto</span>
-                            <span class="activity-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card animate-on-scroll" style="transition-delay: 0.2s;">
-                    <div class="activity-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1639262498805-17c7dc422d37?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Simposio Ciencia Ficción" class="activity-img">
-                        <div class="activity-date-badge">
-                            <span class="date-day">05</span>
-                            <span class="date-month">AGO</span>
-                        </div>
-                    </div>
-                    <div class="activity-details">
-                        <h4 class="activity-name">Simposio de Ciencia Ficción</h4>
-                        <p class="activity-desc">Mesa de diálogo sobre la evolución del género y las visiones del futuro
-                            en la literatura contemporánea.</p>
-                        <div class="activity-footer">
-                            <span class="activity-status">Próximamente</span>
-                            <span class="activity-arrow">&rarr;</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </a>
         </section>
 
-        <section class="past-ledger-section animate-on-scroll">
-            <div class="ledger-wrapper">
-                <div class="ledger-header">
-                    <h2 class="ledger-title">Archivo de actividades</h2>
-                </div>
-                <div class="ledger-list">
-                    <div class="ledger-item">
-                        <span class="ledger-date">15.02.26</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Análisis</span>
-                    </div>
+        <section class="blog-grid-section">
+            <div class="blog-grid">
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">01.01.26</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Institucional</span>
-                    </div>
+                <article class="blog-card animate-on-scroll">
+                    <a href="entradas blog/plantilla-entrada.html">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1516339901600-2e1a6298ed74?q=80&w=954&auto=format&fit=crop"
+                                alt="Futuro">
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="article-tag">Tecnología</span>
+                            <h3 class="blog-card-title">El legado del Cyberpunk en nuestra realidad</h3>
+                            <p class="blog-card-excerpt">Analizamos qué cosas de las películas clásicas de ciencia
+                                ficción se han cumplido en nuestro presente.</p>
+                        </div>
+                    </a>
+                </article>
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">20.12.25</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Comunidad</span>
-                    </div>
+                <article class="blog-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <a href="entrada.html">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?q=80&w=1170&auto=format&fit=crop"
+                                alt="Escritura">
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="article-tag">Guía</span>
+                            <h3 class="blog-card-title">Consejos para empezar a escribir tu propia historia</h3>
+                            <p class="blog-card-excerpt">Una lista sencilla de pasos para organizar tus ideas y empezar
+                                a redactar sin complicaciones.</p>
+                        </div>
+                    </a>
+                </article>
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">05.11.25</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Multimedia</span>
-                    </div>
-                </div>
+                <article class="blog-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <a href="entrada.html">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=1074&auto=format&fit=crop"
+                                alt="Fantasía">
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="article-tag">Libros</span>
+                            <h3 class="blog-card-title">Cómo ha cambiado la magia en los libros modernos</h3>
+                            <p class="blog-card-excerpt">Repasamos cómo los autores actuales inventan sistemas de magia
+                                más realistas y detallados.</p>
+                        </div>
+                    </a>
+                </article>
+
             </div>
         </section>
-
-
 
     </main>
 
