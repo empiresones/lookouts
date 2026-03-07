@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lookouts | Sociedad Creativa</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'Black Chancery';
+        src: url('recursos/BLKCHCRY.TTF') format('truetype');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #0a0f18;
+        color: #e0e6ed;
+        font-family: 'Cormorant Garamond', serif;
+        overflow-x: hidden;
+    }
+
+    /* --- NAVEGACIÓN --- */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        /* Asegura que esté por encima de todo el Hero 3D */
+        padding: 20px 0;
+        background: rgba(10, 15, 24, 0.85);
+        /* Tu color de fondo con un poco de transparencia */
+        backdrop-filter: blur(12px);
+        /* El efecto de cristal */
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        /* Línea dorada sutil */
+        transition: all 0.3s ease;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        font-family: 'Black Chancery', serif;
+        font-size: 2rem;
+        color: #d4af37;
+        text-decoration: none;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        transition: color 0.3s ease;
+    }
+
+    .nav-logo:hover {
+        color: #fff;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+    }
+
+    .nav-links a {
+        font-family: 'Cinzel', serif;
+        font-size: 0.95rem;
+        color: #e0e6ed;
+        text-decoration: none;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+    }
+
+    .nav-links a:hover {
+        color: #d4af37;
+        transform: translateY(-2px);
+    }
+
+    /* Ocultar los enlaces en móvil temporalmente (luego podemos hacer un menú hamburguesa) */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+    }
+
+    /* --- SECCIÓN 1: HERO 3D --- */
+    .hero-3d {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --mouseX: 0px;
+        --mouseY: 0px;
+        --scrollY: 0px;
+    }
+
+    .parallax-layer {
+        position: absolute;
+        top: -5%;
+        left: -5%;
+        width: 110%;
+        height: 110%;
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+    }
+
+    .bg-layer {
+        background-image: url('recursos/fondo.jpg');
+        z-index: 1;
+        transform: translate(calc(var(--mouseX) * 0.02), calc(var(--mouseY) * 0.02 + var(--scrollY) * 0.2));
+    }
+
+    .owl-layer {
+        background-image: url('recursos/lechuza.png');
+        z-index: 2;
+        transform: translate(calc(var(--mouseX) * 0.05), calc(var(--mouseY) * 0.05 + var(--scrollY) * 0.5));
+        margin-top: 10%;
+    }
+
+    .overlay-veil {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
+        background: radial-gradient(circle at center, rgba(10, 15, 24, 0.3) 0%, rgba(10, 15, 24, 0.8) 100%),
+            linear-gradient(to bottom, transparent 0%, transparent 60%, #0a0f18 100%);
+    }
+
+    .frame-layer {
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        transform: translate(calc(var(--mouseX) * 0.04), calc(var(--mouseY) * 0.04 + var(--scrollY) * 0.4));
+    }
+
+    .hero-frame {
+        position: relative;
+        width: 85vw;
+        height: 85vh;
+    }
+
+    .frame-borders {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .corner-img {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-image: url('recursos/corner.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .corner-tl {
+        top: 17px;
+        left: 8px;
+        rotate: 90deg;
+    }
+
+    .corner-tr {
+        top: 8px;
+        right: 17px;
+        rotate: 180deg;
+    }
+
+    .corner-bl {
+        bottom: 8px;
+        left: 17px;
+        rotate: 360deg;
+    }
+
+    .corner-br {
+        bottom: 17px;
+        right: 8px;
+        rotate: 270deg;
+    }
+
+    .content-layer {
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        transform: translate(calc(var(--mouseX) * 0.08), calc(var(--mouseY) * 0.08 + var(--scrollY) * 0.3));
+    }
+
+    .hero-content {
+        text-align: center;
+        pointer-events: auto;
+    }
+
+    .estd-badge {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        color: #d4af37;
+    }
+
+    .main-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 8rem;
+        font-weight: 500;
+        margin: 10px 0;
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .separator {
+        width: 2px;
+        height: 40px;
+        background-color: #d4af37;
+        margin: 20px auto;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        font-style: italic;
+        color: #8fa0ba;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .description {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        color: #b0c4de;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-3d::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 6;
+        transition: background 0.1s ease;
+        background: radial-gradient(circle 500px at var(--cursorX, 50%) var(--cursorY, 50%), rgba(212, 175, 55, 0.12) 0%, transparent 60%);
+    }
+
+    /* --- SECCIÓN 2: MANIFIESTO --- */
+    .manifesto-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10vw;
+        position: relative;
+        z-index: 10;
+        background-color: #0a0f18;
+    }
+
+    .manifesto-container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .manifesto-text {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 400;
+        line-height: 1.4;
+        color: #8fa0ba;
+        text-align: center;
+    }
+
+    .manifesto-text .word {
+        opacity: 0.1;
+        transform: translateY(20px);
+        will-change: transform, opacity;
+    }
+
+    .manifesto-text .word:nth-child(1),
+    .manifesto-text .word:nth-child(11),
+    .manifesto-text .word:nth-child(47),
+    .manifesto-text .word:nth-child(56) {
+        color: #d4af37;
+        font-family: 'Black Chancery', serif;
+        font-size: 1.2em;
+    }
+
+    /* --- SECCIÓN 3: LOS ARCHIVOS --- */
+    .archives-section {
+        min-height: 100vh;
+        padding: 100px 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        background-color: #0a0f18;
+    }
+
+    .archives-container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-subtitle {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        color: #d4af37;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 4.5rem;
+        font-weight: 400;
+        color: #e0e6ed;
+    }
+
+    .archives-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        perspective: 1000px;
+    }
+
+    .archive-card {
+        position: relative;
+        height: 350px;
+        transform-style: preserve-3d;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .card-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: rgba(26, 37, 58, 0.4);
+        border: 1px solid rgba(143, 160, 186, 0.2);
+        border-radius: 12px;
+        padding: 40px 30px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.1s ease, border-color 0.4s ease;
+        transform-style: preserve-3d;
+        overflow: hidden;
+    }
+
+    .card-inner:hover {
+        border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .roman-numeral {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: #1a253a;
+        transition: color 0.4s ease;
+        transform: translateZ(40px);
+        margin-bottom: 15px;
+    }
+
+    .card-inner:hover .roman-numeral {
+        color: #d4af37;
+    }
+
+    .card-inner h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        transform: translateZ(30px);
+        color: #e0e6ed;
+    }
+
+    .card-inner p {
+        font-size: 1.1rem;
+        color: #8fa0ba;
+        line-height: 1.5;
+        transform: translateZ(20px);
+    }
+
+    .card-glow {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        z-index: -1;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+        transition: opacity 0.3s ease;
+        transform: translate(-50%, -50%);
+    }
+
+    .card-inner:hover .card-glow {
+        opacity: 1;
+    }
+
+    /* --- SECCIÓN 4: OBRAS DESTACADAS --- */
+    .exhibition-section {
+        padding: 120px 5vw;
+        background-color: #0a0f18;
+        position: relative;
+        z-index: 10;
+    }
+
+    .exhibition-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .showcase-row {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        margin-top: 80px;
+    }
+
+    .showcase-row.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .showcase-image {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .showcase-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    .image-placeholder {
+        width: 100%;
+        height: 400px;
+        background: linear-gradient(45deg, #1a253a, #0f1626);
+        transition: transform 0.6s ease;
+    }
+
+    .showcase-row:hover .image-placeholder {
+        transform: scale(1.05);
+    }
+
+    .showcase-info {
+        flex: 1;
+    }
+
+    .category-tag {
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #d4af37;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .showcase-info h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #e0e6ed;
+    }
+
+    .showcase-info p {
+        font-size: 1.2rem;
+        color: #8fa0ba;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .btn-link {
+        font-family: 'Cinzel', serif;
+        color: #d4af37;
+        text-decoration: none;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .btn-link span {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-link:hover {
+        color: #fff;
+    }
+
+    .btn-link:hover span {
+        transform: translateX(5px);
+    }
+
+    /* --- SECCIÓN 4: OBRAS DESTACADAS (ACTUALIZADO) --- */
+    .exhibition-section {
+        padding: 120px 5vw;
+        background-color: #0a0f18;
+        position: relative;
+        z-index: 10;
+    }
+
+    .exhibition-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .showcase-row {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        /* Aumenté un poco el gap para respirar mejor */
+        margin-top: 100px;
+    }
+
+    .showcase-row.reverse {
+        flex-direction: row-reverse;
+    }
+
+    /* El contenedor principal de la imagen */
+    .showcase-image {
+        flex: 1;
+        height: 500px;
+        /* Altura fija para el efecto */
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    /* La máscara que animaremos con GSAP */
+    .image-mask {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* Inicia oculta (cerrada hacia la izquierda) */
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+
+    /* La imagen de fondo para el parallax */
+    .image-bg {
+        width: 100%;
+        height: 120%;
+        /* 20% más alta para tener margen de movimiento */
+        background-size: cover;
+        background-position: center;
+        /* Inicia un poco más grande para darle un ligero des-zoom al revelar */
+        transform: scale(1.1);
+    }
+
+    /* Decoración dorada sutil */
+    .showcase-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 4px;
+        pointer-events: none;
+        z-index: 2;
+        transition: border-color 0.4s ease;
+    }
+
+    .showcase-image:hover::after {
+        border-color: rgba(212, 175, 55, 0.6);
+    }
+
+    .showcase-info {
+        flex: 1;
+    }
+
+    /* --- NUEVA SECCIÓN: ARCHIVOS / GALERÍA DINÁMICA --- */
+    .gallery-section {
+        padding: 100px 5vw;
+        background-color: #0a0f18;
+        position: relative;
+        z-index: 10;
+    }
+
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .gallery-grid {
+        display: grid;
+        /* Crea columnas automáticas de mínimo 320px de ancho */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+    }
+
+    .gallery-card {
+        position: relative;
+        height: 420px;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(143, 160, 186, 0.15);
+        cursor: pointer;
+        background-color: #0f1626;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(10, 15, 24, 0.95) 0%, rgba(10, 15, 24, 0.6) 40%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px;
+        opacity: 0.85;
+        transition: opacity 0.4s ease;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Efectos de Hover en la Tarjeta */
+    .gallery-card:hover .card-img {
+        transform: scale(1.08);
+    }
+
+    .gallery-card:hover {
+        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .gallery-card:hover .card-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(10, 15, 24, 0.98) 0%, rgba(10, 15, 24, 0.8) 50%, rgba(10, 15, 24, 0.2) 100%);
+    }
+
+    /* Animación de los textos internos (Stagger effect) */
+    .card-category {
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #d4af37;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        transform: translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .card-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        color: #e0e6ed;
+        margin-bottom: 5px;
+        transform: translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.05s;
+    }
+
+    .card-author {
+        font-size: 1rem;
+        color: #8fa0ba;
+        font-style: italic;
+        margin-bottom: 20px;
+        transform: translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+    }
+
+    .card-link {
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #d4af37;
+        padding-bottom: 3px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
+    }
+
+    .card-link span {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Revelar textos al hacer hover */
+    .gallery-card:hover .card-category,
+    .gallery-card:hover .card-title,
+    .gallery-card:hover .card-author,
+    .gallery-card:hover .card-link {
+        transform: translateY(0);
+    }
+
+    .gallery-card:hover .card-link {
+        opacity: 1;
+    }
+
+    .gallery-card:hover .card-link span {
+        transform: translateX(5px);
+    }
+
+    /* --- SECCIÓN ARTISTAS (SCROLL HORIZONTAL) --- */
+    .artists-section {
+        background-color: #0a0f18;
+        position: relative;
+        z-index: 10;
+        padding-top: 100px;
+        /* Espacio para el título */
+        overflow: hidden;
+        /* Evita desbordes horizontales indeseados */
+    }
+
+    .artists-pin-wrapper {
+        height: 80vh;
+        /* Altura del área que se fijará */
+        display: flex;
+        align-items: center;
+        width: 100vw;
+        margin-top: 40px;
+    }
+
+    .artists-track {
+        display: flex;
+        gap: 5vw;
+        /* Espaciado dinámico entre tarjetas */
+        padding: 0 10vw;
+        /* Margen inicial y final */
+        width: max-content;
+        /* Permite que el contenedor crezca según sus 13 hijos */
+        will-change: transform;
+    }
+
+    /* Tarjetas de Artistas */
+    .artist-card {
+        width: 300px;
+        /* Ancho fijo para mantener uniformidad */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .artist-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(143, 160, 186, 0.2);
+        cursor: pointer;
+    }
+
+    .artist-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(100%) brightness(0.7);
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+    }
+
+    .artist-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 20px;
+        background: linear-gradient(to top, rgba(10, 15, 24, 0.9), transparent);
+        display: flex;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Efectos Hover avanzados */
+    .artist-img-wrapper:hover .artist-img {
+        transform: scale(1.08);
+        filter: grayscale(0%) brightness(1);
+    }
+
+    .artist-img-wrapper:hover .artist-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .artist-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        transition: border-color 0.4s ease;
+        pointer-events: none;
+    }
+
+    .artist-img-wrapper:hover::after {
+        border-color: rgba(212, 175, 55, 0.6);
+    }
+
+    .artist-info {
+        text-align: center;
+    }
+
+    .artist-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: #e0e6ed;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+
+    .artist-role {
+        font-size: 1rem;
+        color: #8fa0ba;
+        font-style: italic;
+    }
+
+    /* --- SECCIÓN 5: FOOTER --- */
+    .footer-section {
+        padding: 120px 5vw 40px;
+        background: linear-gradient(to bottom, #0a0f18 0%, #05080c 100%);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        border-top: 1px solid rgba(143, 160, 186, 0.1);
+    }
+
+    .footer-cta {
+        max-width: 800px;
+        margin: 0 auto 100px;
+    }
+
+    .cta-title {
+        font-family: 'Black Chancery', serif;
+        font-size: 4rem;
+        color: #e0e6ed;
+        margin-bottom: 20px;
+    }
+
+    .cta-desc {
+        font-size: 1.4rem;
+        color: #8fa0ba;
+        margin-bottom: 40px;
+    }
+
+    .btn-primary {
+        background: transparent;
+        color: #d4af37;
+        border: 1px solid #d4af37;
+        padding: 15px 40px;
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.4s ease;
+        overflow: hidden;
+    }
+
+    .btn-primary:hover {
+        background: #d4af37;
+        color: #0a0f18;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(143, 160, 186, 0.2);
+        padding-top: 30px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        color: #6a7b96;
+    }
+
+    .footer-links a {
+        color: #6a7b96;
+        text-decoration: none;
+        margin-left: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #d4af37;
+    }
+
+    @media (max-width: 768px) {
+
+        .showcase-row,
+        .showcase-row.reverse {
+            flex-direction: column;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-frame {
+            width: 95vw;
+            height: 95vh;
+        }
+
+        .corner-img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    #animal-layer,
+    #animal-name,
+    #animal-desc {
+        animation: fadeInIntro 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeInIntro {
+        from {
+            opacity: 0;
+            filter: blur(10px);
+        }
+
+        to {
+            opacity: 1;
+            filter: blur(0);
+        }
+    }
+
+    /* --- OPTIMIZACIÓN RESPONSIVA --- */
+
+    @media (max-width: 768px) {
+
+        /* 1. Título principal: Bajamos de 8rem a algo manejable */
+        .main-title {
+            font-size: clamp(3rem, 12vw, 4.5rem);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        /* 2. Subtítulo y descripción */
+        .subtitle {
+            font-size: 1.8rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            padding: 0 20px;
+        }
+
+        /* 3. El Marco Élfico: Reducimos el tamaño para que no coma la pantalla */
+        .hero-frame {
+            width: 92vw;
+            height: 85vh;
+        }
+
+        .corner-img {
+            width: 80px;
+            /* Esquinas más pequeñas en móvil */
+            height: 80px;
+        }
+
+        .owl-layer {
+            margin-top: 90%;
+            width: 100%;
+            height: 50%;
+        }
+
+        /* Ajuste de posición de esquinas para marcos pequeños */
+        .corner-tl {
+            top: 10px;
+            left: 0px;
+        }
+
+        .corner-tr {
+            top: 0px;
+            right: 10px;
+        }
+
+        .corner-bl {
+            bottom: 0px;
+            left: 10px;
+        }
+
+        .corner-br {
+            bottom: 10px;
+            right: 0px;
+        }
+
+        .frame-borders {
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+        }
+
+        /* 4. Secciones de contenido: Menos padding para aprovechar espacio */
+        .manifesto-section,
+        .archives-section,
+        .exhibition-section,
+        .footer-section {
+            padding: 60px 20px;
+        }
+
+        .manifesto-text {
+            font-size: 1.5rem;
+            /* El clamp original puede ser muy grande */
+        }
+
+        /* 5. Cartas de Archivos: Quitamos el alto fijo para evitar desbordamiento */
+        .archive-card {
+            height: auto;
+            min-height: 300px;
+        }
+
+        /* 6. Obras destacadas: Imágenes más pequeñas */
+        .image-placeholder {
+            height: 250px;
+        }
+
+        .showcase-info h3 {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* ==========================================
+   NUEVO PERFIL PRO (SPLIT SCREEN)
+   ========================================== */
+
+    .pro-profile-body {
+        background-color: #05080c;
+        /* Un fondo aún más profundo y oscuro */
+    }
+
+    /* Contenedor Principal Split */
+    .split-profile-container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    /* --- PANEL IZQUIERDO (STICKY) --- */
+    .profile-sticky-panel {
+        width: 45%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 0 5vw;
+        border-right: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .panel-background {
+        position: absolute;
+        inset: -5%;
+        /* Margen para parallax interno */
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(80%) contrast(1.2);
+        z-index: 1;
+    }
+
+    .panel-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(10, 15, 24, 0.95) 0%, rgba(5, 8, 12, 0.8) 100%);
+        z-index: 2;
+    }
+
+    .panel-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+    }
+
+    .avatar-ring {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        padding: 8px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    /* Un anillo exterior que rota lentamente para dar un toque místico */
+    .avatar-ring::before {
+        content: '';
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 1px dashed rgba(212, 175, 55, 0.3);
+        animation: rotate-ring 20s linear infinite;
+    }
+
+    @keyframes rotate-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .avatar-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .member-id {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        color: #d4af37;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .pro-name {
+        font-family: 'Black Chancery', serif;
+        font-size: 5.5rem;
+        line-height: 0.9;
+        color: #e0e6ed;
+        margin-bottom: 40px;
+    }
+
+    /* Indicador de scroll vertical */
+    .scroll-indicator {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #8fa0ba;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .scroll-line {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, #d4af37 0%, transparent 100%);
+        animation: pulse-line 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-line {
+
+        0%,
+        100% {
+            transform: scaleY(1);
+            transform-origin: top;
+            opacity: 1;
+        }
+
+        50% {
+            transform: scaleY(0.5);
+            transform-origin: top;
+            opacity: 0.3;
+        }
+    }
+
+    /* --- PANEL DERECHO (SCROLL) --- */
+    .profile-scroll-content {
+        width: 55%;
+        padding: 220px 6vw 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 150px;
+        /* Mucho espacio entre secciones para que respire */
+    }
+
+    .pro-chapter {
+        position: relative;
+    }
+
+    .chapter-num {
+        font-family: 'Black Chancery', serif;
+        font-size: 3rem;
+        color: rgba(212, 175, 55, 0.3);
+        position: absolute;
+        top: -40px;
+        left: -20px;
+        z-index: 0;
+    }
+
+    .chapter-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        color: #e0e6ed;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+        border-bottom: 1px solid rgba(143, 160, 186, 0.1);
+        padding-bottom: 20px;
+    }
+
+    .pro-bio-text p {
+        font-size: 1.4rem;
+        color: #8fa0ba;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    /* Lista interactiva de obras (Hover Effect) */
+    .pro-works-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .pro-work-item {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        text-decoration: none;
+        padding: 20px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        background: rgba(10, 15, 24, 0.3);
+    }
+
+    .pro-work-item:hover {
+        border-color: rgba(212, 175, 55, 0.4);
+        background: rgba(10, 15, 24, 0.8);
+        transform: translateX(10px);
+    }
+
+    .work-item-img {
+        width: 100px;
+        height: 70px;
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(100%);
+        transition: filter 0.4s ease;
+    }
+
+    .pro-work-item:hover .work-item-img {
+        filter: grayscale(0%);
+    }
+
+    .work-item-info {
+        flex-grow: 1;
+    }
+
+    .work-item-info h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: #e0e6ed;
+        margin-bottom: 5px;
+        transition: color 0.3s ease;
+    }
+
+    .pro-work-item:hover .work-item-info h3 {
+        color: #d4af37;
+    }
+
+    .work-item-info span {
+        font-size: 0.9rem;
+        color: #6a7b96;
+        font-style: italic;
+    }
+
+    .work-arrow {
+        font-size: 1.5rem;
+        color: #8fa0ba;
+        transition: transform 0.4s ease, color 0.3s ease;
+    }
+
+    .pro-work-item:hover .work-arrow {
+        transform: translate(5px, -5px);
+        color: #d4af37;
+    }
+
+    /* Responsivo para móviles: Romper el Split Screen */
+    @media (max-width: 992px) {
+        .split-profile-container {
+            flex-direction: column;
+        }
+
+        .profile-sticky-panel {
+            width: 100%;
+            height: 80vh;
+            position: relative;
+            /* Deja de ser sticky en móvil */
+            border-right: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .profile-scroll-content {
+            width: 100%;
+            padding: 60px 5vw;
+            gap: 80px;
+        }
+
+        .pro-name {
+            font-size: 4rem;
+        }
+    }
+</style>
+
+<body>
+    <nav class="main-nav fade-up">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                The Lookouts
+            </a>
+            <ul class="nav-links">
+                <li><a href="#manifiesto">Manifiesto</a></li>
+                <li><a href="#artistas">La Sociedad</a></li>
+                <li><a href="#obras">Archivos</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero-3d">
+        <div class="parallax-layer bg-layer"></div>
+
+        <div class="parallax-layer owl-layer" id="animal-layer"></div>
+
+        <div class="overlay-veil"></div>
+
+        <div class="parallax-layer frame-layer">
+            <div class="hero-frame">
+                <div class="frame-borders"></div>
+                <div class="corner-img corner-tl"></div>
+                <div class="corner-img corner-tr"></div>
+                <div class="corner-img corner-bl"></div>
+                <div class="corner-img corner-br"></div>
+            </div>
+        </div>
+
+        <div class="parallax-layer content-layer">
+            <div class="hero-content">
+                <span class="estd-badge">ESTD 2026</span>
+                <h1 class="main-title">The Lookouts</h1>
+                <div class="separator"></div>
+                <h2 class="subtitle" id="animal-name">Lechuza</h2>
+                <p class="description" id="animal-desc">La Observadora Sabia</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto-section">
+        <div class="manifesto-container">
+            <h2 class="manifesto-text" id="manifesto">
+                Observamos lo que otros pasan por alto. Hemos forjado un santuario digital dedicado a resguardar y
+                exhibir tu imaginación. Ya sea que estés trazando los versos de una historia inédita, esculpiendo formas
+                que desafían la materia, o dando vida a lienzos que aguardan ser descubiertos, tu arte tiene un lugar
+                aquí. La sociedad aguarda tu obra.
+            </h2>
+        </div>
+    </section>
+
+
+    <section id="obras" class="gallery-section">
+        <div class="gallery-container">
+            <div class="section-header fade-up">
+                <span class="section-subtitle">Los Registros</span>
+                <h2 class="section-title">Archivos de la Sociedad</h2>
+                <div class="separator"></div>
+            </div>
+
+            <div class="gallery-grid">
+
+                <article class="gallery-card fade-card">
+                    <div class="card-img" style="background-image: url('recursos/fondo.jpg');"></div>
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <span class="card-category">Ilustración Digital</span>
+                            <h3 class="card-title">Texto</h3>
+                            <p class="card-author">Por Texto</p>
+                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-card fade-card">
+                    <div class="card-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);"></div>
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <span class="card-category">Literatura</span>
+                            <h3 class="card-title">Texto</h3>
+                            <p class="card-author">Por Texto</p>
+                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="gallery-card fade-card">
+                    <div class="card-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);"></div>
+                    <div class="card-overlay">
+                        <div class="card-content">
+                            <span class="card-category">Literatura</span>
+                            <h3 class="card-title">Texto</h3>
+                            <p class="card-author">Por Texto</p>
+                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <section id="sociedad" class="artists-section">
+        <div class="section-header fade-up" style="margin-bottom: 20px;">
+            <span class="section-subtitle">Los Trece Pilares</span>
+            <h2 class="section-title">La Sociedad</h2>
+            <div class="separator"></div>
+        </div>
+
+        <div class="artists-pin-wrapper">
+            <div class="artists-track">
+
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: url('recursos/fondo.jpg');"></div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
+                        </div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
+                        </div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
+                        </div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
+                        </div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-img-wrapper">
+                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
+                        </div>
+                        <div class="artist-overlay">
+                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
+                        </div>
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">Nombre</h3>
+                        <span class="artist-role">Rol</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="footer-cta fade-up">
+            <h2 class="cta-title">La Observadora Aguarda</h2>
+            <p class="cta-desc">Tu talento no pertenece a las sombras. Únete a la sociedad y comparte tu visión con el
+                mundo.</p>
+            <button class="btn-primary">Compartir mi Obra</button>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Lookouts. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Manifiesto</a>
+                <a href="#">Archivos</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+            // ==========================================
+            // 0. GENERADOR DE GUARDIANES (ANIMAL ALEATORIO)
+            // ==========================================
+            const guardianes = [
+                {
+                    nombre: "Lechuza",
+                    titulo: "La Observadora Sabia",
+                    imagen: "url('recursos/lechuza.png')"
+                },
+                {
+                    nombre: "Cuervo",
+                    titulo: "El Guardián de las Memorias",
+                    imagen: "url('recursos/cuervo.png')"
+                },
+                {
+                    nombre: "Lobo",
+                    titulo: "El Rastreador de Caminos",
+                    imagen: "url('recursos/lobo.png')"
+                },
+                {
+                    nombre: "Oso",
+                    titulo: "El Guardián de las Memorias",
+                    imagen: "url('recursos/oso.png')"
+                },
+                {
+                    nombre: "Ciervo",
+                    titulo: "El Caminante del Bosque",
+                    imagen: "url('recursos/ciervo.png')"
+                }
+            ];
+
+            // Seleccionamos un guardián al azar
+            const guardianAleatorio = guardianes[Math.floor(Math.random() * guardianes.length)];
+
+            // Inyectamos los datos del guardián en el HTML
+            document.getElementById('animal-name').textContent = guardianAleatorio.nombre;
+            document.getElementById('animal-desc').textContent = guardianAleatorio.titulo;
+            document.getElementById('animal-layer').style.backgroundImage = guardianAleatorio.imagen;
+
+            // ==========================================
+            // 1. INICIALIZAR LENIS (Smooth Scroll)
+            // ==========================================
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // ==========================================
+            // 2. LÓGICA DEL HERO (Mouse + Touch)
+            // ==========================================
+            const hero = document.querySelector('.hero-3d');
+
+            // Función única para actualizar las variables CSS
+            function updateHeroPosition(x, y, clientX, clientY) {
+                const xAxis = (window.innerWidth / 2 - x);
+                const yAxis = (window.innerHeight / 2 - y);
+
+                hero.style.setProperty('--mouseX', `${xAxis}px`);
+                hero.style.setProperty('--mouseY', `${yAxis}px`);
+                hero.style.setProperty('--cursorX', `${clientX}px`);
+                hero.style.setProperty('--cursorY', `${clientY}px`);
+            }
+
+            // Evento para Mouse
+            document.addEventListener('mousemove', (e) => {
+                updateHeroPosition(e.pageX, e.pageY, e.clientX, e.clientY);
+            });
+
+            // Evento para Pantallas Táctiles (Móvil)
+            document.addEventListener('touchmove', (e) => {
+                // Usamos el primer dedo que toca la pantalla
+                const touch = e.touches[0];
+                updateHeroPosition(touch.pageX, touch.pageY, touch.clientX, touch.clientY);
+            }, { passive: true });
+            // ==========================================
+            // 3. ANIMACIÓN DEL MANIFIESTO (SplitType)
+            // ==========================================
+            gsap.registerPlugin(ScrollTrigger);
+
+            const manifesto = new SplitType('#manifesto', { types: 'words' });
+
+            gsap.to(manifesto.words, {
+                scrollTrigger: {
+                    trigger: '.manifesto-section',
+                    start: 'top 80%',
+                    end: 'bottom 50%',
+                    scrub: 1,
+                },
+                opacity: 1,
+                y: 0,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+
+            // ==========================================
+            // 6. ANIMACIÓN AVANZADA: OBRAS DESTACADAS
+            // ==========================================
+            const showcaseRows = document.querySelectorAll('.showcase-row');
+
+            showcaseRows.forEach(row => {
+                const mask = row.querySelector('.image-mask');
+                const bg = row.querySelector('.image-bg');
+
+                // 1. Revelado de la máscara (Clip-path)
+                gsap.to(mask, {
+                    scrollTrigger: {
+                        trigger: row,
+                        start: 'top 75%', // Inicia cuando la fila está al 75% de la pantalla
+                    },
+                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Se abre completamente
+                    duration: 1.5,
+                    ease: 'power3.inOut'
+                });
+
+                // 2. Efecto Parallax en la imagen de fondo
+                gsap.to(bg, {
+                    scrollTrigger: {
+                        trigger: row,
+                        start: 'top bottom', // Inicia desde que asoma en la pantalla
+                        end: 'bottom top',   // Termina cuando sale por arriba
+                        scrub: true,         // Vinculado totalmente a la rueda del ratón
+                    },
+                    y: '-20%', // Sube la imagen un 20% mientras bajas el scroll
+                    ease: 'none'
+                });
+
+                // 3. Pequeño efecto de escala al revelar
+                gsap.to(bg, {
+                    scrollTrigger: {
+                        trigger: row,
+                        start: 'top 75%',
+                    },
+                    scale: 1, // Regresa a su tamaño original
+                    duration: 2,
+                    ease: 'power3.out'
+                });
+            });// ==========================================
+            // 7. ENTRADA EN CASCADA DE LA GALERÍA
+            // ==========================================
+            const galleryCards = document.querySelectorAll('.fade-card');
+
+            if (galleryCards.length > 0) {
+                gsap.fromTo(galleryCards,
+                    { opacity: 0, y: 50 },
+                    {
+                        scrollTrigger: {
+                            trigger: '.gallery-grid',
+                            start: 'top 80%', // Inicia cuando la cuadrícula toca el 80% del viewport
+                        },
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        stagger: 0.15, // Retraso de 0.15s entre cada tarjeta
+                        ease: 'power3.out'
+                    }
+                );
+            }
+            // ==========================================
+            // 6. SCROLL HORIZONTAL DE ARTISTAS (GSAP)
+            // ==========================================
+            const track = document.querySelector('.artists-track');
+
+            if (track) {
+                // Función para calcular dinámicamente cuánto debe moverse el contenedor
+                // Es el ancho total de los 13 elementos menos el ancho de la pantalla
+                function getScrollAmount() {
+                    let trackWidth = track.scrollWidth;
+                    return -(trackWidth - window.innerWidth + window.innerWidth * 0.1);
+                }
+
+                // Animación que mueve el track en el eje X
+                const tween = gsap.to(track, {
+                    x: getScrollAmount,
+                    ease: "none"
+                });
+
+                // ScrollTrigger que "fija" la sección y enlaza el movimiento al scroll
+                ScrollTrigger.create({
+                    trigger: ".artists-pin-wrapper",
+                    start: "top 10%", // Inicia cuando el contenedor llega cerca del tope de la pantalla
+                    end: () => `+=${getScrollAmount() * -1}`, // La duración del scroll es proporcional al ancho de las tarjetas
+                    pin: true,
+                    animation: tween,
+                    scrub: 1, // Suavizado de 1 segundo para que no se sienta rígido
+                    invalidateOnRefresh: true // Recalcula si el usuario cambia el tamaño de la ventana
+                });
+            }
+            // ==========================================
+            // 5. ANIMACIONES CONVENCIONALES (FADE-UP)
+            // ==========================================
+            const fadeElements = document.querySelectorAll('.fade-up');
+
+            fadeElements.forEach(element => {
+                gsap.set(element, { opacity: 0, y: 50 });
+
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            });
+            // ==========================================
+            // 8. PARALLAX EN LA PORTADA DEL PERFIL
+            // ==========================================
+            const profileCover = document.querySelector('.profile-cover');
+
+            if (profileCover) {
+                gsap.to(profileCover, {
+                    scrollTrigger: {
+                        trigger: '.profile-hero',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: true
+                    },
+                    y: '20%', // Mueve la imagen hacia abajo mientras haces scroll
+                    ease: 'none'
+                });
+            }
+            // ==========================================
+            // 10. ANIMACIÓN PRO: REVELADO DE TEXTO (SPLIT TYPE)
+            // ==========================================
+            // Aplica a la biografía del nuevo perfil
+            if (document.querySelector('#split-bio')) {
+                const bioText = new SplitType('#split-bio p', { types: 'lines' });
+
+                // Animamos cada línea a medida que entra en el área visible
+                gsap.from(bioText.lines, {
+                    scrollTrigger: {
+                        trigger: '#split-bio',
+                        start: 'top 80%', // Empieza a animar cuando el texto llega al 80% de la pantalla
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.1, // Retraso entre líneas
+                    ease: 'power3.out'
+                });
+
+                // Pequeño Parallax en el fondo de la foto del panel sticky
+                const panelBg = document.querySelector('.panel-background');
+                gsap.to(panelBg, {
+                    scrollTrigger: {
+                        trigger: '.profile-scroll-content',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: true
+                    },
+                    y: '10%', // Se mueve suavemente mientras el panel derecho baja
+                    ease: 'none'
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
