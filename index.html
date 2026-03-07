@@ -4,247 +4,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lookouts | Sociedad Creativa</title>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600&display=swap"
-        rel="stylesheet">
-
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-
+    <title>The Lookouts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="main-nav fade-up">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                The Lookouts
-            </a>
-            <ul class="nav-links">
-                <li><a href="#manifiesto">Manifiesto</a></li>
-                <li><a href="#artistas">La Sociedad</a></li>
-                <li><a href="#obras">Archivos</a></li>
+
+    <header id="site-header" class="header-container glass-effect">
+        <div class="social-icons-left">
+            <a href="#" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg></a>
+            <a href="#" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg></a>
+        </div>
+        <div class="logo-center">
+            <img src="recursos/logo-lookouts.png" alt="The Lookouts Estd 2025" id="main-logo">
+        </div>
+    </header>
+
+    <section id="hero-carousel" class="hero-container">
+        <div class="hero-bg-glow"></div>
+
+        <div class="carousel-track">
+            <div class="carousel-slide active" id="slide-0">
+                <div class="hero-content">
+                    <h4 class="hero-eyebrow">RECOMENDACIÓN DE LA SEMANA</h4>
+                    <h1 class="hero-title">El Problema de los<br>Tres Cuerpos</h1>
+                    <p class="hero-description">
+                        Una novela de ciencia ficción que entrelaza misterio y reflexiones sobre el lugar de la
+                        humanidad en el universo. Ambientada en parte durante la Revolución Cultural china, la historia
+                        sigue a científicos enfrentándose a fenómenos que desafían las leyes de la física.
+                    </p>
+                    <a href="#quote-section" class="btn-primary">Descubrir más</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/81Ot1LN8WlL.jpg"
+                        alt="Portada El Problema de los Tres Cuerpos" class="hero-book-cover">
+                </div>
+            </div>
+
+            <div class="carousel-slide" id="slide-1">
+                <div class="hero-content">
+                    <h4 class="hero-eyebrow">CLÁSICO DEL SUSPENSO</h4>
+                    <h1 class="hero-title">Misery</h1>
+                    <p class="hero-description">
+                        El aclamado autor Paul Sheldon sufre un grave accidente y despierta en la casa de Annie Wilkes,
+                        su autoproclamada fan número uno. Lo que comienza como un rescate se transforma en una pesadilla
+                        de aislamiento y supervivencia literaria.
+                    </p>
+                    <a href="#quote-section" class="btn-primary">Descubrir más</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/71abHApvbhL._AC_UF1000,1000_QL80_.jpg"
+                        alt="Portada Misery" class="hero-book-cover">
+                </div>
+            </div>
+
+            <div class="carousel-slide" id="slide-2">
+                <div class="hero-content">
+                    <h4 class="hero-eyebrow">OBRA MAESTRA CYBERPUNK</h4>
+                    <h1 class="hero-title">¿Sueñan los androides con<br>ovejas eléctricas?</h1>
+                    <p class="hero-description">
+                        En una Tierra devastada y cubierta de polvo radiactivo, el cazador de recompensas Rick Deckard
+                        tiene la misión de "retirar" a un grupo de androides rebeldes. Una profunda exploración sobre la
+                        empatía y lo que significa ser humano.
+                    </p>
+                    <a href="#quote-section" class="btn-primary">Descubrir más</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://m.media-amazon.com/images/I/91heWmnaDeL._AC_UF1000,1000_QL80_.jpg"
+                        alt="Portada Androides" class="hero-book-cover">
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-btn prev-btn" id="btn-prev">&#10094;</button>
+        <button class="carousel-btn next-btn" id="btn-next">&#10095;</button>
+
+        <div class="carousel-indicators">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <section id="quote-section" class="quote-container">
+        <h2 id="main-quote">"Donde las ideas se <strong>encuentran</strong> y<br>el <strong>arte</strong> toma forma."
+        </h2>
+    </section>
+
+    <section id="members-marquee-section" class="members-container">
+        <div class="section-divider">
+            <hr>
+            <h3 class="section-subtitle">Miembros</h3>
+            <hr>
+        </div>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+
+                <div class="member-card">
+                    <img src="recursos/foto-omi.jpg" alt="Foto de Omi" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Omi</h4>
+                        <img src="recursos/logo1.png" alt="Insignia Omi" class="member-badge">
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="recursos/foto-rafael.jpg" alt="Foto de Rafael" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Rafael Salinas</h4>
+                        <img src="recursos/logo2.png" alt="Insignia Rafael" class="member-badge">
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="recursos/foto-anuar.jpg" alt="Foto de Anuar" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Anuar Sariñana</h4>
+                        <img src="recursos/logo3.png" alt="Insignia Anuar" class="member-badge">
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="recursos/foto-omi.jpg" alt="Foto de Omi" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Omi</h4>
+                        <img src="recursos/logo1.png" alt="Insignia Omi" class="member-badge">
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="recursos/foto-rafael.jpg" alt="Foto de Rafael" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Rafael Salinas</h4>
+                        <img src="recursos/logo2.png" alt="Insignia Rafael" class="member-badge">
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="recursos/foto-anuar.jpg" alt="Foto de Anuar" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">Anuar Sariñana</h4>
+                        <img src="recursos/logo3.png" alt="Insignia Anuar" class="member-badge">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audiobooks-dynamic" class="audiobooks-premium-container">
+
+        <div class="audiobooks-content">
+            <h4 class="audiobooks-eyebrow">NUEVO FORMATO</h4>
+            <h2 class="audiobooks-title">Tus historias<br>cobran vida</h2>
+            <p class="audiobooks-desc">
+                Explora nuestro catálogo sonoro. Desde epopeyas intergalácticas hasta baladas épicas, sumérgete en las
+                narraciones creadas y curadas por nuestra comunidad.
+            </p>
+            <a href="#" class="btn-gold-solid">Explorar catálogo</a>
+        </div>
+
+        <div class="audiobooks-canvas">
+            <img src="recursos/nube1.png" alt="Nube" class="floating-item float-cloud-1">
+            <img src="recursos/nube2.png" alt="Nube" class="floating-item float-cloud-2">
+
+            <img src="recursos/ovni.png" alt="OVNI Sci-Fi" class="floating-item float-ufo">
+            <img src="recursos/laud.png" alt="Laúd de Bardo" class="floating-item float-lute">
+
+            <div class="center-audio-item">
+                <div class="glow-effect"></div>
+                <img src="recursos/libro-audifonos.png" alt="Audiolibro Central" class="main-audio-img">
+            </div>
+        </div>
+
+    </section>
+
+    <section id="activities-section" class="activities-container">
+        <div class="section-divider">
+            <hr>
+            <h3 class="section-subtitle">ACTIVIDADES</h3>
+            <hr>
+        </div>
+        <ul id="activities-list">
+            <li><strong>Día del libro</strong> <span class="activity-date">23 de abril</span></li>
+            <li><strong>Intercambio de libro</strong> <span class="activity-date">20 de agosto</span></li>
+            <li><strong>Concurso de cuento</strong> <span class="activity-date">25 septiembre</span></li>
+        </ul>
+    </section>
+
+    <footer id="site-footer" class="footer-container">
+        <div class="footer-left">
+            <img src="recursos/logo-lookouts-blanco.png" alt="The Lookouts" id="footer-logo">
+            <div class="footer-socials">
+                <a href="#" class="social-link-footer">fb</a>
+                <a href="#" class="social-link-footer">ig</a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <h4 id="footer-members-title">MIEMBROS</h4>
+            <ul id="footer-members-list">
+                <li>Omi</li>
+                <li>Rafael Salinas</li>
+                <li>Anuar Sariñana</li>
+                <li>Alba Moctezuma</li>
+                <li>Yeyos Twon</li>
+                <li>Don Pedorro</li>
             </ul>
-        </div>
-    </nav>
-    <section class="hero-3d">
-        <div class="parallax-layer bg-layer"></div>
-
-        <div class="parallax-layer owl-layer" id="animal-layer"></div>
-
-        <div class="overlay-veil"></div>
-
-        <div class="parallax-layer frame-layer">
-            <div class="hero-frame">
-                <div class="frame-borders"></div>
-                <div class="corner-img corner-tl"></div>
-                <div class="corner-img corner-tr"></div>
-                <div class="corner-img corner-bl"></div>
-                <div class="corner-img corner-br"></div>
-            </div>
-        </div>
-
-        <div class="parallax-layer content-layer">
-            <div class="hero-content">
-                <span class="estd-badge">ESTD 2026</span>
-                <h1 class="main-title">The Lookouts</h1>
-                <div class="separator"></div>
-                <h2 class="subtitle" id="animal-name">Lechuza</h2>
-                <p class="description" id="animal-desc">La Observadora Sabia</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="manifesto-section">
-        <div class="manifesto-container">
-            <h2 class="manifesto-text" id="manifesto">
-                Observamos lo que otros pasan por alto. Hemos forjado un santuario digital dedicado a resguardar y
-                exhibir tu imaginación. Ya sea que estés trazando los versos de una historia inédita, esculpiendo formas
-                que desafían la materia, o dando vida a lienzos que aguardan ser descubiertos, tu arte tiene un lugar
-                aquí. La sociedad aguarda tu obra.
-            </h2>
-        </div>
-    </section>
-
-
-    <section id="obras" class="gallery-section">
-        <div class="gallery-container">
-            <div class="section-header fade-up">
-                <span class="section-subtitle">Los Registros</span>
-                <h2 class="section-title">Archivos de la Sociedad</h2>
-                <div class="separator"></div>
-            </div>
-
-<<<<<<< HEAD
-            <div class="showcase-row fade-up">
-                <div class="showcase-image">
-                    <div class="image-placeholder"></div>
-                </div>
-                <div class="showcase-info">
-                    <span class="category-tag">Ilustración Digital</span>
-                    <h3>Título</h3>
-                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-                    <a href="#" class="btn-link">Ver proyecto <span>→</span></a>
-                </div>
-            </div>
-
-            <div class="showcase-row reverse fade-up">
-                <div class="showcase-info">
-                    <span class="category-tag">Literatura</span>
-                    <h3>Texto</h3>
-                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-                    <a href="#" class="btn-link">Leer fragmento <span>→</span></a>
-=======
-            <div class="gallery-grid">
-
-                <article class="gallery-card fade-card">
-                    <div class="card-img" style="background-image: url('recursos/fondo.jpg');"></div>
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <span class="card-category">Ilustración Digital</span>
-                            <h3 class="card-title">Texto</h3>
-                            <p class="card-author">Por Texto</p>
-                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="gallery-card fade-card">
-                    <div class="card-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);"></div>
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <span class="card-category">Literatura</span>
-                            <h3 class="card-title">Texto</h3>
-                            <p class="card-author">Por Texto</p>
-                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
-                        </div>
-                    </div>
-                </article>
-                <article class="gallery-card fade-card">
-                    <div class="card-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);"></div>
-                    <div class="card-overlay">
-                        <div class="card-content">
-                            <span class="card-category">Literatura</span>
-                            <h3 class="card-title">Texto</h3>
-                            <p class="card-author">Por Texto</p>
-                            <a href="obra.html" class="card-link">Leer <span>→</span></a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-    <section id="sociedad" class="artists-section">
-        <div class="section-header fade-up" style="margin-bottom: 20px;">
-            <span class="section-subtitle">Los Trece Pilares</span>
-            <h2 class="section-title">La Sociedad</h2>
-            <div class="separator"></div>
-        </div>
-
-        <div class="artists-pin-wrapper">
-            <div class="artists-track">
-
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: url('recursos/fondo.jpg');"></div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
->>>>>>> 177cb34 (Actualización de la landing page)
-                </div>
-
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
-                        </div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
-                </div>
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
-                        </div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
-                </div>
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
-                        </div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
-                </div>
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
-                        </div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
-                </div>
-                <div class="artist-card">
-                    <div class="artist-img-wrapper">
-                        <div class="artist-img" style="background-image: linear-gradient(45deg, #1a253a, #0f1626);">
-                        </div>
-                        <div class="artist-overlay">
-                            <a href="perfil.html" class="btn-link">Ver Archivos <span>→</span></a>
-                        </div>
-                    </div>
-                    <div class="artist-info">
-                        <h3 class="artist-name">Nombre</h3>
-                        <span class="artist-role">Rol</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer class="footer-section">
-        <div class="footer-cta fade-up">
-            <h2 class="cta-title">La Observadora Aguarda</h2>
-            <p class="cta-desc">Tu talento no pertenece a las sombras. Únete a la sociedad y comparte tu visión con el
-                mundo.</p>
-            <button class="btn-primary">Compartir mi Obra</button>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 The Lookouts. Todos los derechos reservados.</p>
-            <div class="footer-links">
-                <a href="#">Manifiesto</a>
-                <a href="#">Archivos</a>
-                <a href="#">Contacto</a>
-            </div>
         </div>
     </footer>
 

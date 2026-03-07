@@ -1,0 +1,1349 @@
+@font-face {
+    font-family: 'Black Chancery';
+    src: url('recursos/BLKCHCRY.TTF') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0f18;
+    color: #e0e6ed;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+/* --- NAVEGACIÓN --- */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Asegura que esté por encima de todo el Hero 3D */
+    padding: 20px 0;
+    background: rgba(10, 15, 24, 0.85);
+    /* Tu color de fondo con un poco de transparencia */
+    backdrop-filter: blur(12px);
+    /* El efecto de cristal */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    /* Línea dorada sutil */
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Black Chancery', serif;
+    font-size: 2rem;
+    color: #d4af37;
+    text-decoration: none;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: #e0e6ed;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+    transform: translateY(-2px);
+}
+
+/* Ocultar los enlaces en móvil temporalmente (luego podemos hacer un menú hamburguesa) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* --- SECCIÓN 1: HERO 3D --- */
+.hero-3d {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --mouseX: 0px;
+    --mouseY: 0px;
+    --scrollY: 0px;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+}
+
+.bg-layer {
+    background-image: url('recursos/fondo.jpg');
+    z-index: 1;
+    transform: translate(calc(var(--mouseX) * 0.02), calc(var(--mouseY) * 0.02 + var(--scrollY) * 0.2));
+}
+
+.owl-layer {
+    background-image: url('recursos/lechuza.png');
+    z-index: 2;
+    transform: translate(calc(var(--mouseX) * 0.05), calc(var(--mouseY) * 0.05 + var(--scrollY) * 0.5));
+    margin-top: 10%;
+}
+
+.overlay-veil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(10, 15, 24, 0.3) 0%, rgba(10, 15, 24, 0.8) 100%),
+        linear-gradient(to bottom, transparent 0%, transparent 60%, #0a0f18 100%);
+}
+
+.frame-layer {
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transform: translate(calc(var(--mouseX) * 0.04), calc(var(--mouseY) * 0.04 + var(--scrollY) * 0.4));
+}
+
+.hero-frame {
+    position: relative;
+    width: 85vw;
+    height: 85vh;
+}
+
+.frame-borders {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.corner-img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url('recursos/corner.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.corner-tl {
+    top: 17px;
+    left: 8px;
+    rotate: 90deg;
+}
+
+.corner-tr {
+    top: 8px;
+    right: 17px;
+    rotate: 180deg;
+}
+
+.corner-bl {
+    bottom: 8px;
+    left: 17px;
+    rotate: 360deg;
+}
+
+.corner-br {
+    bottom: 17px;
+    right: 8px;
+    rotate: 270deg;
+}
+
+.content-layer {
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transform: translate(calc(var(--mouseX) * 0.08), calc(var(--mouseY) * 0.08 + var(--scrollY) * 0.3));
+}
+
+.hero-content {
+    text-align: center;
+    pointer-events: auto;
+}
+
+.estd-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: #d4af37;
+}
+
+.main-title {
+    font-family: 'Black Chancery', serif;
+    font-size: 8rem;
+    font-weight: 500;
+    margin: 10px 0;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+}
+
+.separator {
+    width: 2px;
+    height: 40px;
+    background-color: #d4af37;
+    margin: 20px auto;
+}
+
+.subtitle {
+    font-size: 2.5rem;
+    font-style: italic;
+    color: #8fa0ba;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.description {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #b0c4de;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.hero-3d::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 6;
+    transition: background 0.1s ease;
+    background: radial-gradient(circle 500px at var(--cursorX, 50%) var(--cursorY, 50%), rgba(212, 175, 55, 0.12) 0%, transparent 60%);
+}
+
+/* --- SECCIÓN 2: MANIFIESTO --- */
+.manifesto-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10vw;
+    position: relative;
+    z-index: 10;
+    background-color: #0a0f18;
+}
+
+.manifesto-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.manifesto-text {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: #8fa0ba;
+    text-align: center;
+}
+
+.manifesto-text .word {
+    opacity: 0.1;
+    transform: translateY(20px);
+    will-change: transform, opacity;
+}
+
+.manifesto-text .word:nth-child(1),
+.manifesto-text .word:nth-child(11),
+.manifesto-text .word:nth-child(47),
+.manifesto-text .word:nth-child(56) {
+    color: #d4af37;
+    font-family: 'Black Chancery', serif;
+    font-size: 1.2em;
+}
+
+/* --- SECCIÓN 3: LOS ARCHIVOS --- */
+.archives-section {
+    min-height: 100vh;
+    padding: 100px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    background-color: #0a0f18;
+}
+
+.archives-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: #d4af37;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: 'Black Chancery', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: #e0e6ed;
+}
+
+.archives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.archive-card {
+    position: relative;
+    height: 350px;
+    transform-style: preserve-3d;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(26, 37, 58, 0.4);
+    border: 1px solid rgba(143, 160, 186, 0.2);
+    border-radius: 12px;
+    padding: 40px 30px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.1s ease, border-color 0.4s ease;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.card-inner:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.roman-numeral {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: #1a253a;
+    transition: color 0.4s ease;
+    transform: translateZ(40px);
+    margin-bottom: 15px;
+}
+
+.card-inner:hover .roman-numeral {
+    color: #d4af37;
+}
+
+.card-inner h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    transform: translateZ(30px);
+    color: #e0e6ed;
+}
+
+.card-inner p {
+    font-size: 1.1rem;
+    color: #8fa0ba;
+    line-height: 1.5;
+    transform: translateZ(20px);
+}
+
+.card-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    transition: opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.card-inner:hover .card-glow {
+    opacity: 1;
+}
+
+/* --- SECCIÓN 4: OBRAS DESTACADAS --- */
+.exhibition-section {
+    padding: 120px 5vw;
+    background-color: #0a0f18;
+    position: relative;
+    z-index: 10;
+}
+
+.exhibition-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.showcase-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-top: 80px;
+}
+
+.showcase-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.showcase-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.showcase-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, #1a253a, #0f1626);
+    transition: transform 0.6s ease;
+}
+
+.showcase-row:hover .image-placeholder {
+    transform: scale(1.05);
+}
+
+.showcase-info {
+    flex: 1;
+}
+
+.category-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.showcase-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e0e6ed;
+}
+
+.showcase-info p {
+    font-size: 1.2rem;
+    color: #8fa0ba;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-link {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.btn-link span {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-link:hover {
+    color: #fff;
+}
+
+.btn-link:hover span {
+    transform: translateX(5px);
+}
+
+/* --- SECCIÓN 4: OBRAS DESTACADAS (ACTUALIZADO) --- */
+.exhibition-section {
+    padding: 120px 5vw;
+    background-color: #0a0f18;
+    position: relative;
+    z-index: 10;
+}
+
+.exhibition-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.showcase-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    /* Aumenté un poco el gap para respirar mejor */
+    margin-top: 100px;
+}
+
+.showcase-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* El contenedor principal de la imagen */
+.showcase-image {
+    flex: 1;
+    height: 500px;
+    /* Altura fija para el efecto */
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+/* La máscara que animaremos con GSAP */
+.image-mask {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Inicia oculta (cerrada hacia la izquierda) */
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+/* La imagen de fondo para el parallax */
+.image-bg {
+    width: 100%;
+    height: 120%;
+    /* 20% más alta para tener margen de movimiento */
+    background-size: cover;
+    background-position: center;
+    /* Inicia un poco más grande para darle un ligero des-zoom al revelar */
+    transform: scale(1.1);
+}
+
+/* Decoración dorada sutil */
+.showcase-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 2;
+    transition: border-color 0.4s ease;
+}
+
+.showcase-image:hover::after {
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.showcase-info {
+    flex: 1;
+}
+
+/* --- NUEVA SECCIÓN: ARCHIVOS / GALERÍA DINÁMICA --- */
+.gallery-section {
+    padding: 100px 5vw;
+    background-color: #0a0f18;
+    position: relative;
+    z-index: 10;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Crea columnas automáticas de mínimo 320px de ancho */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.gallery-card {
+    position: relative;
+    height: 420px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(143, 160, 186, 0.15);
+    cursor: pointer;
+    background-color: #0f1626;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 15, 24, 0.95) 0%, rgba(10, 15, 24, 0.6) 40%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 0.85;
+    transition: opacity 0.4s ease;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efectos de Hover en la Tarjeta */
+.gallery-card:hover .card-img {
+    transform: scale(1.08);
+}
+
+.gallery-card:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-card:hover .card-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(10, 15, 24, 0.98) 0%, rgba(10, 15, 24, 0.8) 50%, rgba(10, 15, 24, 0.2) 100%);
+}
+
+/* Animación de los textos internos (Stagger effect) */
+.card-category {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #e0e6ed;
+    margin-bottom: 5px;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.05s;
+}
+
+.card-author {
+    font-size: 1rem;
+    color: #8fa0ba;
+    font-style: italic;
+    margin-bottom: 20px;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+}
+
+.card-link {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 3px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
+}
+
+.card-link span {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Revelar textos al hacer hover */
+.gallery-card:hover .card-category,
+.gallery-card:hover .card-title,
+.gallery-card:hover .card-author,
+.gallery-card:hover .card-link {
+    transform: translateY(0);
+}
+
+.gallery-card:hover .card-link {
+    opacity: 1;
+}
+
+.gallery-card:hover .card-link span {
+    transform: translateX(5px);
+}
+
+/* --- SECCIÓN ARTISTAS (SCROLL HORIZONTAL) --- */
+.artists-section {
+    background-color: #0a0f18;
+    position: relative;
+    z-index: 10;
+    padding-top: 100px;
+    /* Espacio para el título */
+    overflow: hidden;
+    /* Evita desbordes horizontales indeseados */
+}
+
+.artists-pin-wrapper {
+    height: 80vh;
+    /* Altura del área que se fijará */
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    margin-top: 40px;
+}
+
+.artists-track {
+    display: flex;
+    gap: 5vw;
+    /* Espaciado dinámico entre tarjetas */
+    padding: 0 10vw;
+    /* Margen inicial y final */
+    width: max-content;
+    /* Permite que el contenedor crezca según sus 13 hijos */
+    will-change: transform;
+}
+
+/* Tarjetas de Artistas */
+.artist-card {
+    width: 300px;
+    /* Ancho fijo para mantener uniformidad */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.artist-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(143, 160, 186, 0.2);
+    cursor: pointer;
+}
+
+.artist-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) brightness(0.7);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+}
+
+.artist-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(10, 15, 24, 0.9), transparent);
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Efectos Hover avanzados */
+.artist-img-wrapper:hover .artist-img {
+    transform: scale(1.08);
+    filter: grayscale(0%) brightness(1);
+}
+
+.artist-img-wrapper:hover .artist-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.artist-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border-color 0.4s ease;
+    pointer-events: none;
+}
+
+.artist-img-wrapper:hover::after {
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.artist-info {
+    text-align: center;
+}
+
+.artist-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #e0e6ed;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.artist-role {
+    font-size: 1rem;
+    color: #8fa0ba;
+    font-style: italic;
+}
+
+/* --- SECCIÓN 5: FOOTER --- */
+.footer-section {
+    padding: 120px 5vw 40px;
+    background: linear-gradient(to bottom, #0a0f18 0%, #05080c 100%);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(143, 160, 186, 0.1);
+}
+
+.footer-cta {
+    max-width: 800px;
+    margin: 0 auto 100px;
+}
+
+.cta-title {
+    font-family: 'Black Chancery', serif;
+    font-size: 4rem;
+    color: #e0e6ed;
+    margin-bottom: 20px;
+}
+
+.cta-desc {
+    font-size: 1.4rem;
+    color: #8fa0ba;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 15px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: #d4af37;
+    color: #0a0f18;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(143, 160, 186, 0.2);
+    padding-top: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: #6a7b96;
+}
+
+.footer-links a {
+    color: #6a7b96;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+}
+
+@media (max-width: 768px) {
+
+    .showcase-row,
+    .showcase-row.reverse {
+        flex-direction: column;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-frame {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .corner-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+#animal-layer,
+#animal-name,
+#animal-desc {
+    animation: fadeInIntro 1.5s ease-out forwards;
+}
+
+@keyframes fadeInIntro {
+    from {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* --- OPTIMIZACIÓN RESPONSIVA --- */
+
+@media (max-width: 768px) {
+
+    /* 1. Título principal: Bajamos de 8rem a algo manejable */
+    .main-title {
+        font-size: clamp(3rem, 12vw, 4.5rem);
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    /* 2. Subtítulo y descripción */
+    .subtitle {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    /* 3. El Marco Élfico: Reducimos el tamaño para que no coma la pantalla */
+    .hero-frame {
+        width: 92vw;
+        height: 85vh;
+    }
+
+    .corner-img {
+        width: 80px;
+        /* Esquinas más pequeñas en móvil */
+        height: 80px;
+    }
+
+    .owl-layer {
+        margin-top: 90%;
+        width: 100%;
+        height: 50%;
+    }
+
+    /* Ajuste de posición de esquinas para marcos pequeños */
+    .corner-tl {
+        top: 10px;
+        left: 0px;
+    }
+
+    .corner-tr {
+        top: 0px;
+        right: 10px;
+    }
+
+    .corner-bl {
+        bottom: 0px;
+        left: 10px;
+    }
+
+    .corner-br {
+        bottom: 10px;
+        right: 0px;
+    }
+
+    .frame-borders {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    /* 4. Secciones de contenido: Menos padding para aprovechar espacio */
+    .manifesto-section,
+    .archives-section,
+    .exhibition-section,
+    .footer-section {
+        padding: 60px 20px;
+    }
+
+    .manifesto-text {
+        font-size: 1.5rem;
+        /* El clamp original puede ser muy grande */
+    }
+
+    /* 5. Cartas de Archivos: Quitamos el alto fijo para evitar desbordamiento */
+    .archive-card {
+        height: auto;
+        min-height: 300px;
+    }
+
+    /* 6. Obras destacadas: Imágenes más pequeñas */
+    .image-placeholder {
+        height: 250px;
+    }
+
+    .showcase-info h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================
+   NUEVO PERFIL PRO (SPLIT SCREEN)
+   ========================================== */
+
+.pro-profile-body {
+    background-color: #05080c;
+    /* Un fondo aún más profundo y oscuro */
+}
+
+/* Contenedor Principal Split */
+.split-profile-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* --- PANEL IZQUIERDO (STICKY) --- */
+.profile-sticky-panel {
+    width: 45%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 5vw;
+    border-right: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.panel-background {
+    position: absolute;
+    inset: -5%;
+    /* Margen para parallax interno */
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(80%) contrast(1.2);
+    z-index: 1;
+}
+
+.panel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 15, 24, 0.95) 0%, rgba(5, 8, 12, 0.8) 100%);
+    z-index: 2;
+}
+
+.panel-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.avatar-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 8px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Un anillo exterior que rota lentamente para dar un toque místico */
+.avatar-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212, 175, 55, 0.3);
+    animation: rotate-ring 20s linear infinite;
+}
+
+@keyframes rotate-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.member-id {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: #d4af37;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.pro-name {
+    font-family: 'Black Chancery', serif;
+    font-size: 5.5rem;
+    line-height: 0.9;
+    color: #e0e6ed;
+    margin-bottom: 40px;
+}
+
+/* Indicador de scroll vertical */
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #8fa0ba;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #d4af37 0%, transparent 100%);
+    animation: pulse-line 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-line {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    50% {
+        transform: scaleY(0.5);
+        transform-origin: top;
+        opacity: 0.3;
+    }
+}
+
+/* --- PANEL DERECHO (SCROLL) --- */
+.profile-scroll-content {
+    width: 55%;
+    padding: 220px 6vw 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    /* Mucho espacio entre secciones para que respire */
+}
+
+.pro-chapter {
+    position: relative;
+}
+
+.chapter-num {
+    font-family: 'Black Chancery', serif;
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.3);
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    z-index: 0;
+}
+
+.chapter-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: #e0e6ed;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid rgba(143, 160, 186, 0.1);
+    padding-bottom: 20px;
+}
+
+.pro-bio-text p {
+    font-size: 1.4rem;
+    color: #8fa0ba;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* Lista interactiva de obras (Hover Effect) */
+.pro-works-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.pro-work-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-decoration: none;
+    padding: 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    background: rgba(10, 15, 24, 0.3);
+}
+
+.pro-work-item:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    background: rgba(10, 15, 24, 0.8);
+    transform: translateX(10px);
+}
+
+.work-item-img {
+    width: 100px;
+    height: 70px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.pro-work-item:hover .work-item-img {
+    filter: grayscale(0%);
+}
+
+.work-item-info {
+    flex-grow: 1;
+}
+
+.work-item-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: #e0e6ed;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.pro-work-item:hover .work-item-info h3 {
+    color: #d4af37;
+}
+
+.work-item-info span {
+    font-size: 0.9rem;
+    color: #6a7b96;
+    font-style: italic;
+}
+
+.work-arrow {
+    font-size: 1.5rem;
+    color: #8fa0ba;
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.pro-work-item:hover .work-arrow {
+    transform: translate(5px, -5px);
+    color: #d4af37;
+}
+
+/* Responsivo para móviles: Romper el Split Screen */
+@media (max-width: 992px) {
+    .split-profile-container {
+        flex-direction: column;
+    }
+
+    .profile-sticky-panel {
+        width: 100%;
+        height: 80vh;
+        position: relative;
+        /* Deja de ser sticky en móvil */
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .profile-scroll-content {
+        width: 100%;
+        padding: 60px 5vw;
+        gap: 80px;
+    }
+
+    .pro-name {
+        font-size: 4rem;
+    }
+}
