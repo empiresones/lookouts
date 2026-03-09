@@ -1,0 +1,46 @@
+[
+    {
+        "id": "dia-del-libro",
+        "titulo": "Día del Libro 2026",
+        "categoria": "Institucional",
+        "fecha": "23 de Abril de 2026",
+        "hora": "18:00 hrs",
+        "lugar": "Biblioteca Central",
+        "desc_corta": "La celebración magna donde las historias cobran vida.",
+        "desc_larga": "<p>Un encuentro dedicado a compartir el arte de la narrativa y la pasión por la palabra escrita.</p><h3>¿Qué haremos?</h3><ul><li>Mesas de diálogo sobre narrativa contemporánea.</li><li>Lecturas dramatizadas.</li><li>Zona de intercambio de libros físicos y digitales.</li></ul>",
+        "imagen": "https://images.unsplash.com/photo-1680449786212-de3b835dc467?q=80&w=870",
+        "status": "Abierto",
+        "organizadores": [
+            {
+                "nombre": "Omi",
+                "avatar": "https://picsum.photos/400/500?random=1"
+            },
+            {
+                "nombre": "Alba Moctezuma",
+                "avatar": "https://picsum.photos/400/500?random=4"
+            }
+        ]
+    },
+    {
+        "id": "noche-de-rol",
+        "titulo": "Noche de Rol y Taberna",
+        "categoria": "Comunidad",
+        "fecha": "31 de Octubre de 2026",
+        "hora": "20:00 hrs",
+        "lugar": "Taberna del Dragón (Discord)",
+        "desc_corta": "Sesión de D&D. Prepara tus dados.",
+        "desc_larga": "<p>Únete al Consejo en una campaña épica de Dungeons and Dragons. No importa si eres veterano o principiante, la narrativa te atrapará.</p><p>Asegúrate de traer tu hoja de personaje actualizada.</p>",
+        "imagen": "https://images.unsplash.com/photo-1772121034582-c7d18ae49e5c?q=80&w=870",
+        "status": "Planeación",
+        "organizadores": [
+            {
+                "nombre": "Erevan Windrunner",
+                "avatar": "https://picsum.photos/400/500?random=10"
+            },
+            {
+                "nombre": "Silas Blackwood",
+                "avatar": "https://picsum.photos/400/500?random=11"
+            }
+        ]
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "omi",
+        "nombre": "Omi",
+        "rol": "Fundador / Curador",
+        "foto": "https://picsum.photos/400/500?random=1",
+        "sello": "recursos/logos/1.png"
+    },
+    {
+        "id": "rafael-salinas",
+        "nombre": "Rafael Salinas",
+        "rol": "Crítico Literario",
+        "foto": "https://picsum.photos/400/500?random=2",
+        "sello": "recursos/logos/2.png"
+    },
+    {
+        "id": "anuar-sarinana",
+        "nombre": "Anuar Sariñana",
+        "rol": "Especialista Sci-Fi",
+        "foto": "https://picsum.photos/400/500?random=3",
+        "sello": "recursos/logos/3.png"
+    },
+    {
+        "id": "alba-moctezuma",
+        "nombre": "Alba Moctezuma",
+        "rol": "Directora de Arte",
+        "foto": "https://picsum.photos/400/500?random=4",
+        "sello": "recursos/logos/4.png"
+    }
+]

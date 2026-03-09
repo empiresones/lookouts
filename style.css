@@ -472,7 +472,50 @@ body {
         gap: 50px;
     }
 
+    .audiobooks-premium-container {
+        padding: 50px 10%;
+        /* Reducimos el padding vertical */
+    }
 
+    .audiobooks-canvas {
+        height: 200px;
+        /* Reducimos el espacio de maniobra de los objetos */
+    }
+
+    .main-audio-img {
+        width: 80px;
+        /* El libro central se vuelve más compacto */
+    }
+
+    /* Reposicionamos los objetos para que no choquen con el texto */
+    .float-cloud-1 {
+        width: 90px;
+        top: 0;
+        left: -20px;
+    }
+
+    .float-cloud-2 {
+        width: 110px;
+        bottom: 0;
+        right: -20px;
+    }
+
+    .float-ufo {
+        width: 60px;
+        top: 10%;
+        right: 0;
+    }
+
+    .float-lute {
+        width: 70px;
+        bottom: 10%;
+        left: 0;
+    }
+
+    .audiobooks-title {
+        font-size: 2.5rem;
+        /* Ajustamos el título para que no empuje el contenido */
+    }
 
     .hero-title {
         font-size: 2.2rem;
@@ -501,6 +544,93 @@ body {
         width: 35px;
         height: 35px;
         font-size: 1rem;
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVIDAD: DIORAMA DE AUDIOLIBROS
+   ========================================== */
+
+@media (max-width: 992px) {
+
+    /* Ajustamos el lienzo para que tenga una altura fija en tablets/móviles */
+    .audiobooks-canvas {
+        height: 350px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Reducimos el tamaño del libro central */
+    .main-audio-img {
+        width: 80px;
+    }
+
+    /* Reubicamos los elementos flotantes para que no se amontonen */
+    .float-cloud-1 {
+        width: 80px;
+        top: 5%;
+        left: 5%;
+    }
+
+    .float-cloud-2 {
+        width: 100px;
+        bottom: 5%;
+        right: 0;
+    }
+
+    .float-ufo {
+        width: 60px;
+        top: 10%;
+        right: 5%;
+    }
+
+    .float-lute {
+        width: 70px;
+        bottom: 10%;
+        left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* En celulares muy pequeños, simplificamos la escena */
+    .audiobooks-canvas {
+        height: 300px;
+    }
+
+    .audiobooks-title {
+        font-size: 2.2rem;
+        /* Título más manejable */
+    }
+
+    .main-audio-img {
+        width: 50px;
+    }
+
+    /* Ocultamos algunos elementos si la pantalla es demasiado pequeña 
+       para evitar ruido visual, o simplemente los hacemos minúsculos */
+    .float-cloud-1,
+    .float-cloud-2 {
+        display: flex;
+    }
+
+    .float-ufo {
+        width: 50px;
+        top: 0;
+        right: 10%;
+    }
+
+    .float-lute {
+        width: 60px;
+        bottom: 5%;
+        left: 10%;
+    }
+
+    /* Suavizamos el resplandor para que no coma mucha batería/recursos */
+    .glow-effect {
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -804,7 +934,7 @@ body {
 }
 
 .main-audio-img {
-    width: 250px;
+    width: 150px;
     position: relative;
     z-index: 2;
 }

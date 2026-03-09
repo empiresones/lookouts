@@ -1,0 +1,291 @@
+/* ==========================================
+   PÁGINA DE DETALLE DE EVENTO
+   ========================================== */
+
+/* --- Hero del Evento --- */
+.event-hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    color: var(--bg-light);
+    /* */
+}
+
+.event-hero-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.event-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 20, 28, 0.4), var(--blue-dark));
+    /* */
+    z-index: 2;
+}
+
+.event-hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 10%;
+}
+
+.event-category-tag {
+    color: var(--accent-gold);
+    /* */
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.event-main-title {
+    font-family: var(--font-heading);
+    /* */
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin: 15px 0;
+}
+
+/* --- Layout de Contenido --- */
+.event-details-container {
+    padding: 80px 10%;
+    background-color: var(--bg-light);
+    /* */
+}
+
+.event-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Descripción */
+.event-description h2,
+.event-description h3 {
+    font-family: var(--font-heading);
+    color: var(--blue-dark);
+    margin-bottom: 25px;
+}
+
+.event-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--blue-slate);
+    margin-bottom: 30px;
+}
+
+.event-description ul {
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.event-description li {
+    margin-bottom: 12px;
+    color: var(--blue-slate);
+}
+
+/* Sidebar Logística */
+.logistics-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    border-top: 5px solid var(--accent-gold);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 120px;
+    /* Para que te siga al hacer scroll */
+}
+
+.logistics-item {
+    margin-bottom: 25px;
+}
+
+.logistics-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--blue-muted);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.logistics-value {
+    font-weight: 600;
+    color: var(--blue-dark);
+    font-size: 1.1rem;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .event-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .event-sidebar {
+        order: -1;
+        /* La tarjeta de registro sube en móviles */
+    }
+
+    .logistics-card {
+        position: static;
+    }
+}
+
+/* --- Sección de Organizadores --- */
+.event-hosts-section {
+    padding: 60px 10%;
+    background-color: #ffffff;
+    text-align: center;
+    border-top: 1px solid rgba(128, 150, 181, 0.1);
+}
+
+.section-title-small {
+    font-family: var(--font-heading);
+    /* Playfair Display */
+    color: var(--blue-dark);
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+}
+
+.hosts-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.host-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.host-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-gold);
+    /* Detalle de marca */
+    padding: 3px;
+    background-color: white;
+}
+
+.host-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--blue-slate);
+}
+
+/* --- Eventos Relacionados --- */
+.related-events-section {
+    padding: 80px 10% 120px;
+    background-color: var(--bg-light);
+    /* Fondo claro para contraste */
+}
+
+.section-header-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header-mini span {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--blue-muted);
+    font-weight: 700;
+}
+
+.section-header-mini hr {
+    flex: 1;
+    max-width: 100px;
+    border: none;
+    border-top: 1px solid rgba(128, 150, 181, 0.2);
+}
+
+/* Ajuste para que las tarjetas relacionadas no sean gigantes */
+.related-events-section .activities-grid {
+    max-width: 800px;
+}
+
+.activity-arrow {
+    text-decoration: none;
+}
+
+/* --- Estilos del Modal --- */
+.modal {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 20, 28, 0.9);
+    /* Fondo oscuro translúcido */
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    border-top: 5px solid var(--accent-gold);
+    /* Detalle dorado */
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--blue-muted);
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    color: var(--blue-dark);
+    margin-bottom: 10px;
+}
+
+.rsvp-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--blue-slate);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(128, 150, 181, 0.3);
+    border-radius: 4px;
+    font-family: var(--font-body);
+}

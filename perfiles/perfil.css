@@ -1,0 +1,219 @@
+/* ==========================================
+   DISEÑO DE PERFIL DE MIEMBRO
+   ========================================== */
+
+.profile-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* --- Identidad Visual --- */
+.profile-image-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: visible;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.member-portrait {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    filter: grayscale(20%);
+    transition: filter 0.5s ease;
+}
+
+.member-portrait:hover {
+    filter: grayscale(0%);
+}
+
+.member-rank-badge {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: #ffffff;
+    border: 3px solid var(--accent-gold);
+    /* */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.member-rank-badge img {
+    width: 70%;
+    height: auto;
+    filter: brightness(0);
+}
+
+.member-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-gold);
+}
+
+.meta-box {
+    text-align: center;
+}
+
+.meta-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--blue-muted);
+}
+
+/* --- Contenido Editorial --- */
+.member-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.member-full-name {
+    font-family: var(--font-heading);
+    /* Playfair Display */
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin: 15px 0;
+    color: var(--blue-dark);
+}
+
+.member-divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    margin-bottom: 40px;
+}
+
+.member-bio {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--blue-slate);
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.profile-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.detail-group h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--blue-dark);
+}
+
+.interest-tags span {
+    display: inline-block;
+    padding: 8px 18px;
+    background: rgba(128, 150, 181, 0.1);
+    color: var(--blue-navy);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin: 0 10px 10px 0;
+}
+
+.reading-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reading-list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--blue-slate);
+}
+
+.reading-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .profile-visual {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .member-full-name {
+        font-size: 3rem;
+    }
+}
+
+.footer-simple {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--blue-muted);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* --- Botones de Redes del Miembro --- */
+.member-social-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.member-social-btn {
+    padding: 7px 18px;
+    border: 1px solid rgba(128, 150, 181, 0.3);
+    border-radius: 3px;
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.member-social-btn:hover {
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- Contenedor del Widget --- */
+.lightwidget-widget {
+    width: 100%;
+    min-height: 800px;
+    border: none;
+}

@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda | The Lookouts</title>
-    <link rel="shortcut icon" href="recursos/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="recursos/favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="agenda.css">
+    <title>Perfil de Miembro | The Lookouts</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="perfil.css">
 </head>
 
 <body>
@@ -47,8 +45,8 @@
         </div>
 
         <div class="logo-center">
-            <a href="index.html">
-                <img src="recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
+            <a href="../index.html">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
             </a>
         </div>
 
@@ -62,70 +60,69 @@
 
     <nav id="fullscreen-nav" class="fullscreen-nav">
         <ul class="nav-list">
-            <li><a href="index.html" class="nav-link">Inicio</a></li>
-            <li><a href="directorio.html" class="nav-link">Miembros</a></li>
-            <li><a href="catalogo.html" class="nav-link">Audiolibros</a></li>
-            <li><a href="agenda.html" class="nav-link">Agenda</a></li>
-            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            <li><a href="../directorio.html" class="nav-link">Miembros</a></li>
+            <li><a href="../catalogo.html" class="nav-link">Audiolibros</a></li>
+            <li><a href="../agenda.html" class="nav-link">Agenda</a></li>
+            <li><a href="../blog.html" class="nav-link">Blog</a></li>
         </ul>
     </nav>
+    <main id="main-content" style="padding-top: 140px; min-height: 100vh;">
+        <section class="profile-section animate-on-scroll">
+            <div class="profile-grid">
 
-    <main id="main-content" style="min-height: 80vh; padding-top: 120px;">
-
-        <section id="event-spotlight-container" class="event-spotlight animate-on-scroll">
-            <p style="color: white; text-align: center; width: 100%;">Sincronizando evento destacado...</p>
-        </section>
-
-        <section class="upcoming-grid-section">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title-alt">Próximas Actividades</h2>
-            </div>
-            <div id="activities-grid" class="activities-grid">
-            </div>
-        </section>
-
-        <section class="past-ledger-section animate-on-scroll">
-            <div class="ledger-wrapper">
-                <div class="ledger-header">
-                    <h2 class="ledger-title">Archivo de actividades</h2>
+                <div class="profile-visual">
+                    <div class="profile-image-container">
+                        <img src="" alt="Retrato" class="member-portrait">
+                        <div class="member-rank-badge">
+                            <img src="" alt="Rango">
+                        </div>
+                    </div>
+                    <div class="member-meta">
+                        <div class="meta-box"><span class="meta-value">---</span><span class="meta-label">UNIÓN</span>
+                        </div>
+                        <div class="meta-box"><span class="meta-value">---</span><span class="meta-label">APORTES</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="ledger-list">
-                    <div class="ledger-item">
-                        <span class="ledger-date">15.02.26</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Análisis</span>
-                    </div>
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">01.01.26</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Institucional</span>
-                    </div>
+                <div class="profile-content">
+                    <span class="member-eyebrow">MIEMBRO DEL CONSEJO</span>
+                    <h1 class="member-full-name">Cargando...</h1>
+                    <div class="member-divider"></div>
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">20.12.25</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Comunidad</span>
-                    </div>
+                    <div id="member-social-links" class="member-social-links"></div>
 
-                    <div class="ledger-item">
-                        <span class="ledger-date">05.11.25</span>
-                        <span class="ledger-event">Aquí va el nombre de actividades pasadas</span>
-                        <span class="ledger-category">Multimedia</span>
+                    <p class="member-bio">Recuperando bitácora...</p>
+
+                    <div class="profile-details-grid">
+                        <div class="detail-group">
+                            <h4>Intereses Narrativos</h4>
+                            <div class="interest-tags"></div>
+                        </div>
+                        <div class="detail-group">
+                            <h4>Obras de Referencia</h4>
+                            <ul class="reading-list"></ul>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="social-feed-container" style="margin-top: 80px;">
+                <h3 class="section-subtitle"
+                    style="text-align: center; margin-bottom: 40px; font-family: var(--font-heading); font-size: 2.2rem; color: var(--blue-dark);">
+                    Actividad Reciente</h3>
+                <div id="instagram-feed" class="lightwidget-container">
+                </div>
+            </div>
         </section>
-
-
-
     </main>
 
     <footer id="site-footer" class="footer-container animate-on-scroll">
         <div class="footer-content">
 
             <div class="footer-brand">
-                <img src="recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
                 <p class="footer-tagline">
                     Donde las ideas se encuentran y el arte toma forma. Una comunidad literaria explorando nuevos mundos
                     desde 2025.
@@ -166,10 +163,10 @@
             <div class="footer-links">
                 <h4 class="footer-heading">Explorar</h4>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="directorio.html">Miembros</a></li>
-                    <li><a href="catalogo.html">Audiolibros</a></li>
-                    <li><a href="agenda.html">Agenda Completa</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../directorio.html">Miembros</a></li>
+                    <li><a href="../catalogo.html">Audiolibros</a></li>
+                    <li><a href="../agenda.html">Agenda Completa</a></li>
                 </ul>
             </div>
 
@@ -191,8 +188,10 @@
             <p>&copy; 2026 The Lookouts. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="agenda.js"></script>
-    <script src="script.js"></script>
+
+    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+    <script src="../script.js"></script>
+    <script src="perfil.js"></script>
 </body>
 
 </html>

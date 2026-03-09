@@ -1,0 +1,83 @@
+[
+    {
+        "id": "rafael-salinas",
+        "nombre": "Rafael Salinas",
+        "rango_img": "../recursos/logos/2.png",
+        "foto": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687",
+        "union": "2025",
+        "aportaciones": "12",
+        "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Desarrollador de profesión y explorador de mundos literarios de noche. Cree firmemente que el arte es la única forma de inmortalidad que nos queda en este 2026.",
+        "intereses": [
+            "Cyberpunk",
+            "Suspenso",
+            "Fantasía Épica"
+        ],
+        "obras": [
+            "Misery — Stephen King",
+            "El Problema de los Tres Cuerpos — Cixin Liu"
+        ],
+        "redes": {
+            "instagram": "https://instagram.com/erre.dwg",
+            "x": "https://x.com/rfsorta",
+            "discord": "https://discord.com/..."
+        },
+        "instagram_widget_id": "2bd24258e0335b059cbee93bd0b15fe7"
+    },
+    {
+        "id": "omi",
+        "nombre": "Omi",
+        "rango_img": "../recursos/logos/1.png",
+        "foto": "https://picsum.photos/400/500?random=1",
+        "union": "2025",
+        "aportaciones": "24",
+        "bio": "Arquitecto de sueños y fundador de The Lookouts. Su visión permitió que esta comunidad floreciera como un refugio para la libre expresión artística. Curador apasionado de la narrativa gótica y el simbolismo moderno.",
+        "intereses": [
+            "Narrativa Gótica",
+            "Curaduría",
+            "Diseño Editorial"
+        ],
+        "obras": [
+            "El Cuervo — Edgar Allan Poe",
+            "La Sombra sobre Innsmouth — H.P. Lovecraft"
+        ],
+        "instagram_widget_id": "ID_WIDGET_OMI"
+    },
+    {
+        "id": "anuar-sarinana",
+        "nombre": "Anuar Sariñana",
+        "rango_img": "../recursos/logos/3.png",
+        "foto": "https://picsum.photos/400/500?random=3",
+        "union": "2025",
+        "aportaciones": "18",
+        "bio": "Especialista en mundos distópicos y tecnología futurista. Analiza cómo la ciencia ficción moldea nuestra realidad actual. Es el pilar técnico del Consejo, siempre buscando la próxima frontera en la narrativa transmedia.",
+        "intereses": [
+            "Hard Sci-Fi",
+            "Inteligencia Artificial",
+            "Distopía"
+        ],
+        "obras": [
+            "Fundación — Isaac Asimov",
+            "Neuromante — William Gibson"
+        ],
+        "instagram_widget_id": "ID_WIDGET_ANUAR"
+    },
+    {
+        "id": "alba-moctezuma",
+        "nombre": "Alba Moctezuma",
+        "rango_img": "../recursos/logos/4.png",
+        "foto": "https://picsum.photos/400/500?random=4",
+        "union": "2025",
+        "aportaciones": "15",
+        "bio": "Directora de Arte y guardiana de la estética visual en The Lookouts. Entrelaza la ilustración clásica con las tendencias digitales para dar rostro a nuestras historias. Su enfoque se centra en el realismo mágico.",
+        "intereses": [
+            "Realismo Mágico",
+            "Ilustración",
+            "Poesía Contemporánea"
+        ],
+        "obras": [
+            "Pedro Páramo — Juan Rulfo",
+            "La Casa de los Espíritus — Isabel Allende"
+        ],
+        "instagram_widget_id": "ID_WIDGET_ALBA"
+    }
+]
