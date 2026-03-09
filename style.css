@@ -389,7 +389,7 @@ body {
     }
 
     .hero-title {
-        font-size: 3.2rem;
+        font-size: 2rem;
         margin-bottom: 20px;
     }
 
@@ -432,7 +432,7 @@ body {
 
     /* Ajustes adicionales al Hero */
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .hero-book-cover {
@@ -468,27 +468,39 @@ body {
 /* Pantallas o ventanas con poca altura (Menos de 850px de alto) */
 @media (max-height: 850px) {
     .carousel-slide {
-        padding-top: 100px;
-        /* Aseguramos que el header flotante no tape nada */
+        padding-top: 50px;
         gap: 50px;
-        /* Reducimos la brecha entre el texto y el libro */
     }
 
+
+
     .hero-title {
-        font-size: 3.2rem;
+        font-size: 2.2rem;
         /* Bajamos el título para que respire */
         margin-bottom: 15px;
     }
 
     .hero-description {
-        font-size: 0.95rem;
+        font-size: 0.75rem;
         /* Texto ligeramente más pequeño */
         margin-bottom: 25px;
     }
 
     .hero-book-cover {
-        max-width: 260px;
+        max-width: 160px;
         /* Evita que el libro empuje los controles hacia abajo */
+    }
+
+    .carousel-indicators {
+        opacity: 0.5;
+    }
+
+    .carousel-btn {
+        top: 60%;
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
 
@@ -502,7 +514,7 @@ body {
     }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .hero-description {
