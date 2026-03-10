@@ -149,7 +149,7 @@ async function vincularPublicacionesBlog(miembroId) {
         if (misArticulos.length > 0) {
             postsContainer.style.display = 'block';
             postsGrid.innerHTML = misArticulos.map(art => `
-                <a href="../blog/entrada.html?id=${art.id}" class="gallery-item" style="text-decoration: none; border-radius: 12px; overflow: hidden; display: block; aspect-ratio: 3/2; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;">
+                <a href="../entradas blog/entrada.html?id=${art.id}" class="gallery-item" style="text-decoration: none; border-radius: 12px; overflow: hidden; display: block; aspect-ratio: 3/2; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;">
                     <style>
                         #user-posts-grid .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
                         #user-posts-grid .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
