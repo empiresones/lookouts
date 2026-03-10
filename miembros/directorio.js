@@ -11,8 +11,7 @@ async function cargarDirectorio() {
         const miembros = await respuesta.json();
 
         grid.innerHTML = miembros.map((m, index) => `
-            <div class="profile-card animate-on-scroll" style="transition-delay: ${index * 0.1}s" onclick="location.href='../../perfiles/perfil.html?id=${m.id}'">
-                <div class="profile-image-box">
+<div class="profile-card animate-on-scroll" style="transition-delay: ${index * 0.1}s" onclick="location.href='../perfiles/perfil.html?id=${m.id}'">                <div class="profile-image-box">
                     <img src="${m.foto}" alt="${m.nombre}" class="profile-img">
                     <img src="${m.sello}" alt="Sello de ${m.nombre}" class="profile-seal">
                 </div>
