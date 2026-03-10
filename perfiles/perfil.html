@@ -61,10 +61,10 @@
     <nav id="fullscreen-nav" class="fullscreen-nav">
         <ul class="nav-list">
             <li><a href="../index.html" class="nav-link">Inicio</a></li>
-            <li><a href="../directorio.html" class="nav-link">Miembros</a></li>
-            <li><a href="../catalogo.html" class="nav-link">Audiolibros</a></li>
-            <li><a href="../agenda.html" class="nav-link">Agenda</a></li>
-            <li><a href="../blog.html" class="nav-link">Blog</a></li>
+            <li><a href="../miembros/directorio.html" class="nav-link">Miembros</a></li>
+            <li><a href="../catalogo/catalogo.html" class="nav-link">Audiolibros</a></li>
+            <li><a href="../agenda/agenda.html" class="nav-link">Agenda</a></li>
+            <li><a href="../blog/blog.html" class="nav-link">Blog</a></li>
         </ul>
     </nav>
     <main id="main-content" style="padding-top: 140px; min-height: 100vh;">
@@ -103,9 +103,13 @@
                 </div>
             </div>
             <div class="profile-extended-content animate-on-scroll">
-
+                <div id="user-posts-container" style="display: none; margin-top: 50px;">
+                    <h3 class="section-subtitle-literary">Mis artículos</h3>
+                    <div id="user-posts-grid" class="member-gallery-grid">
+                    </div>
+                </div>
                 <div id="favorite-books-container" style="display: none; margin-bottom: 50px;">
-                    <h3 class="section-subtitle-literary">Mis Libros</h3>
+                    <h3 class="section-subtitle-literary">Mis libros favoritos</h3>
                     <div class="books-gallery"></div>
                 </div>
 
@@ -169,10 +173,11 @@
             <div class="footer-links">
                 <h4 class="footer-heading">Explorar</h4>
                 <ul>
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../directorio.html">Miembros</a></li>
-                    <li><a href="../catalogo.html">Audiolibros</a></li>
-                    <li><a href="../agenda.html">Agenda Completa</a></li>
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="../miembros/directorio.html" class="nav-link">Miembros</a></li>
+                    <li><a href="../catalogo/catalogo.html" class="nav-link">Audiolibros</a></li>
+                    <li><a href="../agenda/agenda.html" class="nav-link">Agenda</a></li>
+                    <li><a href="../blog/blog.html" class="nav-link">Blog</a></li>
                 </ul>
             </div>
 

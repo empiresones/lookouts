@@ -461,6 +461,12 @@ body {
     }
 }
 
+@media (max-width: 850px) {
+    .hero-book-cover {
+        max-width: 160px;
+    }
+}
+
 /* ==========================================
    AJUSTES PARA PANTALLAS BAJAS (LAPTOPS Y LANDSCAPE)
    ========================================== */
@@ -478,9 +484,6 @@ body {
         margin-bottom: 25px;
     }
 
-    .hero-book-cover {
-        max-width: 260px;
-    }
 
     .carousel-indicators {
         opacity: 0.5;
