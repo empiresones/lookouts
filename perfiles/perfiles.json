@@ -52,11 +52,14 @@
             }
         ],
         "galeria": [
-            "https://picsum.photos/400/600?random=20",
+            "https://scontent.fntr10-1.fna.fbcdn.net/v/t39.30808-6/489027094_10234452270238738_854340386287133528_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vN72w0viF4QQ7kNvwHIOkJK&_nc_oc=AdnRsglple1niKAuth1CuOore2eycHypScEHJp4XtnzOcG4ggXsoQD-UF16l_GJt7zCPfD_Q8BQAH5FVup8nd8PI&_nc_zt=23&_nc_ht=scontent.fntr10-1.fna&_nc_gid=lhF_T6M3PriSMQOtn15OVg&_nc_ss=8&oh=00_AfxrGrQy_XiSv9r69SSmAs_I2PRWg_-wZXn3H-KI6SOQLg&oe=69B55107",
             "https://picsum.photos/400/600?random=21",
-            "https://picsum.photos/400/600?random=22"
+            "https://picsum.photos/400/600?random=22",
+            "https://picsum.photos/400/600?random=21",
+            "https://picsum.photos/400/600?random=21",
+            "https://picsum.photos/400/600?random=21"
         ],
-        "spotify_playlist": "https://open.spotify.com/embed/playlist/37i9dQZF1EIdgR2kEqeFwT?utm_source=generator&theme=0"
+        "spotify_playlist": "https://open.spotify.com/embed/album/0FZK97MXMm5mUQ8mtudjuK?utm_source=generator&theme=0"
     },
     {
         "id": "omi",
