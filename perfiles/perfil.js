@@ -130,9 +130,6 @@ async function cargarDatosMiembro(id) {
     }
 }
 
-/**
- * Busca en blog.json los artículos que coincidan con el autorId del perfil
- */
 async function vincularPublicacionesBlog(miembroId) {
     const postsContainer = document.getElementById('user-posts-container');
     const postsGrid = document.getElementById('user-posts-grid');
@@ -144,11 +141,16 @@ async function vincularPublicacionesBlog(miembroId) {
         if (!respuesta.ok) return;
 
         const articulos = await respuesta.json();
+        // Filtramos por autor según blog.json
         const misArticulos = articulos.filter(art => art.autorId === miembroId);
 
         if (misArticulos.length > 0) {
             postsContainer.style.display = 'block';
-            postsGrid.innerHTML = misArticulos.map(art => `
+
+            // Limitamos la cantidad a los primeros 6 elementos
+            const articulosAMostrar = misArticulos.slice(0, 6);
+
+            postsGrid.innerHTML = articulosAMostrar.map(art => `
                 <a href="../entradas blog/entrada.html?id=${art.id}" class="gallery-item" style="text-decoration: none; border-radius: 12px; overflow: hidden; display: block; aspect-ratio: 3/2; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;">
                     <style>
                         #user-posts-grid .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -159,7 +161,7 @@ async function vincularPublicacionesBlog(miembroId) {
                     <div style="position: relative; width: 100%; height: 100%;">
                         <img src="${art.imagen}" alt="Fondo ${art.titulo}" class="bg-blur" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
                         
-                        <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px; background: linear-gradient(0deg, #000 30%, rgba(0,0,0,0) 100%); border-top: 1px solid rgba(214,179,89,0.2);">
+                        <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px; background: linear-gradient(0deg, #000 30%, rgba(0,0,0,0) 100%); ">
                             <span style="color: var(--accent-gold); font-size: 0.7rem; letter-spacing: 2px; font-weight:700; text-transform: uppercase;">${art.tipo || 'ARTÍCULO'}</span>
                             <h4 style="color: white; margin-top: 10px; font-family: var(--font-heading); font-size: 1.4rem; line-height:1.2; font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${art.titulo}</h4>
                             <p style="color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 10px;">${art.fecha} • ${art.tiempo_lectura}</p>
@@ -167,6 +169,23 @@ async function vincularPublicacionesBlog(miembroId) {
                     </div>
                 </a>
             `).join('');
+
+            // Lógica para inyectar el botón si hay más de 6 artículos
+            if (misArticulos.length > 6) {
+                // Limpiamos cualquier botón previo si existe
+                const existingBtn = document.getElementById('view-more-posts-wrapper');
+                if (existingBtn) existingBtn.remove();
+
+                const btnWrapper = document.createElement('div');
+                btnWrapper.id = 'view-more-posts-wrapper';
+                btnWrapper.style.textAlign = 'center';
+                btnWrapper.style.marginTop = '40px';
+                // Usamos la clase btn-outline-blue ya definida en style.css
+                btnWrapper.innerHTML = `
+                    <a href="../blog/blog.html" class="btn-outline-blue">Ver más artículos</a>
+                `;
+                postsContainer.appendChild(btnWrapper);
+            }
         }
     } catch (e) {
         console.error("Error vinculando blog:", e);
