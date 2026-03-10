@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | The Lookouts</title>
-    <link rel="shortcut icon" href="recursos/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="recursos/favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../recursos/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../recursos/favicon.png">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="blog.css">
 </head>
 
@@ -47,8 +47,8 @@
         </div>
 
         <div class="logo-center">
-            <a href="index.html">
-                <img src="recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
+            <a href="../index.html">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
             </a>
         </div>
 
@@ -62,11 +62,11 @@
 
     <nav id="fullscreen-nav" class="fullscreen-nav">
         <ul class="nav-list">
-            <li><a href="index.html" class="nav-link">Inicio</a></li>
-            <li><a href="directorio.html" class="nav-link">Miembros</a></li>
-            <li><a href="catalogo.html" class="nav-link">Audiolibros</a></li>
-            <li><a href="agenda.html" class="nav-link">Agenda</a></li>
-            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            <li><a href="../miembros/directorio.html" class="nav-link">Miembros</a></li>
+            <li><a href="../catalogo/catalogo.html" class="nav-link">Audiolibros</a></li>
+            <li><a href="../agenda/agenda.html" class="nav-link">Agenda</a></li>
+            <li><a href="../blog/blog.html" class="nav-link">Blog</a></li>
         </ul>
     </nav>
 
@@ -78,74 +78,13 @@
             <hr class="blog-divider">
         </section>
 
-        <section class="featured-article animate-on-scroll">
-            <a href="entradas blog/plantilla-entrada.html" class="featured-wrapper">
-                <div class="featured-image">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1073&auto=format&fit=crop"
-                        alt="Libros digitales">
-                </div>
-                <div class="featured-text">
-                    <span class="article-tag">Destacado</span>
-                    <h2 class="featured-h2">¿Hacia dónde van los libros digitales en 2026?</h2>
-                    <p class="featured-excerpt">Hablamos sobre cómo las nuevas tecnologías están cambiando la forma en
-                        que leemos y compartimos historias hoy en día.</p>
-                    <div class="article-meta">
-                        <span>Por The Lookouts</span>
-                        <span class="meta-dot"></span>
-                        <span>5 min de lectura</span>
-                    </div>
-                </div>
-            </a>
+        <section class="featured-article animate-on-scroll" id="featured-container">
+            <p style="text-align: center; color: var(--blue-muted); padding: 50px 0;">Sincronizando archivo central...
+            </p>
         </section>
 
         <section class="blog-grid-section">
-            <div class="blog-grid">
-
-                <article class="blog-card animate-on-scroll">
-                    <a href="entradas blog/plantilla-entrada.html">
-                        <div class="blog-card-image">
-                            <img src="https://images.unsplash.com/photo-1516339901600-2e1a6298ed74?q=80&w=954&auto=format&fit=crop"
-                                alt="Futuro">
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="article-tag">Tecnología</span>
-                            <h3 class="blog-card-title">El legado del Cyberpunk en nuestra realidad</h3>
-                            <p class="blog-card-excerpt">Analizamos qué cosas de las películas clásicas de ciencia
-                                ficción se han cumplido en nuestro presente.</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="blog-card animate-on-scroll" style="transition-delay: 0.1s;">
-                    <a href="entrada.html">
-                        <div class="blog-card-image">
-                            <img src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?q=80&w=1170&auto=format&fit=crop"
-                                alt="Escritura">
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="article-tag">Guía</span>
-                            <h3 class="blog-card-title">Consejos para empezar a escribir tu propia historia</h3>
-                            <p class="blog-card-excerpt">Una lista sencilla de pasos para organizar tus ideas y empezar
-                                a redactar sin complicaciones.</p>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="blog-card animate-on-scroll" style="transition-delay: 0.2s;">
-                    <a href="entrada.html">
-                        <div class="blog-card-image">
-                            <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=1074&auto=format&fit=crop"
-                                alt="Fantasía">
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="article-tag">Libros</span>
-                            <h3 class="blog-card-title">Cómo ha cambiado la magia en los libros modernos</h3>
-                            <p class="blog-card-excerpt">Repasamos cómo los autores actuales inventan sistemas de magia
-                                más realistas y detallados.</p>
-                        </div>
-                    </a>
-                </article>
-
+            <div class="blog-grid" id="blog-grid">
             </div>
         </section>
 
@@ -155,7 +94,7 @@
         <div class="footer-content">
 
             <div class="footer-brand">
-                <img src="recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
                 <p class="footer-tagline">
                     Donde las ideas se encuentran y el arte toma forma. Una comunidad literaria explorando nuevos mundos
                     desde 2025.
@@ -196,10 +135,11 @@
             <div class="footer-links">
                 <h4 class="footer-heading">Explorar</h4>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="directorio.html">Miembros</a></li>
-                    <li><a href="catalogo.html">Audiolibros</a></li>
-                    <li><a href="agenda.html">Agenda Completa</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../miembros/directorio.html">Miembros</a></li>
+                    <li><a href="../catalogo/catalogo.html">Audiolibros</a></li>
+                    <li><a href="../agenda/agenda.html">Agenda Completa</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
                 </ul>
             </div>
 
@@ -222,7 +162,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
+    <script src="blog.js"></script>
 </body>
 
 </html>

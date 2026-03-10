@@ -1,12 +1,12 @@
 /**
  * ========================================================
- * THE LOOKOUTS - SCRIPT PRINCIPAL (V. 2026)
+ * THE LOOKOUTS - SCRIPT PRINCIPAL (V. 2026 COMPLETO)
  * ========================================================
  */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. LÓGICA DEL CARRUSEL (HERO) -
+    // 1. LÓGICA DEL CARRUSEL (HERO)
     // ------------------------------------------
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         startAutoPlay();
     }
 
-    // 2. HEADER DINÁMICO Y MENÚ -
+    // 2. HEADER DINÁMICO Y MENÚ
     // ------------------------------------------
     const header = document.getElementById('site-header');
     const menuToggle = document.getElementById('menu-toggle');
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. LÓGICA DE REGISTRO (MODAL Y GOOGLE SHEETS) -
+    // 3. LÓGICA DE REGISTRO (MODAL Y GOOGLE SHEETS) - RESTAURADA
     // ------------------------------------------
     const modal = document.getElementById("rsvp-modal");
     const btnRsvp = document.querySelector(".logistics-card .btn-gold-solid");
@@ -98,12 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
         rsvpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = rsvpForm.querySelector('button');
-            const originalText = submitBtn.innerText;
-
             submitBtn.innerText = "Registrando...";
             submitBtn.disabled = true;
 
-            // Cambiamos el formato de envío a uno que Google acepta sin problemas
             const formData = new URLSearchParams();
             formData.append('nombre', document.getElementById('name').value);
             formData.append('email', document.getElementById('email').value);
@@ -112,11 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Mantenemos no-cors para evitar problemas de dominio
+                    mode: 'no-cors',
                     body: formData
                 });
 
-                // --- UX MEJORADA: En lugar de alert, cambiamos el contenido del modal ---
                 const modalContent = document.querySelector('.modal-content');
                 modalContent.innerHTML = `
                 <span class="close-modal" onclick="document.getElementById('rsvp-modal').style.display='none'">&times;</span>
@@ -126,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button onclick="document.getElementById('rsvp-modal').style.display='none'" class="btn-gold-solid" style="margin-top: 25px; width: 100%;">Cerrar ventana</button>
                 </div>
             `;
-
             } catch (error) {
                 console.error("Error:", error);
                 submitBtn.innerText = "Error, intenta de nuevo";
@@ -135,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. ANIMACIONES AL HACER SCROLL -
+    // 4. ANIMACIONES AL HACER SCROLL
     // ------------------------------------------
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -147,9 +142,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+
+    // 5. MOTOR DEL CARRUSEL 3D (AUDIOLIBROS) - CORREGIDO
+    // ------------------------------------------
+    const coverflowItems = document.querySelectorAll('.coverflow-item');
+
+    if (coverflowItems.length > 0) {
+        let flowIndex = 0;
+
+        const updateCoverflow = () => {
+            coverflowItems.forEach(item => {
+                item.classList.remove('active', 'prev', 'next');
+            });
+
+            const prevIndex = (flowIndex - 1 + coverflowItems.length) % coverflowItems.length;
+            const nextIndex = (flowIndex + 1) % coverflowItems.length;
+
+            coverflowItems[flowIndex].classList.add('active');
+            coverflowItems[prevIndex].classList.add('prev');
+            coverflowItems[nextIndex].classList.add('next');
+        };
+
+        updateCoverflow();
+
+        setInterval(() => {
+            flowIndex = (flowIndex + 1) % coverflowItems.length;
+            updateCoverflow();
+        }, 3500);
+    }
 });
 
-// 5. EVENTOS RELACIONADOS (Fuera del DOMContentLoaded para ser accesible) -
+// 6. EVENTOS RELACIONADOS (SE MANTIENE INDEPENDIENTE)
 // ------------------------------------------
 async function cargarEventosRelacionados(eventoActualId) {
     const contenedor = document.getElementById('related-grid');
@@ -172,13 +195,12 @@ async function cargarEventosRelacionados(eventoActualId) {
                     <h4 class="activity-name">${ev.titulo}</h4>
                     <div class="activity-footer">
                         <span class="activity-status">${ev.status}</span>
-                        <a href="${ev.url}" class="activity-arrow">&rarr;</a>
+                        <a href="evento-detalle.html?id=${ev.id}" class="activity-arrow">&rarr;</a>
                     </div>
                 </div>
             </div>
         `).join('');
 
-        // Disparar animación para las nuevas tarjetas
         setTimeout(() => {
             contenedor.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('is-visible'));
         }, 100);

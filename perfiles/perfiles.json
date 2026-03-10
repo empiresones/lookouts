@@ -2,10 +2,9 @@
     {
         "id": "rafael-salinas",
         "nombre": "Rafael Salinas",
-        "rango_img": "../recursos/logos/2.png",
-        "foto": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687",
+        "rango_img": "../recursos/logos/oso.png",
+        "foto": "../recursos/perfiles/erre.png",
         "union": "2025",
-        "aportaciones": "12",
         "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Desarrollador de profesión y explorador de mundos literarios de noche. Cree firmemente que el arte es la única forma de inmortalidad que nos queda en este 2026.",
         "intereses": [
             "Cyberpunk",
@@ -18,16 +17,52 @@
         ],
         "redes": {
             "instagram": "https://instagram.com/erre.dwg",
-            "x": "https://x.com/rfsorta",
-            "discord": "https://discord.com/..."
+            "x": "https://x.com/rfsorta"
         },
-        "instagram_widget_id": "2bd24258e0335b059cbee93bd0b15fe7"
+        "libros_favoritos": [
+            {
+                "titulo": "Misery",
+                "autor": "Stephen King",
+                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKL8yJIYj5Ey3SjfyTFNdBx7bvGHQDH0Z1Rw&s"
+            },
+            {
+                "titulo": "¿Sueñan los androides con ovejas eléctricas?",
+                "autor": "Philip K. Dick",
+                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzfHHzwrazIzHsbYtEihcpAi4vwV_be1bJ9w&s"
+            },
+            {
+                "titulo": "La travesía del Viajero del Alba",
+                "autor": "C.S. Lewis",
+                "portada": "https://m.media-amazon.com/images/I/81VHoelUfQL._AC_UF1000,1000_QL80_.jpg"
+            },
+            {
+                "titulo": "Frankenstein",
+                "autor": "Mary Shelley",
+                "portada": "https://www.planetadelibros.com/usuaris/libros/fotos/403/original/portada_frankenstein_mary-shelley_202409160914.jpg"
+            },
+            {
+                "titulo": "Yo, Robot",
+                "autor": "Isaac Asimov",
+                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfOt3dLFiS1gbeI28nPHTVQdjYTcZNyxy9zw&s"
+            },
+            {
+                "titulo": "Fahrenheit 451",
+                "autor": "Ray Bradbury",
+                "portada": "https://m.media-amazon.com/images/I/61GaWVM6ZlL._AC_UF1000,1000_QL80_.jpg"
+            }
+        ],
+        "galeria": [
+            "https://picsum.photos/400/600?random=20",
+            "https://picsum.photos/400/600?random=21",
+            "https://picsum.photos/400/600?random=22"
+        ],
+        "spotify_playlist": "https://open.spotify.com/embed/playlist/37i9dQZF1EIdgR2kEqeFwT?utm_source=generator&theme=0"
     },
     {
         "id": "omi",
         "nombre": "Omi",
-        "rango_img": "../recursos/logos/1.png",
-        "foto": "https://picsum.photos/400/500?random=1",
+        "rango_img": "../recursos/logos/buho.png",
+        "foto": "../recursos/perfiles/omi.jpeg",
         "union": "2025",
         "aportaciones": "24",
         "bio": "Arquitecto de sueños y fundador de The Lookouts. Su visión permitió que esta comunidad floreciera como un refugio para la libre expresión artística. Curador apasionado de la narrativa gótica y el simbolismo moderno.",
@@ -43,10 +78,10 @@
         "instagram_widget_id": "ID_WIDGET_OMI"
     },
     {
-        "id": "anuar-sarinana",
-        "nombre": "Anuar Sariñana",
-        "rango_img": "../recursos/logos/3.png",
-        "foto": "https://picsum.photos/400/500?random=3",
+        "id": "don-pedorro",
+        "nombre": "Don Pedorro",
+        "rango_img": "../recursos/logos/lobo.png",
+        "foto": "../recursos/perfiles/pedorro.jpg",
         "union": "2025",
         "aportaciones": "18",
         "bio": "Especialista en mundos distópicos y tecnología futurista. Analiza cómo la ciencia ficción moldea nuestra realidad actual. Es el pilar técnico del Consejo, siempre buscando la próxima frontera en la narrativa transmedia.",
@@ -60,24 +95,5 @@
             "Neuromante — William Gibson"
         ],
         "instagram_widget_id": "ID_WIDGET_ANUAR"
-    },
-    {
-        "id": "alba-moctezuma",
-        "nombre": "Alba Moctezuma",
-        "rango_img": "../recursos/logos/4.png",
-        "foto": "https://picsum.photos/400/500?random=4",
-        "union": "2025",
-        "aportaciones": "15",
-        "bio": "Directora de Arte y guardiana de la estética visual en The Lookouts. Entrelaza la ilustración clásica con las tendencias digitales para dar rostro a nuestras historias. Su enfoque se centra en el realismo mágico.",
-        "intereses": [
-            "Realismo Mágico",
-            "Ilustración",
-            "Poesía Contemporánea"
-        ],
-        "obras": [
-            "Pedro Páramo — Juan Rulfo",
-            "La Casa de los Espíritus — Isabel Allende"
-        ],
-        "instagram_widget_id": "ID_WIDGET_ALBA"
     }
 ]

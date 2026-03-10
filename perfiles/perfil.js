@@ -36,9 +36,8 @@ async function cargarDatosMiembro(id) {
 
             // 2. Actualizar Estadísticas
             const stats = document.querySelectorAll('.meta-value');
-            if (stats.length >= 2) {
+            if (stats.length >= 1) {
                 stats[0].innerText = m.union;
-                stats[1].innerText = m.aportaciones;
             }
 
             // 3. Inyectar Botones de Redes Sociales
@@ -55,11 +54,10 @@ async function cargarDatosMiembro(id) {
             document.querySelector('.interest-tags').innerHTML = m.intereses.map(t => `<span>${t}</span>`).join('');
             document.querySelector('.reading-list').innerHTML = m.obras.map(o => `<li>${o}</li>`).join('');
 
-            // 5. Inyectar Widget de Instagram (LightWidget)
+            // 5. Inyectar Widget de Instagram (LightWidget) - BLOQUE INDEPENDIENTE
             if (m.instagram_widget_id) {
                 const feedContainer = document.getElementById('instagram-feed');
                 if (feedContainer) {
-                    // Inyectamos el HTML del iframe
                     feedContainer.innerHTML = `
                         <iframe src="https://lightwidget.com/widgets/${m.instagram_widget_id}.html" 
                         scrolling="no" allowtransparency="true" class="lightwidget-widget" 
@@ -74,6 +72,50 @@ async function cargarDatosMiembro(id) {
                     document.body.appendChild(newScript);
                 }
             }
+
+            // 6. Lógica para Libros Favoritos - BLOQUE INDEPENDIENTE
+            const booksContainer = document.getElementById('favorite-books-container');
+            if (booksContainer && m.libros_favoritos && m.libros_favoritos.length > 0) {
+                booksContainer.style.display = 'block';
+                booksContainer.querySelector('.books-gallery').innerHTML =
+                    m.libros_favoritos.slice(0, 6).map(libro => `
+                        <div class="book-card">
+                            <div class="book-cover-wrapper">
+                                <img src="${libro.portada}" alt="Portada de ${libro.titulo}" class="book-cover">
+                                <div class="book-spine-glare"></div>
+                            </div>
+                            <div class="book-info">
+                                <h5 class="book-title">${libro.titulo}</h5>
+                                <span class="book-author">${libro.autor}</span>
+                            </div>
+                        </div>
+                    `).join('');
+            }
+
+            // 7. Lógica para Galería de Fotos/Arte - BLOQUE INDEPENDIENTE
+            const galleryContainer = document.getElementById('gallery-container');
+            if (galleryContainer && m.galeria && m.galeria.length > 0) {
+                galleryContainer.style.display = 'block';
+                galleryContainer.querySelector('.member-gallery-grid').innerHTML =
+                    m.galeria.map(img => `
+                        <div class="gallery-item">
+                            <img src="${img}" alt="Obra de ${m.nombre}">
+                        </div>
+                    `).join('');
+            }
+
+            // 8. Lógica para Spotify - BLOQUE INDEPENDIENTE
+            const spotifyContainer = document.getElementById('spotify-container');
+            if (spotifyContainer && m.spotify_playlist) {
+                spotifyContainer.style.display = 'block';
+                spotifyContainer.querySelector('.spotify-embed-box').innerHTML = `
+                    <iframe style="border-radius:12px" src="${m.spotify_playlist}" 
+                    width="100%" height="152" frameBorder="0" allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy"></iframe>
+                `;
+            }
+
         } else {
             mostrarError("Miembro no encontrado", "La bitácora solicitada no existe en nuestros registros.");
         }

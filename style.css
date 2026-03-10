@@ -467,71 +467,19 @@ body {
 
 /* Pantallas o ventanas con poca altura (Menos de 850px de alto) */
 @media (max-height: 850px) {
-    .carousel-slide {
-        padding-top: 50px;
-        gap: 50px;
-    }
-
-    .audiobooks-premium-container {
-        padding: 50px 10%;
-        /* Reducimos el padding vertical */
-    }
-
-    .audiobooks-canvas {
-        height: 200px;
-        /* Reducimos el espacio de maniobra de los objetos */
-    }
-
-    .main-audio-img {
-        width: 80px;
-        /* El libro central se vuelve más compacto */
-    }
-
-    /* Reposicionamos los objetos para que no choquen con el texto */
-    .float-cloud-1 {
-        width: 90px;
-        top: 0;
-        left: -20px;
-    }
-
-    .float-cloud-2 {
-        width: 110px;
-        bottom: 0;
-        right: -20px;
-    }
-
-    .float-ufo {
-        width: 60px;
-        top: 10%;
-        right: 0;
-    }
-
-    .float-lute {
-        width: 70px;
-        bottom: 10%;
-        left: 0;
-    }
-
-    .audiobooks-title {
-        font-size: 2.5rem;
-        /* Ajustamos el título para que no empuje el contenido */
-    }
 
     .hero-title {
         font-size: 2.2rem;
-        /* Bajamos el título para que respire */
         margin-bottom: 15px;
     }
 
     .hero-description {
         font-size: 0.75rem;
-        /* Texto ligeramente más pequeño */
         margin-bottom: 25px;
     }
 
     .hero-book-cover {
-        max-width: 160px;
-        /* Evita que el libro empuje los controles hacia abajo */
+        max-width: 260px;
     }
 
     .carousel-indicators {
@@ -548,91 +496,37 @@ body {
 
 }
 
-/* ==========================================
-   RESPONSIVIDAD: DIORAMA DE AUDIOLIBROS
-   ========================================== */
-
-@media (max-width: 992px) {
-
-    /* Ajustamos el lienzo para que tenga una altura fija en tablets/móviles */
-    .audiobooks-canvas {
-        height: 350px;
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    /* Reducimos el tamaño del libro central */
-    .main-audio-img {
-        width: 80px;
-    }
-
-    /* Reubicamos los elementos flotantes para que no se amontonen */
-    .float-cloud-1 {
-        width: 80px;
-        top: 5%;
-        left: 5%;
-    }
-
-    .float-cloud-2 {
-        width: 100px;
-        bottom: 5%;
-        right: 0;
-    }
-
-    .float-ufo {
-        width: 60px;
-        top: 10%;
-        right: 5%;
-    }
-
-    .float-lute {
-        width: 70px;
-        bottom: 10%;
-        left: 5%;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* En celulares muy pequeños, simplificamos la escena */
-    .audiobooks-canvas {
-        height: 300px;
-    }
-
-    .audiobooks-title {
+@media (max-height: 650px) {
+    .hero-title {
         font-size: 2.2rem;
-        /* Título más manejable */
+        margin-bottom: 15px;
     }
 
-    .main-audio-img {
-        width: 50px;
+    .hero-description {
+        font-size: 0.75rem;
+        margin-bottom: 25px;
     }
 
-    /* Ocultamos algunos elementos si la pantalla es demasiado pequeña 
-       para evitar ruido visual, o simplemente los hacemos minúsculos */
-    .float-cloud-1,
-    .float-cloud-2 {
-        display: flex;
+    .hero-book-cover {
+        max-width: 160px;
     }
 
-    .float-ufo {
-        width: 50px;
-        top: 0;
-        right: 10%;
+    .carousel-indicators {
+        opacity: 0.5;
     }
 
-    .float-lute {
-        width: 60px;
-        bottom: 5%;
-        left: 10%;
-    }
-
-    /* Suavizamos el resplandor para que no coma mucha batería/recursos */
-    .glow-effect {
-        width: 100px;
-        height: 100px;
+    .carousel-btn {
+        top: 60%;
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
+
+
+
+
 
 /* Teléfonos móviles en modo horizontal estricto (Landscape) */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -910,80 +804,127 @@ body {
     background-color: #e5c36d;
 }
 
-/* --- Lienzo Animado (Derecha) --- */
-.audiobooks-canvas {
+/* --- Carrusel Coverflow 3D (Audiolibros) --- */
+.audiobooks-3d-container {
     flex: 1;
     position: relative;
-    height: 400px;
+    height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    perspective: 1200px;
+    /* Le da profundidad al espacio */
 }
 
-.floating-item {
+.coverflow-item {
     position: absolute;
-    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
-}
+    width: 220px;
+    aspect-ratio: 2 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 
-/* Animación del Libro Central */
-.center-audio-item {
-    position: relative;
-    z-index: 10;
-    animation: levitate 6s ease-in-out infinite;
-}
-
-.main-audio-img {
-    width: 150px;
-    position: relative;
-    z-index: 2;
-}
-
-/* Resplandor detrás del libro */
-.glow-effect {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(214, 179, 89, 0.4) 0%, transparent 70%);
-    border-radius: 50%;
+    /* Estado por defecto (Ocultos atrás) */
+    opacity: 0;
     z-index: 1;
-    animation: pulseGlow 4s ease-in-out infinite alternate;
+    transform: translateX(0) scale(0.6);
+    pointer-events: none;
+    /* No se pueden clickear si están ocultos */
 }
 
-/* Posiciones y Ritmos de los Elementos Secundarios */
-.float-cloud-1 {
-    top: 10%;
-    left: 0;
-    width: 120px;
-    opacity: 0.6;
-    animation: drift 15s linear infinite alternate;
+.coverflow-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.float-cloud-2 {
-    bottom: 15%;
-    right: -5%;
-    width: 150px;
+/* El protagonista en el centro */
+.coverflow-item.active {
+    opacity: 1;
+    z-index: 5;
+    transform: translateX(0) scale(1.15);
+    /* Crece un poco más */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(214, 179, 89, 0.3);
+    pointer-events: auto;
+}
+
+/* Los adyacentes (A los lados, reducidos y difuminados) */
+.coverflow-item.prev {
     opacity: 0.4;
-    animation: drift 20s linear infinite alternate-reverse;
+    z-index: 3;
+    transform: translateX(-65%) scale(0.85) rotateY(15deg);
 }
 
-.float-ufo {
-    top: 20%;
-    right: 10%;
-    width: 90px;
-    animation: levitate-fast 4s ease-in-out infinite;
-    z-index: 5;
+.coverflow-item.next {
+    opacity: 0.4;
+    z-index: 3;
+    transform: translateX(65%) scale(0.85) rotateY(-15deg);
 }
 
-.float-lute {
-    bottom: 20%;
-    left: 10%;
-    width: 100px;
-    animation: levitate-tilt 7s ease-in-out infinite;
-    z-index: 5;
+/* Responsividad para Móviles */
+@media (max-width: 992px) {
+    .audiobooks-premium-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 5%;
+        /* Menos padding lateral para ganar espacio */
+    }
+
+    .audiobooks-3d-container {
+        width: 100%;
+        height: 400px;
+        /* Aumentamos la altura para que respiren */
+        margin-top: 40px;
+        /* Más espacio bajo el botón */
+        perspective: 1500px;
+        /* Mayor profundidad */
+    }
+}
+
+@media (max-width: 768px) {
+    .coverflow-item {
+        width: 160px;
+    }
+
+    /* Juntamos más las tarjetas para que no se salgan de la pantalla celular */
+    .coverflow-item.prev {
+        transform: translateX(-55%) scale(0.8) rotateY(10deg);
+    }
+
+    .coverflow-item.next {
+        transform: translateX(55%) scale(0.8) rotateY(-10deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .audiobooks-title {
+        font-size: 2.2rem;
+    }
+
+    .coverflow-item {
+        width: 140px;
+    }
+
+    .coverflow-item.active {
+        transform: translateX(0) scale(1.1);
+    }
+
+    .coverflow-item.prev {
+        transform: translateX(-60%) scale(0.75) rotateY(25deg);
+        opacity: 0.3;
+    }
+
+    .coverflow-item.next {
+        transform: translateX(60%) scale(0.75) rotateY(-25deg);
+        opacity: 0.3;
+    }
+
+    .audiobooks-3d-container {
+        height: 320px;
+        margin-top: 6rem;
+        padding-bottom: 2rem;
+    }
 }
 
 /* --- Keyframes (Los motores de la animación) --- */

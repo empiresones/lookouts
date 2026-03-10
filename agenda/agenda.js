@@ -14,7 +14,7 @@ async function cargarAgenda() {
 
     try {
         // Buscamos el JSON en la carpeta de eventos
-        const respuesta = await fetch('eventos/eventos.json');
+        const respuesta = await fetch('../eventos/eventos.json');
         const eventos = await respuesta.json();
 
         // 1. Renderizar el Spotlight (Tomamos el primero del JSON)
@@ -30,7 +30,7 @@ async function cargarAgenda() {
                         <div class="info-block"><span class="label">LUGAR</span><span class="value">${ev.lugar}</span></div>
                     </div>
                     <p class="spotlight-desc">${ev.desc_corta}</p>
-                    <a href="eventos/evento-detalle.html?id=${ev.id}" class="btn-gold-solid">Reservar mi lugar</a>
+                    <a href="../eventos/evento-detalle.html?id=${ev.id}" class="btn-gold-solid">Reservar mi lugar</a>
                 </div>
             `;
         }
@@ -38,7 +38,7 @@ async function cargarAgenda() {
         // 2. Renderizar la Cuadrícula
         if (grid) {
             grid.innerHTML = eventos.map((ev, index) => `
-                <div class="activity-card animate-on-scroll" style="transition-delay: ${index * 0.1}s" onclick="location.href='eventos/evento-detalle.html?id=${ev.id}'">
+                <div class="activity-card animate-on-scroll" style="transition-delay: ${index * 0.1}s" onclick="location.href='../eventos/evento-detalle.html?id=${ev.id}'">
                     <div class="activity-image-wrapper">
                         <img src="${ev.imagen}" alt="${ev.titulo}" class="activity-img">
                         <div class="activity-date-badge">
@@ -56,7 +56,6 @@ async function cargarAgenda() {
                     </div>
                 </div>
             `).join('');
-
             // Disparar las animaciones de scroll
             setTimeout(() => {
                 document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('is-visible'));

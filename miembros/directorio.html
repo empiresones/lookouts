@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | The Lookouts</title>
-    <link rel="shortcut icon" href="/recursos/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/recursos/favicon.png">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="entrada.css">
+    <title>Miembros | The Lookouts</title>
+    <link rel="shortcut icon" href="../recursos/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../recursos/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="directorio.css">
 </head>
 
 <body>
@@ -47,8 +47,8 @@
         </div>
 
         <div class="logo-center">
-            <a href="/index.html">
-                <img src="/recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
+            <a href="../index.html">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts Estd 2025" id="main-logo">
             </a>
         </div>
 
@@ -70,73 +70,29 @@
         </ul>
     </nav>
 
-    <main id="main-content" style="min-height: 80vh; padding-top: 120px;">
-
-        <article class="article-container animate-on-scroll">
-            <header class="article-header">
-                <a href="/blog.html" class="back-link">&larr; Volver al blog</a>
-                <span class="article-category">TECNOLOGÍA</span>
-                <h1 class="article-title">¿Hacia dónde van los libros digitales en 2026?</h1>
-
-                <div class="article-meta-info">
-                    <img src="https://picsum.photos/50/50?random=1" alt="Autor" class="author-img">
-                    <div class="meta-text">
-                        <span class="author-name">Por The Lookouts</span>
-                        <span class="post-date">Publicado el 15 de Marzo, 2026</span>
-                    </div>
-                </div>
-            </header>
-
-            <div class="article-hero-image">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1073&auto=format&fit=crop"
-                    alt="Lectura digital">
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="page-hero-content animate-on-scroll">
+                <h4 class="hero-eyebrow">NUESTRA COMUNIDAD</h4>
+                <h1 class="page-title">Miembros</h1>
+                <p class="page-desc">Las mentes detrás de The Lookouts. Cada miembro aporta una perspectiva única a
+                    nuestra mesa de debate.</p>
             </div>
+            <div class="hero-bg-glow"></div>
+        </section>
 
-            <div class="article-body">
-                <p class="lead-text">
-                    El mundo de la lectura está cambiando más rápido de lo que pensamos. Lo que antes era un simple
-                    archivo de texto, hoy se está convirtiendo en una experiencia completa.
-                </p>
-
-                <p>
-                    A medida que entramos en 2026, vemos que la gente ya no solo busca leer; busca conectar. Los libros
-                    digitales están dejando de ser "copias" del papel para aprovechar las ventajas de las pantallas.
-                </p>
-
-                <h3>La personalización es la clave</h3>
-                <p>
-                    Hoy en día, las aplicaciones de lectura permiten ajustar no solo el tamaño de la letra, sino el tono
-                    de la luz según la hora del día y hasta música de fondo que cambia según el capítulo que estás
-                    leyendo.
-                </p>
-
-                <blockquote class="article-quote">
-                    "La tecnología no reemplaza al libro, le da nuevas herramientas para sobrevivir en un mundo
-                    distraído."
-                </blockquote>
-
-                <p>
-                    En conclusión, el futuro es brillante para quienes amamos las historias. Solo falta ver qué nuevas
-                    sorpresas nos traerá el resto del año en esta comunidad.
-                </p>
+        <section class="directory-section">
+            <div id="directory-grid" class="directory-grid">
+                <p style="text-align: center; color: var(--blue-muted);">Cargando registro de miembros...</p>
             </div>
-
-            <footer class="article-footer">
-                <div class="share-box">
-                    <span>Compartir este artículo:</span>
-                    <div class="share-icons">
-                    </div>
-                </div>
-            </footer>
-        </article>
-
+        </section>
     </main>
 
     <footer id="site-footer" class="footer-container animate-on-scroll">
         <div class="footer-content">
 
             <div class="footer-brand">
-                <img src="/recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
+                <img src="../recursos/logos/logo.png" alt="The Lookouts" class="footer-logo">
                 <p class="footer-tagline">
                     Donde las ideas se encuentran y el arte toma forma. Una comunidad literaria explorando nuevos mundos
                     desde 2025.
@@ -177,10 +133,10 @@
             <div class="footer-links">
                 <h4 class="footer-heading">Explorar</h4>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="directorio.html">Miembros</a></li>
-                    <li><a href="catalogo.html">Audiolibros</a></li>
-                    <li><a href="agenda.html">Agenda Completa</a></li>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../miembros/directorio.html">Miembros</a></li>
+                    <li><a href="../catalogo/catalogo.html">Audiolibros</a></li>
+                    <li><a href="../agenda/agenda.html">Agenda Completa</a></li>
                 </ul>
             </div>
 
@@ -203,7 +159,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
+    <script src="directorio.js"></script>
 </body>
 
 </html>

@@ -12,11 +12,11 @@
         "status": "Abierto",
         "organizadores": [
             {
-                "nombre": "Omi",
+                "nombre": "Miembro",
                 "avatar": "https://picsum.photos/400/500?random=1"
             },
             {
-                "nombre": "Alba Moctezuma",
+                "nombre": "Miembro",
                 "avatar": "https://picsum.photos/400/500?random=4"
             }
         ]
@@ -34,11 +34,11 @@
         "status": "Planeación",
         "organizadores": [
             {
-                "nombre": "Erevan Windrunner",
+                "nombre": "Miembro",
                 "avatar": "https://picsum.photos/400/500?random=10"
             },
             {
-                "nombre": "Silas Blackwood",
+                "nombre": "Miembro",
                 "avatar": "https://picsum.photos/400/500?random=11"
             }
         ]
