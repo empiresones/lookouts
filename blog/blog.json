@@ -68,5 +68,47 @@
         "resumen": "Consejos para analizar obras literarias de forma profunda y fomentar el debate constructivo.",
         "imagen": "https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "destacado": false
+    },
+    {
+        "id": "resena-tres-cuerpos",
+        "autorId": "rafael-salinas",
+        "tipo": "reseña",
+        "titulo": "Ciencia y Desesperanza: El Problema de los Tres Cuerpos",
+        "categoria": "Ciencia Ficción",
+        "fecha": "12 de Marzo, 2026",
+        "autor": "Rafael Salinas",
+        "autor_img": "../recursos/perfiles/erre.jpg",
+        "tiempo_lectura": "8 min",
+        "resumen": "Un análisis profundo sobre la obra de Cixin Liu y por qué redefine el género contemporáneo.",
+        "imagen": "https://m.media-amazon.com/images/I/81Ot1LN8WlL.jpg",
+        "destacado": false
+    },
+    {
+        "id": "resena-misery",
+        "autorId": "rafael-salinas",
+        "tipo": "reseña",
+        "titulo": "El terror del encierro: Analizando Misery",
+        "categoria": "Suspenso",
+        "fecha": "08 de Marzo, 2026",
+        "autor": "Rafael Salinas",
+        "autor_img": "../recursos/perfiles/erre.jpg",
+        "tiempo_lectura": "6 min",
+        "resumen": "Stephen King nos entrega una lección sobre la obsesión y el proceso creativo en esta obra maestra.",
+        "imagen": "https://m.media-amazon.com/images/I/71abHApvbhL._AC_UF1000,1000_QL80_.jpg",
+        "destacado": false
+    },
+    {
+        "id": "resena-androides",
+        "autorId": "rafael-salinas",
+        "tipo": "reseña",
+        "titulo": "¿Qué nos hace humanos? El dilema de Deckard",
+        "categoria": "Cyberpunk",
+        "fecha": "01 de Marzo, 2026",
+        "autor": "Rafael Salinas",
+        "autor_img": "../recursos/perfiles/erre.jpg",
+        "tiempo_lectura": "10 min",
+        "resumen": "Exploramos la filosofía de Philip K. Dick y su vigencia en un mundo cada vez más artificial.",
+        "imagen": "https://m.media-amazon.com/images/I/91heWmnaDeL._AC_UF1000,1000_QL80_.jpg",
+        "destacado": false
     }
 ]
