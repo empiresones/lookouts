@@ -1,0 +1,111 @@
+[
+    {
+        "id": "dracula",
+        "titulo": "Drácula",
+        "autor": "Bram Stoker",
+        "narrador": "Anuar Sariñana",
+        "duracion": "15h 30m",
+        "etiqueta": "Terror Clásico",
+        "portada": "https://m.media-amazon.com/images/I/61ZMLiTYxDL._AC_UF1000,1000_QL80_.jpg",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "El diario de Jonathan Harker",
+                "duracion": "05:20",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+            },
+            {
+                "numero": 2,
+                "titulo": "El castillo del Conde",
+                "duracion": "06:15",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+            },
+            {
+                "numero": 3,
+                "titulo": "Prisionero",
+                "duracion": "04:50",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+            }
+        ]
+    },
+    {
+        "id": "problema-tres-cuerpos",
+        "titulo": "El Problema de los Tres Cuerpos",
+        "autor": "Cixin Liu",
+        "narrador": "Don Pedorro",
+        "duracion": "14h 45m",
+        "etiqueta": "Sci-Fi",
+        "portada": "https://m.media-amazon.com/images/I/81Ot1LN8WlL.jpg",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Los años de locura",
+                "duracion": "07:30",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+            },
+            {
+                "numero": 2,
+                "titulo": "Fronteras de la ciencia",
+                "duracion": "05:45",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+            }
+        ]
+    },
+    {
+        "id": "misery",
+        "titulo": "Misery",
+        "autor": "Stephen King",
+        "narrador": "Alba Moctezuma",
+        "duracion": "12h 15m",
+        "etiqueta": "Suspenso",
+        "portada": "https://m.media-amazon.com/images/I/71abHApvbhL._AC_UF1000,1000_QL80_.jpg",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Annie Wilkes",
+                "duracion": "06:10",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+            },
+            {
+                "numero": 2,
+                "titulo": "El péndulo",
+                "duracion": "08:05",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+            }
+        ]
+    },
+    {
+        "id": "androides",
+        "titulo": "¿Sueñan los androides con ovejas eléctricas?",
+        "autor": "Philip K. Dick",
+        "narrador": "Rafael Salinas",
+        "duracion": "09h 20m",
+        "etiqueta": "Cyberpunk",
+        "portada": "https://m.media-amazon.com/images/I/91heWmnaDeL._AC_UF1000,1000_QL80_.jpg",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Polvo radiactivo",
+                "duracion": "04:40",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+            }
+        ]
+    },
+    {
+        "id": "fundacion",
+        "titulo": "Fundación",
+        "autor": "Isaac Asimov",
+        "narrador": "Omi",
+        "duracion": "10h 10m",
+        "etiqueta": "Sci-Fi Clásico",
+        "portada": "https://m.media-amazon.com/images/I/81I++Y1RUKL._AC_UF1000,1000_QL80_.jpg",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Los psicohistoriadores",
+                "duracion": "09:15",
+                "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"
+            }
+        ]
+    }
+]

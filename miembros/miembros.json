@@ -10,14 +10,14 @@
         "id": "rafael-salinas",
         "nombre": "Rafael Salinas",
         "rol": "Miembro",
-        "foto": "../recursos/perfiles/erre.png",
+        "foto": "../recursos/perfiles/erre.jpg",
         "sello": "../recursos/logos/oso.png"
     },
     {
-        "id": "don-pedorro",
-        "nombre": "Don Pedorro",
+        "id": "cristian-izaguirre",
+        "nombre": "Cristian Izaguirre",
         "rol": "Miembro",
-        "foto": "../recursos/perfiles/pedorro.jpg",
+        "foto": "../recursos/perfiles/pedorro.jpeg",
         "sello": "../recursos/logos/lobo.png"
     }
 ]

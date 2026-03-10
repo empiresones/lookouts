@@ -3,9 +3,9 @@
         "id": "rafael-salinas",
         "nombre": "Rafael Salinas",
         "rango_img": "../recursos/logos/oso.png",
-        "foto": "../recursos/perfiles/erre.png",
+        "foto": "../recursos/perfiles/erre.jpg",
         "union": "2025",
-        "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Desarrollador de profesión y explorador de mundos literarios de noche. Cree firmemente que el arte es la única forma de inmortalidad que nos queda en este 2026.",
+        "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Desarrollador de profesión y explorador de mundos literarios de noche. Cree firmemente que el arte es la única forma de inmortalidad que nos queda.",
         "intereses": [
             "Cyberpunk",
             "Suspenso",
@@ -21,14 +21,14 @@
         },
         "libros_favoritos": [
             {
-                "titulo": "Misery",
-                "autor": "Stephen King",
-                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKL8yJIYj5Ey3SjfyTFNdBx7bvGHQDH0Z1Rw&s"
+                "titulo": "Fluyan mis lagrimas dijo el policia",
+                "autor": "Philip K. Dick",
+                "portada": "https://m.media-amazon.com/images/I/71hrn1JXFgL._AC_UF1000,1000_QL80_.jpg"
             },
             {
-                "titulo": "¿Sueñan los androides con ovejas eléctricas?",
-                "autor": "Philip K. Dick",
-                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzfHHzwrazIzHsbYtEihcpAi4vwV_be1bJ9w&s"
+                "titulo": "La Isla del Tesoro",
+                "autor": "Robert Louis Stevenson",
+                "portada": "https://www.planetadelibros.com.mx/usuaris/libros/fotos/220/original/219884_portada_la-isla-del-tesoro_robert-louis-stevenson_201606262151.jpg"
             },
             {
                 "titulo": "La travesía del Viajero del Alba",
@@ -46,18 +46,18 @@
                 "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfOt3dLFiS1gbeI28nPHTVQdjYTcZNyxy9zw&s"
             },
             {
-                "titulo": "Fahrenheit 451",
-                "autor": "Ray Bradbury",
-                "portada": "https://m.media-amazon.com/images/I/61GaWVM6ZlL._AC_UF1000,1000_QL80_.jpg"
+                "titulo": "1984",
+                "autor": "George Orwell",
+                "portada": "https://m.media-amazon.com/images/I/71sOSrd+JxL._AC_UF1000,1000_QL80_.jpg"
             }
         ],
         "galeria": [
-            "https://scontent.fntr10-1.fna.fbcdn.net/v/t39.30808-6/489027094_10234452270238738_854340386287133528_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vN72w0viF4QQ7kNvwHIOkJK&_nc_oc=AdnRsglple1niKAuth1CuOore2eycHypScEHJp4XtnzOcG4ggXsoQD-UF16l_GJt7zCPfD_Q8BQAH5FVup8nd8PI&_nc_zt=23&_nc_ht=scontent.fntr10-1.fna&_nc_gid=lhF_T6M3PriSMQOtn15OVg&_nc_ss=8&oh=00_AfxrGrQy_XiSv9r69SSmAs_I2PRWg_-wZXn3H-KI6SOQLg&oe=69B55107",
-            "https://picsum.photos/400/600?random=21",
-            "https://picsum.photos/400/600?random=22",
-            "https://picsum.photos/400/600?random=21",
-            "https://picsum.photos/400/600?random=21",
-            "https://picsum.photos/400/600?random=21"
+            "../recursos/galeria rafa/1.png",
+            "../recursos/galeria rafa/2.png",
+            "../recursos/galeria rafa/3.png",
+            "../recursos/galeria rafa/4.png",
+            "../recursos/galeria rafa/5.png",
+            "../recursos/galeria rafa/6.png"
         ],
         "spotify_playlist": "https://open.spotify.com/embed/album/0FZK97MXMm5mUQ8mtudjuK?utm_source=generator&theme=0"
     },
@@ -81,10 +81,10 @@
         "instagram_widget_id": "ID_WIDGET_OMI"
     },
     {
-        "id": "don-pedorro",
-        "nombre": "Don Pedorro",
+        "id": "cristian-izaguirre",
+        "nombre": "Cristian Izaguirre",
         "rango_img": "../recursos/logos/lobo.png",
-        "foto": "../recursos/perfiles/pedorro.jpg",
+        "foto": "../recursos/perfiles/pedorro.jpeg",
         "union": "2025",
         "aportaciones": "18",
         "bio": "Especialista en mundos distópicos y tecnología futurista. Analiza cómo la ciencia ficción moldea nuestra realidad actual. Es el pilar técnico del Consejo, siempre buscando la próxima frontera en la narrativa transmedia.",

@@ -170,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCoverflow();
         }, 3500);
     }
+    cargarAgendaHome();
+    cargarMarqueeMiembros();
+
 });
 
 // 6. EVENTOS RELACIONADOS (SE MANTIENE INDEPENDIENTE)
@@ -206,4 +209,104 @@ async function cargarEventosRelacionados(eventoActualId) {
         }, 100);
 
     } catch (e) { console.error("Error cargando eventos:", e); }
+}
+// 7. AGENDA DINÁMICA PARA EL HOME
+// ------------------------------------------
+async function cargarAgendaHome() {
+    const gridHome = document.getElementById('home-activities-grid');
+    if (!gridHome) return;
+
+    try {
+        // Buscamos la información desde la raíz a la carpeta eventos
+        const respuesta = await fetch('eventos/eventos.json');
+        if (!respuesta.ok) throw new Error("No se pudo cargar la agenda");
+        const eventos = await respuesta.json();
+
+        // Tomamos los primeros 4 eventos para no saturar el inicio
+        const eventosHome = eventos.slice(0, 4);
+
+        gridHome.innerHTML = eventosHome.map((ev, index) => {
+            // Extraer el día y mes de la fecha (Ej: "23 de Abril de 2026" -> "23" y "ABR")
+            const partesFecha = ev.fecha.split(' ');
+            const dia = partesFecha[0];
+            const mes = partesFecha[2] ? partesFecha[2].substring(0, 3).toUpperCase() : '';
+
+            return `
+            <a href="eventos/evento-detalle.html?id=${ev.id}" class="activity-card animate-on-scroll" style="transition-delay: ${index * 0.1}s; text-decoration: none;">
+                <div class="activity-image-wrapper">
+                    <img src="${ev.imagen}" alt="${ev.titulo}" class="activity-img">
+                    <div class="activity-date-badge">
+                        <span class="date-day">${dia}</span>
+                        <span class="date-month">${mes}</span>
+                    </div>
+                </div>
+                <div class="activity-details">
+                    <h4 class="activity-name">${ev.titulo}</h4>
+                    <p class="activity-desc">${ev.desc_corta}</p>
+                    <div class="activity-footer">
+                        <span class="activity-status">${ev.status}</span>
+                        <span class="activity-arrow">&rarr;</span>
+                    </div>
+                </div>
+            </a>
+            `;
+        }).join('');
+
+        // Disparar las animaciones de scroll para las nuevas tarjetas
+        setTimeout(() => {
+            gridHome.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('is-visible'));
+        }, 100);
+
+    } catch (error) {
+        console.error("Error cargando la agenda en el home:", error);
+        gridHome.innerHTML = `<p style="text-align: center; color: var(--blue-muted); grid-column: 1 / -1;">No hay eventos programados por el momento.</p>`;
+    }
+}
+// 8. MARQUEE DINÁMICO DE MIEMBROS (INFINITO PERFECTO)
+// ------------------------------------------
+async function cargarMarqueeMiembros() {
+    const marqueeGroup = document.getElementById('dynamic-marquee-group');
+    if (!marqueeGroup) return;
+
+    try {
+        // Obtenemos los miembros
+        const respuesta = await fetch('miembros/miembros.json');
+        if (!respuesta.ok) throw new Error("No se pudo cargar la lista de miembros");
+        const miembros = await respuesta.json();
+
+        // LÓGICA DEL BUCLE PERFECTO:
+        // Para que el scroll al -50% sea invisible, necesitamos que la mitad de las tarjetas 
+        // contenga ciclos completos y exactos de nuestros miembros.
+        const minTarjetasPorMitad = 8; // Queremos al menos 8 tarjetas en pantalla en todo momento
+        const repeticionesPorMitad = Math.ceil(minTarjetasPorMitad / miembros.length);
+        const repeticionesTotales = repeticionesPorMitad * 2; // Multiplicamos por 2 para tener las dos mitades idénticas
+
+        let tarjetasHTML = '';
+
+        // Generamos las tarjetas dinámicamente
+        for (let i = 0; i < repeticionesTotales; i++) {
+            tarjetasHTML += miembros.map(m => {
+                // Limpiamos la ruta '../' del JSON porque estamos en el index (raíz)
+                const fotoLimpia = m.foto.replace('../', '');
+                const selloLimpio = m.sello.replace('../', '');
+
+                return `
+                <a href="perfiles/perfil.html?id=${m.id}" class="member-card" style="text-decoration: none; display: block;">
+                    <img src="${fotoLimpia}" alt="Foto de ${m.nombre}" class="member-photo">
+                    <div class="member-overlay">
+                        <h4 class="member-name">${m.nombre}</h4>
+                        <img src="${selloLimpio}" alt="Insignia ${m.nombre}" class="member-badge">
+                    </div>
+                </a>
+                `;
+            }).join('');
+        }
+
+        // Inyectamos el HTML resultante
+        marqueeGroup.innerHTML = tarjetasHTML;
+
+    } catch (error) {
+        console.error("Error cargando el marquee de miembros:", error);
+        marqueeGroup.innerHTML = `<p style="color: var(--blue-muted); padding: 0 20px;">No hay miembros registrados.</p>`;
+    }
 }

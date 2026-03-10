@@ -119,7 +119,6 @@
 
 .profile-details-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
@@ -295,7 +294,7 @@
 }
 
 .gallery-item {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     /* Formato cinematográfico/paisaje para las obras */
     border-radius: 12px;
     overflow: hidden;

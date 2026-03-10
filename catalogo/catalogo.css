@@ -290,3 +290,217 @@
         padding-bottom: 40px;
     }
 }
+
+/* ==========================================
+   CSS MODULAR: CATÁLOGO DE AUDIOLIBROS
+   ========================================== */
+
+/* --- Hero del Catálogo --- */
+.page-hero {
+    background-color: var(--blue-dark);
+    padding: 180px 10% 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-eyebrow {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--bg-light);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.page-desc {
+    color: var(--blue-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- Cuadrícula de Tarjetas --- */
+.catalog-grid {
+    display: grid;
+    /* La estructura de la cuadrícula ya la pusimos inline en el HTML para asegurar responsividad,
+       pero podemos reforzar el espaciado aquí */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Tarjeta Individual de Audiolibro --- */
+.audiobook-card {
+    background-color: var(--blue-navy);
+    /* Fondo azul profundo */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    text-decoration: none;
+    /* Por si en el futuro se vuelve una etiqueta <a> */
+}
+
+.audiobook-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(20, 54, 102, 0.2);
+}
+
+/* Portada e Interacción Hover */
+.audiobook-cover-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Las portadas de audiolibros suelen ser cuadradas */
+    overflow: hidden;
+    background-color: var(--blue-dark);
+    /* Color de carga */
+}
+
+.audiobook-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.audiobook-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 20, 28, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* Oculto por defecto */
+    transition: opacity 0.3s ease;
+}
+
+/* Efectos al pasar el cursor sobre la tarjeta completa */
+.audiobook-card:hover .audiobook-img {
+    transform: scale(1.08);
+}
+
+.audiobook-card:hover .audiobook-overlay {
+    opacity: 1;
+    /* Aparece la capa oscura y el botón play */
+}
+
+/* Botón Play central */
+.mini-play-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-gold);
+    border: none;
+    border-radius: 50%;
+    color: var(--blue-dark);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    /* Corrección óptica para el triángulo de play */
+    cursor: pointer;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.audiobook-card:hover .mini-play-btn {
+    transform: translateY(0);
+    /* El botón "salta" hacia arriba */
+}
+
+.mini-play-btn:hover {
+    background-color: #e5c36d;
+    transform: scale(1.1) translateY(0) !important;
+}
+
+/* --- Información del Libro --- */
+.audiobook-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.audiobook-tag {
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.audiobook-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--bg-light);
+    line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.audiobook-author {
+    font-size: 0.95rem;
+    color: var(--blue-muted);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Detalles (Duración y Narrador) */
+.audio-player-ui {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    /* Línea divisoria muy sutil */
+    padding-top: 15px;
+}
+
+.meta-item {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-divider {
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* --- Responsividad Adicional --- */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 140px 5% 60px;
+    }
+
+    .audiobook-cover-box {
+        aspect-ratio: 16 / 9;
+        /* En móviles, en lugar de cuadradas se ven apaisadas para ocupar menos alto */
+    }
+}

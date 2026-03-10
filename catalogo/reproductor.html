@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Miembro | The Lookouts</title>
+    <title>Reproductor | The Lookouts</title>
+    <link rel="shortcut icon" href="../recursos/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="reproductor.css">
 </head>
 
-<body>
+<body style="background-color: var(--blue-dark); color: var(--bg-light);">
 
     <header id="site-header" class="header-container glass-effect">
 
@@ -61,69 +62,54 @@
     <nav id="fullscreen-nav" class="fullscreen-nav">
         <ul class="nav-list">
             <li><a href="../index.html" class="nav-link">Inicio</a></li>
-            <li><a href="../directorio.html" class="nav-link">Miembros</a></li>
-            <li><a href="../catalogo.html" class="nav-link">Audiolibros</a></li>
-            <li><a href="../agenda.html" class="nav-link">Agenda</a></li>
-            <li><a href="../blog.html" class="nav-link">Blog</a></li>
+            <li><a href="../miembros/directorio.html" class="nav-link">Miembros</a></li>
+            <li><a href="../catalogo/catalogo.html" class="nav-link">Audiolibros</a></li>
+            <li><a href="../agenda/agenda.html" class="nav-link">Agenda</a></li>
+            <li><a href="../blog/blog.html" class="nav-link">Blog</a></li>
         </ul>
     </nav>
-    <main id="main-content" style="padding-top: 140px; min-height: 100vh;">
-        <section class="profile-section animate-on-scroll">
 
-            <div class="profile-grid">
+    <main class="player-layout">
 
-                <div class="profile-visual">
-                    <div class="profile-image-container">
-                        <img src="" alt="Retrato" class="member-portrait">
-                        <div class="member-rank-badge">
-                            <img src="" alt="Rango">
-                        </div>
-                    </div>
-                    <div class="member-meta">
-                        <div class="meta-box"><span class="meta-value">---</span><span class="meta-label">UNIÓN</span>
-                        </div>
-                    </div>
-                </div>
+        <aside class="player-sticky-col">
+            <a href="catalogo.html" class="back-to-catalog">&larr; Volver al catálogo</a>
 
-                <div class="profile-content">
-                    <span class="member-eyebrow">MIEMBRO</span>
-                    <h1 class="member-full-name">Cargando...</h1>
-                    <div class="member-divider"></div>
-
-                    <div id="member-social-links" class="member-social-links"></div>
-
-                    <p class="member-bio">Recuperando bitácora...</p>
-
-                    <div class="profile-details-grid">
-                        <div class="detail-group">
-                            <h4>Intereses</h4>
-                            <div class="interest-tags"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-extended-content animate-on-scroll">
-
-                <div id="favorite-books-container" style="display: none; margin-bottom: 50px;">
-                    <h3 class="section-subtitle-literary">Mis Libros</h3>
-                    <div class="books-gallery"></div>
-                </div>
-
-                <div id="gallery-container" style="display: none;">
-                    <h3 class="section-subtitle-literary">Galería</h3>
-                    <div class="member-gallery-grid"></div>
-                </div>
-
-                <div id="spotify-container" style="display: none; margin-top: 50px;">
-                    <h3 class="section-subtitle-literary">Mi Música</h3>
-                    <div class="spotify-embed-box"></div>
-                </div>
-
+            <div class="player-cover-container">
+                <img id="book-cover" src="" alt="Portada del libro">
             </div>
 
+            <div class="player-book-info">
+                <span id="book-tag" class="book-tag">---</span>
+                <h1 id="book-title">Cargando...</h1>
+                <p id="book-author" class="book-author">---</p>
+                <p id="book-narrator" class="book-narrator">Voz: ---</p>
+            </div>
+
+            <div class="custom-audio-player">
+                <audio id="main-audio" preload="metadata"></audio>
+
+                <div class="progress-area">
+                    <span id="current-time">0:00</span>
+                    <input type="range" id="progress-bar" value="0" max="100">
+                    <span id="total-time">0:00</span>
+                </div>
+
+                <div class="controls-area">
+                    <button id="btn-prev" class="ctrl-btn" title="Capítulo Anterior">⏮</button>
+                    <button id="btn-play" class="ctrl-btn play-btn">▶</button>
+                    <button id="btn-next" class="ctrl-btn" title="Siguiente Capítulo">⏭</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="chapters-scroll-col">
+            <h2 class="chapters-header">Índice de Capítulos</h2>
+            <div id="chapters-list" class="chapters-list">
+                <p style="color: var(--blue-muted);">Cargando pistas...</p>
+            </div>
         </section>
-    </main>
 
+    </main>
     <footer id="site-footer" class="footer-container animate-on-scroll">
         <div class="footer-content">
 
@@ -173,6 +159,8 @@
                     <li><a href="../directorio.html">Miembros</a></li>
                     <li><a href="../catalogo.html">Audiolibros</a></li>
                     <li><a href="../agenda.html">Agenda Completa</a></li>
+                    <li><a href="../blog.html" class="nav-link">Blog</a></li>
+
                 </ul>
             </div>
 
@@ -194,10 +182,8 @@
             <p>&copy; 2026 The Lookouts. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
     <script src="../script.js"></script>
-    <script src="perfil.js"></script>
+    <script src="reproductor.js"></script>
 </body>
 
 </html>

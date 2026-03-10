@@ -52,7 +52,6 @@ async function cargarDatosMiembro(id) {
 
             // 4. Inyectar Tags y Obras
             document.querySelector('.interest-tags').innerHTML = m.intereses.map(t => `<span>${t}</span>`).join('');
-            document.querySelector('.reading-list').innerHTML = m.obras.map(o => `<li>${o}</li>`).join('');
 
             // 5. Inyectar Widget de Instagram (LightWidget) - BLOQUE INDEPENDIENTE
             if (m.instagram_widget_id) {
@@ -110,7 +109,7 @@ async function cargarDatosMiembro(id) {
                 spotifyContainer.style.display = 'block';
                 spotifyContainer.querySelector('.spotify-embed-box').innerHTML = `
                     <iframe style="border-radius:12px" src="${m.spotify_playlist}" 
-                    width="100%" height="152" frameBorder="0" allowfullscreen="" 
+                    width="100%" height="452" frameBorder="0" allowfullscreen="" 
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                     loading="lazy"></iframe>
                 `;

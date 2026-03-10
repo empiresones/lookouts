@@ -1,0 +1,215 @@
+/* ==========================================
+   CSS MODULAR: REPRODUCTOR DE AUDIOLIBROS
+   ========================================== */
+
+.player-layout {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+    max-width: 1300px;
+    margin: 180px auto 60px;
+    padding: 0 5%;
+    align-items: start;
+}
+
+/* --- Columna Izquierda (Fija) --- */
+.player-sticky-col {
+    position: sticky;
+    top: 120px;
+    /* Se queda pegada al hacer scroll hacia abajo */
+    display: flex;
+    flex-direction: column;
+}
+
+.back-to-catalog {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.back-to-catalog:hover {
+    transform: translateX(-5px);
+}
+
+.player-cover-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+#book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-tag {
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#book-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+.book-author,
+.book-narrator {
+    color: var(--blue-muted);
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Controles Custom */
+.custom-audio-player {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: var(--blue-muted);
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+}
+
+.controls-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: var(--bg-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.ctrl-btn:hover {
+    color: var(--accent-gold);
+    transform: scale(1.1);
+}
+
+.play-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-gold);
+    color: var(--blue-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-left: 4px;
+}
+
+/* --- Columna Derecha (Lista) --- */
+.chapters-header {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.chapters-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.chapter-item {
+    display: grid;
+    grid-template-columns: 40px 1fr 60px;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.chapter-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.chapter-item.playing {
+    background: rgba(214, 179, 89, 0.1);
+    /* Fondo dorado sutil */
+    border-left: 3px solid var(--accent-gold);
+}
+
+.chapter-item.playing .chap-title {
+    color: var(--accent-gold);
+}
+
+.chap-num {
+    color: var(--blue-muted);
+    font-size: 0.9rem;
+}
+
+.chap-title {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.chap-duration {
+    color: var(--blue-muted);
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+/* Móviles */
+@media (max-width: 992px) {
+    .player-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 100px;
+    }
+
+    .player-sticky-col {
+        position: relative;
+        top: 0;
+    }
+
+    .player-cover-container {
+        max-width: 300px;
+        margin: 0 auto 30px;
+    }
+}
