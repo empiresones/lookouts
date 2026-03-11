@@ -5,15 +5,11 @@
         "rango_img": "../recursos/logos/oso.png",
         "foto": "../recursos/perfiles/erre.jpg",
         "union": "2025",
-        "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Desarrollador de profesión y explorador de mundos literarios de noche. Cree firmemente que el arte es la única forma de inmortalidad que nos queda.",
+        "bio": "Entusiasta de la ciencia ficción clásica y el suspenso psicológico. Ingeniero en Nanotecnología, desarrollador por obligación, lector por convicción. El arte es la única forma de inmortalidad que nos queda.",
         "intereses": [
-            "Cyberpunk",
+            "Ciencia Ficción",
             "Suspenso",
             "Fantasía Épica"
-        ],
-        "obras": [
-            "Misery — Stephen King",
-            "El Problema de los Tres Cuerpos — Cixin Liu"
         ],
         "redes": {
             "instagram": "https://instagram.com/erre.dwg",
@@ -74,10 +70,6 @@
             "Curaduría",
             "Diseño Editorial"
         ],
-        "obras": [
-            "El Cuervo — Edgar Allan Poe",
-            "La Sombra sobre Innsmouth — H.P. Lovecraft"
-        ],
         "instagram_widget_id": "ID_WIDGET_OMI"
     },
     {
@@ -87,16 +79,50 @@
         "foto": "../recursos/perfiles/pedorro.jpeg",
         "union": "2025",
         "aportaciones": "18",
-        "bio": "Especialista en mundos distópicos y tecnología futurista. Analiza cómo la ciencia ficción moldea nuestra realidad actual. Es el pilar técnico del Consejo, siempre buscando la próxima frontera en la narrativa transmedia.",
+        "bio": "Lo suyo es el terror clásico y las mitologías que el mundo ha intentado olvidar. Diseñador gráfico y escritor de garaje por destino. Las historias no se inventan; están ahí fuera, enterradas como cadáveres que esperan a que alguien los desentierre. ",
         "intereses": [
-            "Hard Sci-Fi",
-            "Inteligencia Artificial",
-            "Distopía"
+            "Terror",
+            "Horror",
+            "Fantasía Medieval",
+            "Ciencia Ficción"
         ],
-        "obras": [
-            "Fundación — Isaac Asimov",
-            "Neuromante — William Gibson"
+        "redes": {
+            "instagram": "",
+            "x": ""
+        },
+        "libros_favoritos": [
+            {
+                "titulo": "Luces de Norte",
+                "autor": "Philip Pullman",
+                "portada": "https://gandhi.vtexassets.com/arquivos/ids/7952597/9786074806052.jpg?v=639050202706400000"
+            },
+            {
+                "titulo": "Frankenstein",
+                "autor": "Mary Shelley",
+                "portada": "https://www.planetadelibros.com/usuaris/libros/fotos/403/original/portada_frankenstein_mary-shelley_202409160914.jpg"
+            },
+            {
+                "titulo": "El Resplandor",
+                "autor": "Stephen King",
+                "portada": "https://m.media-amazon.com/images/I/71uIYa2g9mL._AC_UF1000,1000_QL80_.jpg"
+            },
+            {
+                "titulo": "La compañía negra",
+                "autor": "Gleen Cook",
+                "portada": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_alviqqVD52LRjfMSw7aJaaJ-uT44oFIPuy_Li92a6_KhppPgxFGdV77Kt5xqUmVK8ThXn-jyj965cI6IruO1YRkytTUpWRu4a_tyNqVq56jPyOQiF0fIoPaG7kt7teyXif-qb9fGtLa0/s1600/La+Compa%25C3%25B1%25C3%25ADa+Negra.jpg"
+            },
+            {
+                "titulo": "Tormenta de espadas",
+                "autor": "George R.R. Martin",
+                "portada": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQVW31GwsR2IN0HY0Blv4ky5gP7nK7GVbXg&s"
+            },
+            {
+                "titulo": "Lestat el vampiro",
+                "autor": "Anne Rice",
+                "portada": "https://m.media-amazon.com/images/I/618+ykdTRkL._AC_UF1000,1000_QL80_.jpg"
+            }
         ],
-        "instagram_widget_id": "ID_WIDGET_ANUAR"
+        "galeria": [],
+        "spotify_playlist": "https://open.spotify.com/embed/playlist/1IzTUGXG8OlfWMW6xlEtpO?utm_source=generator&theme=0"
     }
 ]
