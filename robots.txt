@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Bloquear carpetas privadas o en desarrollo
+Disallow: /bazar/
+Disallow: /obsoleto/
+Disallow: /.vscode/
+
+# Indicar la ubicación del mapa del sitio
+Sitemap: https://empiresones.github.io/lookouts/sitemap.xml
