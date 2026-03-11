@@ -1,0 +1,489 @@
+/* ========================================================
+   THE LOOKOUTS: ESTILOS INTEGRALES DEL BAZAR
+   ======================================================== */
+
+/* --- Cabecera del Bazar --- */
+.bazar-header {
+    text-align: center;
+    padding: 60px 10% 40px;
+    background-color: var(--bg-light);
+}
+
+.bazar-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.bazar-main-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--blue-dark);
+    margin: 15px 0;
+}
+
+.bazar-divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border: none;
+    margin: 0 auto;
+}
+
+.bazar-description {
+    text-align: center;
+    color: var(--blue-muted);
+    max-width: 600px;
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+/* --- Sistema de Filtros --- */
+.bazar-filters {
+    padding: 0 10% 40px;
+    background-color: var(--bg-light);
+}
+
+.filters-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 250px;
+    color: var(--blue-muted);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--blue-dark);
+}
+
+.filter-dropdowns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.bazar-select {
+    padding: 10px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: var(--bg-light);
+    color: var(--blue-dark);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.bazar-select:hover,
+.bazar-select:focus {
+    border-color: var(--accent-gold);
+}
+
+/* --- Grid de Contenido --- */
+.bazar-grid-section {
+    padding: 20px 10% 0px;
+    background-color: var(--bg-light);
+}
+
+.bazar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 50px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Tarjeta de Libro (Efecto 3D) --- */
+.bazar-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    min-height: 480px;
+    justify-content: flex-start;
+}
+
+.bazar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(20, 54, 102, 0.12);
+}
+
+.book-cover-3d {
+    position: relative;
+    z-index: 1;
+    width: 145px;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 3px 6px 6px 3px;
+    margin-bottom: 25px;
+    box-shadow:
+        inset 5px 0 10px rgba(0, 0, 0, 0.2),
+        5px 5px 20px rgba(0, 0, 0, 0.25);
+    border-left: 4px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.5s ease;
+}
+
+.bazar-card:hover .book-cover-3d {
+    transform: rotateY(-10deg) scale(1.05);
+}
+
+.book-state-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    background: var(--bg-light);
+    color: var(--blue-navy);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.bazar-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.bazar-author {
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* --- Sección del Propietario --- */
+.owner-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    width: 100%;
+    justify-content: center;
+}
+
+.owner-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-gold);
+}
+
+.owner-name {
+    font-size: 0.85rem;
+    color: var(--blue-dark);
+    font-weight: 600;
+}
+
+/* --- Botón de Acción --- */
+.btn-trueque {
+    width: 100%;
+    padding: 14px;
+    background: var(--blue-navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.btn-trueque:hover {
+    background: var(--accent-gold);
+    color: var(--blue-navy);
+}
+
+/* --- Ventana Flotante (Modal) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 20, 28, 0.9);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 15px;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--blue-muted);
+}
+
+.modal-details {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Heredamos el estilo del botón original para el botón del modal */
+.btn-modal-entendido {
+    width: 100%;
+    padding: 14px;
+    background: var(--blue-navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-modal-entendido:hover {
+    background: var(--accent-gold);
+    color: var(--blue-navy);
+}
+
+/* --- Estado de No Resultados --- */
+.no-results-container {
+    grid-column: 1 / -1;
+    /* Ocupa todo el ancho del grid */
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    border: 2px dashed rgba(20, 54, 102, 0.1);
+}
+
+.no-results-container p {
+    color: var(--blue-muted);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.btn-reset {
+    background: transparent;
+    color: var(--blue-navy);
+    border: 2px solid var(--accent-gold);
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    background: var(--accent-gold);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Contenedor de Paginación --- */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(20, 54, 102, 0.1);
+    background: white;
+    color: var(--blue-navy);
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.page-btn.active {
+    background: var(--blue-navy);
+    color: white;
+    border-color: var(--blue-navy);
+    box-shadow: 0 5px 15px rgba(20, 54, 102, 0.2);
+}
+
+/* --- CTA Full Width: Impacto Visual --- */
+.bazar-full-cta {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 10%;
+    background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920');
+    /* Imagen de biblioteca profunda */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Efecto parallax similar a la agenda */
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente que hereda los colores de The Lookouts */
+    background: linear-gradient(135deg, rgba(15, 20, 28, 0.95) 0%, rgba(20, 54, 102, 0.7) 100%);
+    z-index: 1;
+}
+
+.cta-content-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+}
+
+.cta-eyebrow {
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-display-title {
+    font-family: var(--font-heading);
+    color: var(--bg-light);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.cta-lead-text {
+    color: var(--blue-muted);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 45px;
+}
+
+.btn-gold-solid {
+    /* Mantenemos el estilo de tu botón principal */
+    display: inline-block;
+    padding: 18px 45px;
+    background-color: var(--accent-gold);
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold-solid:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(214, 179, 89, 0.4);
+    background-color: #ffffff;
+}
+
+/* Ajuste para que la animación de script.js funcione en full width */
+.bazar-full-cta.animate-on-scroll {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+.bazar-full-cta.animate-on-scroll.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}

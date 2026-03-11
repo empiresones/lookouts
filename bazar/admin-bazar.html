@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Bazar Lookouts</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="bazar.css">
+    <style>
+        .admin-form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-heading);
+            color: var(--blue-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: var(--bg-light);
+            color: var(--blue-dark);
+            font-family: inherit;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--blue-navy);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-gold);
+            color: var(--blue-navy);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body style="background: var(--bg-light);">
+    <main id="main-content" style="padding-top: 50px;">
+        <div class="admin-form-container animate-on-scroll is-visible">
+            <h1 class="modal-title" style="margin-bottom: 10px;">Nuevo Registro</h1>
+            <p style="text-align: center; color: var(--blue-muted); margin-bottom: 30px; font-size: 0.9rem;">Ingresa los
+                datos para actualizar El Bazar automáticamente.</p>
+
+            <form id="bazar-admin-form">
+                <div class="form-group">
+                    <label>ID del Propietario</label>
+                    <select name="propietarioId" required>
+                        <option value="omi">Omi</option>
+                        <option value="rafael-salinas">Rafael Salinas</option>
+                        <option value="cristian-izaguirre">Don Pedorro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Título del Libro</label>
+                    <input type="text" name="titulo" placeholder="Ej: 1984" required>
+                </div>
+                <div class="form-group">
+                    <label>Autor</label>
+                    <input type="text" name="autor" placeholder="Ej: George Orwell" required>
+                </div>
+                <div class="form-group">
+                    <label>URL de la Portada</label>
+                    <input type="url" name="portada" placeholder="https://imagen-del-libro.jpg" required>
+                </div>
+                <div class="form-group">
+                    <label>Estado Físico</label>
+                    <select name="estado_fisico" required>
+                        <option value="" disabled selected>Selecciona el estado...</option>
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Buen estado">Buen estado</option>
+                        <option value="Usado">Usado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>¿Qué buscas a cambio?</label>
+                    <select name="busca_a_cambio" required>
+                        <option value="" disabled selected>Selecciona qué te interesa...</option>
+                        <option value="Mismo autor">Mismo autor</option>
+                        <option value="Mismo género">Mismo género</option>
+                        <option value="Mismo estado">Mismo estado</option>
+                        <option value="Cualquier libro">Cualquier libro (Intercambio libre)</option>
+                        <option value="Edición específica">Edición específica o similar</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Publicar en el Bazar</button>
+            </form>
+            <div id="form-message" style="margin-top: 20px; text-align: center; display: none;"></div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('bazar-admin-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('form-message');
+            btn.innerText = "Enviando...";
+
+            const formData = new FormData(e.target);
+            const url = 'https://script.google.com/macros/s/AKfycbxltVsdPp4CsTmbezHDsfJaqEvxahYtqb7DvHiyIQArFlrq4BiuBsH58mBX1deuo8KCiw/exec'; // <--- PEGA AQUÍ LA URL QUE COPIASTE
+
+            try {
+                await fetch(url, { method: 'POST', body: formData, mode: 'no-cors' });
+                msg.style.display = 'block';
+                msg.style.color = 'green';
+                msg.innerText = "¡Libro publicado con éxito! Recarga el Bazar.";
+                e.target.reset();
+            } catch (err) {
+                msg.innerText = "Error al conectar.";
+            } finally {
+                btn.innerText = "Publicar en el Bazar";
+            }
+        });
+    </script>
+</body>
+
+</html>
