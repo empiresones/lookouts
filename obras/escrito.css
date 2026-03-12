@@ -1,0 +1,136 @@
+/* ==========================================
+   ESCRITO HUB: PANTALLA DIVIDIDA EDITORIAL
+   ========================================== */
+
+.escrito-main {
+    padding: 180px 5% 100px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.escrito-layout {
+    display: flex;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* --- Columna Izquierda (Fija en Desktop) --- */
+.escrito-sidebar {
+    flex: 0 0 350px;
+    position: sticky;
+    top: 120px;
+    /* Se queda pegada al hacer scroll */
+}
+
+.escrito-cover {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(15, 20, 28, 0.2);
+    margin-bottom: 30px;
+}
+
+.author-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(128, 150, 181, 0.3);
+}
+
+/* --- Columna Derecha (Contenido e Índice) --- */
+.escrito-content {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.escrito-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--blue-navy);
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--blue-dark);
+    margin: 50px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-gold);
+    display: inline-block;
+}
+
+#escrito-synopsis-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--blue-slate);
+    text-align: justify;
+}
+
+/* --- Lista de Capítulos (El Selector) --- */
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chapter-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border: 1px solid rgba(128, 150, 181, 0.2);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.chapter-item:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 20px rgba(214, 179, 89, 0.1);
+    transform: translateX(5px);
+}
+
+.chapter-number {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--blue-muted);
+    font-weight: 600;
+}
+
+.chapter-title {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--blue-navy);
+    flex: 1;
+    margin-left: 20px;
+}
+
+.chapter-arrow {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 992px) {
+    .escrito-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .escrito-sidebar {
+        position: relative;
+        top: 0;
+        flex: auto;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .escrito-title {
+        font-size: 2.8rem;
+    }
+}

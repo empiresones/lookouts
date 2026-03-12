@@ -1,0 +1,191 @@
+/* ==========================================
+   OBRAS: ESCAPARATE EDITORIAL ESPACIOSO
+   ========================================== */
+
+.obras-main {
+    padding: 180px 5% 100px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.obras-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 100px;
+    /* Mucho margen inferior para separar del contenido */
+}
+
+.obras-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.obras-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--blue-muted);
+    line-height: 1.8;
+}
+
+/* --- El Escaparate (Cero amontonamiento) --- */
+.obras-showcase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    /* Separación masiva entre cada obra */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.obra-card {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    /* Espacio inmenso entre la portada y el texto */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.obra-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Alternar diseño: las pares tendrán la imagen a la derecha */
+.obra-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* --- La Portada (El Hook Visual) --- */
+.obra-cover-wrapper {
+    flex: 0 0 400px;
+    /* Ancho fijo y grande para la portada */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(15, 20, 28, 0.15);
+    transition: transform 0.5s ease;
+}
+
+.obra-cover-wrapper:hover {
+    transform: translateY(-10px);
+}
+
+.obra-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    /* Proporción clásica de libro/póster */
+    object-fit: cover;
+    display: block;
+}
+
+/* --- La Carnada (Información Relevante) --- */
+.obra-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.obra-meta-tags {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background-color: rgba(214, 179, 89, 0.1);
+    color: var(--accent-gold);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.obra-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--blue-navy);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.obra-synopsis {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--blue-slate);
+    margin-bottom: 35px;
+    text-align: justify;
+}
+
+/* Identidad del Autor */
+.obra-author-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(128, 150, 181, 0.2);
+    width: 100%;
+}
+
+.author-badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    object-fit: cover;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--blue-dark);
+    font-size: 1.1rem;
+}
+
+/* Botón de acción principal */
+.btn-read-obra {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background-color: var(--blue-dark);
+    color: var(--bg-light);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-read-obra:hover {
+    background-color: var(--accent-gold);
+    color: var(--blue-dark);
+    transform: translateX(5px);
+}
+
+/* --- Responsividad Móvil --- */
+@media (max-width: 992px) {
+
+    .obra-card,
+    .obra-card:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .obra-cover-wrapper {
+        flex: auto;
+        max-width: 350px;
+        width: 100%;
+    }
+
+    .obra-title {
+        font-size: 2.5rem;
+    }
+}

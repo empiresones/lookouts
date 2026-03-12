@@ -1,0 +1,156 @@
+/* ==========================================
+   LECTOR: EXPERIENCIA DE LECTURA INMERSIVA
+   ========================================== */
+
+.leer-main {
+    padding: 180px 5% 100px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra todo el contenido */
+}
+
+/* --- Barra Superior --- */
+.leer-top-bar {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(128, 150, 181, 0.2);
+}
+
+.btn-back {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--blue-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.btn-back:hover {
+    color: var(--accent-gold);
+}
+
+.leer-context-title {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--blue-slate);
+    font-size: 1.1rem;
+}
+
+/* --- Cabecera del Capítulo --- */
+.leer-header {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.capitulo-numero {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.capitulo-titulo {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--blue-dark);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.title-accent-line.central {
+    margin: 0 auto;
+    width: 50px;
+}
+
+/* --- Área de Texto Principal --- */
+.leer-texto-container {
+    width: 100%;
+    max-width: 700px;
+    /* Ancho ideal para lectura editorial */
+    margin-bottom: 80px;
+}
+
+.leer-texto-container p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    /* Letra cómoda */
+    line-height: 2;
+    /* Interlineado amplio para no cansar la vista */
+    color: var(--blue-navy);
+    margin-bottom: 30px;
+    /* Separación clara entre párrafos */
+    text-align: justify;
+    /* Alineación justificada como en los libros */
+}
+
+/* Dropcap (Letra capital para el primer párrafo) */
+.leer-texto-container p:first-of-type::first-letter {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 12px;
+    color: var(--accent-gold);
+}
+
+/* --- Controles Inferiores --- */
+.leer-bottom-nav {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 1px solid rgba(128, 150, 181, 0.2);
+}
+
+.btn-nav-cap {
+    padding: 12px 25px;
+    border: 1px solid var(--blue-slate);
+    color: var(--blue-slate);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-nav-cap:hover {
+    background-color: var(--blue-slate);
+    color: var(--bg-light);
+}
+
+.btn-nav-cap.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    border-color: var(--blue-muted);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .capitulo-titulo {
+        font-size: 2.5rem;
+    }
+
+    .leer-texto-container p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    .leer-bottom-nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+}
