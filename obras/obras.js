@@ -13,15 +13,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         const obras = await respObras.json();
         const miembros = await respMiembros.json();
 
-        showcase.innerHTML = obras.map((obra) => {
+        showcase.innerHTML = obras.map((obra, index) => {
             const autor = miembros.find(m => m.id === obra.autorId);
             const selloRuta = autor.sello.replace('../', '../');
+
+            // Lógica de Novedad: Solo la primera obra (index 0) recibe la etiqueta
+            const isLatest = index === 0;
+            const latestBadgeHTML = isLatest ? `<div class="latest-update-badge">Recién Actualizado</div>` : '';
 
             // Las etiquetas que sirven de "Hook"
             const tagsHTML = `
                 <span class="tag">${obra.genero}</span>
                 <span class="tag">${obra.estado}</span>
-<span class="tag">${obra.capitulos.length} Capítulos</span>            `;
+                <span class="tag">${obra.capitulos.length} Capítulos</span>            
+            `;
 
             return `
                 <article class="obra-card animate-on-scroll">
@@ -30,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </div>
                     
                     <div class="obra-info">
-                        <div class="obra-meta-tags">
+                        ${latestBadgeHTML} <div class="obra-meta-tags">
                             ${tagsHTML}
                         </div>
                         

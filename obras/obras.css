@@ -9,10 +9,13 @@
 }
 
 .obras-header {
+    background-color: var(--blue-dark);
+    padding: 180px 10% 80px;
+    /* Mucho padding top para el header flotante */
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 100px;
-    /* Mucho margen inferior para separar del contenido */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .obras-title {
@@ -32,19 +35,14 @@
 
 /* --- El Escaparate (Cero amontonamiento) --- */
 .obras-showcase-container {
-    display: flex;
-    flex-direction: column;
-    gap: 120px;
-    /* Separación masiva entre cada obra */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 80px 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .obra-card {
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    /* Espacio inmenso entre la portada y el texto */
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
@@ -55,32 +53,165 @@
     transform: translateY(0);
 }
 
-/* Alternar diseño: las pares tendrán la imagen a la derecha */
-.obra-card:nth-child(even) {
-    flex-direction: row-reverse;
+.obra-card:first-child {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(128, 150, 181, 0.2);
+    margin-bottom: 20px;
 }
+
+.obra-card:first-child .obra-cover-wrapper {
+    flex: 0 0 400px;
+}
+
+.obra-card:first-child .obra-title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    /* Separa el título del autor */
+}
+
 
 /* --- La Portada (El Hook Visual) --- */
 .obra-cover-wrapper {
-    flex: 0 0 400px;
-    /* Ancho fijo y grande para la portada */
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(15, 20, 28, 0.15);
+    box-shadow: 0 20px 50px rgba(15, 20, 28, 0.15);
     transition: transform 0.5s ease;
 }
 
 .obra-cover-wrapper:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
 .obra-cover {
     width: 100%;
     height: auto;
     aspect-ratio: 2 / 3;
-    /* Proporción clásica de libro/póster */
     object-fit: cover;
     display: block;
+}
+
+.obra-card:not(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.obra-card:not(:first-child) .obra-cover-wrapper {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.obra-card:not(:first-child) .obra-title {
+    font-size: 2rem;
+    /* Título más compacto */
+    margin-bottom: 15px;
+}
+
+.obra-card:not(:first-child) .obra-synopsis {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    /* Truncar texto a 4 líneas para mantener la cuadrícula uniforme */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.obra-card:not(:first-child) .obra-author-block {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+}
+
+.obra-card:first-child .obra-author-block {
+    padding-bottom: 25px;
+    /* Da aire antes de la línea divisoria */
+    margin-bottom: 25px;
+    /* Separa la línea de la sinopsis */
+}
+
+.obra-card:first-child .obra-synopsis {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    /* Empuja el botón hacia abajo */
+}
+
+/* ==========================================
+   OBRAS: ESCAPARATE EDITORIAL ESPACIOSO
+   ========================================== */
+
+.obras-main {
+    padding: 180px 5% 100px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+/* --- Mejora del Header Editorial --- */
+.obras-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px;
+    position: relative;
+}
+
+.obras-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.obras-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    /* Un poco más grande */
+    color: var(--blue-dark);
+    margin-bottom: 25px;
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+    /* Necesario para centrar la línea debajo */
+}
+
+/* Línea dorada separadora automática */
+.obras-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    margin: 20px auto 0;
+}
+
+.obras-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--blue-muted);
+    line-height: 1.8;
+}
+
+/* --- Etiqueta de Recién Actualizado --- */
+.latest-update-badge {
+    display: inline-block;
+    background: #b8923a;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(214, 179, 89, 0.3);
 }
 
 /* --- La Carnada (Información Relevante) --- */
@@ -89,38 +220,35 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
 }
 
 .obra-meta-tags {
     display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .tag {
     background-color: rgba(214, 179, 89, 0.1);
     color: var(--accent-gold);
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .obra-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
     color: var(--blue-navy);
     line-height: 1.1;
-    margin-bottom: 25px;
 }
 
 .obra-synopsis {
-    font-size: 1.15rem;
-    line-height: 1.8;
     color: var(--blue-slate);
-    margin-bottom: 35px;
     text-align: justify;
 }
 
@@ -128,16 +256,14 @@
 .obra-author-block {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 35px;
-    padding-bottom: 30px;
+    gap: 12px;
     border-bottom: 1px solid rgba(128, 150, 181, 0.2);
     width: 100%;
 }
 
 .author-badge {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 2px solid var(--accent-gold);
     object-fit: cover;
@@ -146,15 +272,14 @@
 .author-name {
     font-weight: 600;
     color: var(--blue-dark);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
 }
 
-/* Botón de acción principal */
 .btn-read-obra {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 15px 40px;
+    padding: 12px 30px;
     background-color: var(--blue-dark);
     color: var(--bg-light);
     text-decoration: none;
@@ -162,6 +287,8 @@
     letter-spacing: 1px;
     border-radius: 4px;
     transition: all 0.3s ease;
+    margin-top: auto;
+    /* Empuja el botón al fondo si la tarjeta es muy alta */
 }
 
 .btn-read-obra:hover {
@@ -172,20 +299,18 @@
 
 /* --- Responsividad Móvil --- */
 @media (max-width: 992px) {
-
-    .obra-card,
-    .obra-card:nth-child(even) {
+    .obra-card:first-child {
         flex-direction: column;
         gap: 40px;
     }
 
-    .obra-cover-wrapper {
+    .obra-card:first-child .obra-cover-wrapper {
         flex: auto;
         max-width: 350px;
         width: 100%;
     }
 
-    .obra-title {
-        font-size: 2.5rem;
+    .obra-card:first-child .obra-title {
+        font-size: 2.8rem;
     }
 }

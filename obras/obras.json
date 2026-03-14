@@ -19,5 +19,47 @@
                 "archivo": "textos/id-obra-generica/cap2.html"
             }
         ]
+    },
+    {
+        "id": "id-obra-generica",
+        "titulo": "Título de la Obra",
+        "autorId": "omi",
+        "portada": "https://m.media-amazon.com/images/I/81Ot1LN8WlL.jpg",
+        "genero": "Fantasía",
+        "estado": "En curso",
+        "sinopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor, elit sit amet ultrices elementum, enim dui mattis nulla, nec consequat purus tellus id arcu. Duis sagittis tellus sed nibh consequat faucibus. Vivamus imperdiet neque et augue mollis, ut eleifend elit congue. Vestibulum dapibus facilisis hendrerit.",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Título del Capítulo 1",
+                "archivo": "textos/id-obra-generica/cap1.html"
+            },
+            {
+                "numero": 2,
+                "titulo": "Título del Capítulo 2",
+                "archivo": "textos/id-obra-generica/cap2.html"
+            }
+        ]
+    },
+    {
+        "id": "id-obra-generica",
+        "titulo": "Título de la Obra",
+        "autorId": "omi",
+        "portada": "https://m.media-amazon.com/images/I/81Ot1LN8WlL.jpg",
+        "genero": "Fantasía",
+        "estado": "En curso",
+        "sinopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor, elit sit amet ultrices elementum, enim dui mattis nulla, nec consequat purus tellus id arcu. Duis sagittis tellus sed nibh consequat faucibus. Vivamus imperdiet neque et augue mollis, ut eleifend elit congue. Vestibulum dapibus facilisis hendrerit.",
+        "capitulos": [
+            {
+                "numero": 1,
+                "titulo": "Título del Capítulo 1",
+                "archivo": "textos/id-obra-generica/cap1.html"
+            },
+            {
+                "numero": 2,
+                "titulo": "Título del Capítulo 2",
+                "archivo": "textos/id-obra-generica/cap2.html"
+            }
+        ]
     }
 ]
